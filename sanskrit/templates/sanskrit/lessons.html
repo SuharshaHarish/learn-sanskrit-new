@@ -1,0 +1,74 @@
+{% extends 'sanskrit/base.html' %}
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/cd.css' %}">
+<section id="body">
+    <div class="container">
+        
+        {% for lesson in my_lessons %}         
+           
+    
+               
+            
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <img src="{% static 'css/design1.png' %}">
+                    
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <h4>Lesson :<span> {{lesson.lesson_name}}</span></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="{{lesson.lesson_name}}">Start</a>
+                </div>
+            </div>
+        </div>
+        
+    
+    
+        {% endfor %}
+        
+    </div>
+</section>
+
+        <!-- <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <img src="design1.png">
+                    <h3>Lesson-2</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <h4>Vyanjanas</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#">Start</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="face face1">
+                <div class="content">
+                    <img src="design1.png">
+                    <h3>Lesson-3</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <h4>Shabdha Rachane</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <a href="#">Start</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</html>-->
+
+{% endblock %}
+
+

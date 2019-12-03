@@ -1,0 +1,41 @@
+from django.db import models
+
+class SanskritLessons(models.Model):
+    lesson_name = models.CharField(max_length=20,primary_key=True)
+    # question = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.lesson_name
+
+class SanskritQuestions(models.Model):
+    Q_TYPE_CHOICES=(
+        ('t','typing'),
+        ('s','select'),
+        ('j','jump'),
+    )
+    key_question = models.ForeignKey(SanskritLessons,on_delete=models.CASCADE)
+    question = models.CharField(max_length=50)
+    answer = models.CharField(max_length=50,default="",null=False)
+    q_type = models.CharField(choices=Q_TYPE_CHOICES,null=False,max_length=10)
+    # q_select = models.BooleanField(default=False,null=False)
+    # q_jump = models.BooleanField(default=False,null=False)
+    
+
+    def __str__(self):
+        return self.question
+
+class SanskritAnswers(models.Model):
+    key_answer = models.ForeignKey(SanskritQuestions,on_delete=models.CASCADE)    
+    ans_choice = models.CharField(max_length=50,null=False)
+    ans_image = models.ImageField(upload_to='pics/',default='design.png')
+
+    def __str__(self):
+        return self.ans_choice
+
+# class SanskritJumpAnswers(models.Model):
+#     key_answer = models.ForeignKey(SanskritQuestions,on_delete=models.CASCADE)    
+#     ans_ = models.CharField(max_length=50,null=False)
+   
+
+#     def __str__(self):
+#         return self.ans_choice

@@ -1,0 +1,15 @@
+{% extends 'sanskrit/base.html' %}
+{% load static %}
+
+{% block body %}
+<div class = 'container'>
+  <h1>Logged Out</h1>
+  <p>Go back to home?</p>
+  <a href = "{%url 'sanskrit:home'%}"><button type="submit" class= "btn btn-danger">Home</button></a>
+  
+  <p>Want to login again?</p>
+  
+  <a href = "{%url 'accounts:login'%}"><button type="submit" class= "btn btn-danger">Login</button></a>
+  
+</div>
+{% endblock%}

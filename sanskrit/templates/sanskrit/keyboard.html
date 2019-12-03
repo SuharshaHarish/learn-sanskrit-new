@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+
+<meta charset="utf-8">
+
+<title>keyboard</title>
+
+<style media="screen">
+body {
+    background-color:#f0f0f0;
+ }
+#keyboard {
+    display:inline-block;
+    padding:10px 15px;
+    border:1px solid #009;
+    border-radius:10px;
+    background-color:#87cdf9;
+    text-align:center;
+    box-shadow:4px 4px 4px #999;
+ }
+#keyboard div {
+    margin:5px 0;
+ }
+#space {
+    width:184px;
+ }
+#keyboard label {
+    margin-top:20px;
+    font-family:serif;
+    text-decoration:underline;
+ }
+#keyboard input {
+    box-shadow:2px 2px 2px #666;
+ }
+#keyboard input[type="text"] {
+    margin-top:20px;
+    border:1px solid #666;
+    border-radius:4px;
+    box-shadow:none;
+ }
+</style>
+
+<script>
+(function() {
+   'use strict';
+   var i,c;
+function init(){ 
+   i=document.getElementById('keyboard').getElementsByTagName('input');
+for(c=0;c<i.length;c++) {
+if(i[c].type==='button') {
+   i[c].addEventListener('onclick',makeClickHandler(c));
+   }
+  }
+
+document.getElementById('clear').onclick=function() {
+   document.getElementById('text').value='';
+  }
+ }
+
+function makeClickHandler(c) {
+   i[c].onclick=function() {
+   document.getElementById('text').value+=this.value.toLowerCase();
+  };
+ }
+
+   window.addEventListener?
+   window.addEventListener('load',init,false):
+   window.attachEvent('onload',init);
+})();
+</script>
+
+</head>
+<body>
+
+<div id="keyboard">
+
+<div>
+ <input type="button" value="०">
+ <input type="button" value="१">
+ <input type="button" value="२">
+ <input type="button" value="३">
+ <input type="button" value="४">
+ <input type="button" value="५">
+ <input type="button" value="६">
+ <input type="button" value="७">
+ <input type="button" value="८">
+ <input type="button" value="९">
+</br>
+</br>
+</div>
+
+<div>
+ <input type="button" value="अ">
+ <input type="button" value="आ">
+ <input type="button" value="ा">
+ <input type="button" value="इ">
+ <input type="button" value="ि">
+ <input type="button" value="ई">
+ <input type="button" value="ी">
+ <input type="button" value="उ">
+ <input type="button" value="ु">
+ <input type="button" value="ऊ">
+ <input type="button" value="ू">
+
+</div>
+
+<div>
+ <input type="button" value="ऋ">
+ <input type="button" value="ृ">
+ <input type="button" value="ॠ">
+ <input type="button" value="ॄ">
+ <input type="button" value="ऌ">
+ <input type="button" value="ॢ">
+ <input type="button" value="ॡ">
+ <input type="button" value="ॣ">
+ 
+</div><div>
+ <input type="button" value="ए">
+ <input type="button" value="े">
+ <input type="button" value="ऐ">
+ <input type="button" value="ै">
+ <input type="button" value="ओ">
+ <input type="button" value="ो">
+ <input type="button" value="औ">
+ <input type="button" value="ौ">
+ <input type="button" value="ं">
+ <input type="button" value="ः">
+ <input type="button" value="्">
+</br>
+</br>
+ 
+</div><div>
+ <input type="button" value="क">
+ <input type="button" value="ख">
+ <input type="button" value="ग">
+ <input type="button" value="घ">
+ <input type="button" value="ङ">
+ <input type="button" value="च">
+ <input type="button" value="छ">
+ <input type="button" value="ज">
+ <input type="button" value="झ">
+ <input type="button" value="ञ">
+ </div>
+ 
+ <div>
+ <input type="button" value="ट">
+ <input type="button" value="ठ">
+ <input type="button" value="ड">
+ <input type="button" value="ढ">
+ <input type="button" value="ण">
+ <input type="button" value="त">
+ <input type="button" value="थ">
+ <input type="button" value="द">
+ <input type="button" value="ध">
+ <input type="button" value="न">
+ </div>
+
+ <div>
+ <input type="button" value="प">
+ <input type="button" value="फ">
+ <input type="button" value="ब">
+ <input type="button" value="भ">
+ <input type="button" value="म">
+ <input type="button" value="य">
+ <input type="button" value="र">
+ <input type="button" value="ल">
+ <input type="button" value="व">
+ <input type="button" value="श">
+ <input type="button" value="ष">
+ <input type="button" value="स">
+ <input type="button" value="ह">
+ </div>
+ <div>
+ <input type="button" value="क्ष">
+ <input type="button" value="त्र">
+ <input type="button" value="ज्ञ">
+ <input type="button" value="श्र">
+ <input type="button" value="।">
+ <input type="button" value="॥">
+ <input type="button" value="ऽ">
+ <input type="button" value="ॐ"> 
+ </div>
+ <div>
+ <input id="space" type="button" value=" ">
+ <input id="clear" type="reset" value="clear">
+</div><div>
+<input id="text" type="text" >
+</div>
+
+</div><!-- end #keyboard -->
+
+</body>
+</html>
