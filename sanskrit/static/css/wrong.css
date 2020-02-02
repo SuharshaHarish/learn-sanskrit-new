@@ -1,0 +1,235 @@
+body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+
+/* The Modal (background) */
+
+.wrong_modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /*Sit on top */
+  padding-top: 600px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 1fr;
+  margin-bottom: 0;
+  /* height: 100%; Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4);/*Black w/ opacity   */
+ 
+  }
+
+/* Modal Content */
+.wrong_modal-content {
+ background-color: #FF372D; 
+  position: fixed;
+  margin: auto;
+  padding-bottom: 20px;
+  width: 100%;
+  height: 200px;
+  /* text-align: center;
+  padding-right: 30px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+    
+    /* grid-column-gap: 70px;
+    grid-row-gap: 50px; */
+    width: 100%;
+    
+    justify-content: center;
+}
+
+/* The Close Button */
+/* .close {
+  color: #ce1180;
+  float: right;
+  margin-right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+} */
+
+.close:hover,
+.close:focus {
+  color: #000;
+  cursor: pointer;
+  transform: translateY(4px);
+  text-decoration: none;
+}
+
+/* .modal-content .fa-check{
+  /* margin-left: 10px;
+  margin-top: 30px;
+  margin-right: 800px;
+}
+   */
+
+.fa{
+  color:#fff;
+ 
+}
+.fa-times{
+  /* font-size: 85px;
+  background: darkgreen;
+  color: #fff; */
+  font-size: 70px;
+  /* background: #fff; */
+  
+  color: darkred;
+  background: #fff;
+  border-radius: 100%;
+  border: 13px solid #fff;  
+}
+
+
+#wrong_submit_btn{
+    display: block;
+    width: 130px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px -5px #00000070;
+    color: #3498db;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+    transition: 0.25s;
+    border: 3px solid #3498db;
+    margin-left: 500px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    outline:none;
+    text-align: center;
+    font-size: 24px;
+}
+#wrong_submit_btn::before{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #3498db;
+  opacity: 0.5;
+  top: -100%;
+  left: 0;
+  z-index: -1;
+  transition: 0.3s;
+
+}
+#wrong_submit_btn::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #3498db;
+  top: -100%;
+  left: 0;
+  z-index: -1;
+  transition: 0.7s;
+  transition-delay: 0.01s;
+}
+
+#wrong_submit_btn:hover{
+  color: #fff;
+
+}
+#wrong_submit_btn:hover::before{
+  top: 0;
+}
+
+#wrong_submit_btn:hover::after{
+  top: 0;
+}
+#wrong_submit_btn:active {
+  border-color: 1px solid #fff;
+  background-color: #3498db;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#wrong_proceed_btn{
+    display: block;
+    width: 130px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 30px;
+    box-shadow: 0 15px 15px -5px #00000070;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    background: darkred;
+    transition: 0.3s;
+    border: none;
+    /* margin-left: 500px;
+    margin-top: 30px;
+    margin-bottom: 10px; */
+    outline:none;
+    text-align: center;
+    font-size: 24px;  
+    /* margin-left: 685px; */
+
+}
+
+#wrong_proceed_btn:hover{
+  border-color: 1px solid #fff;
+    background-color:darkred;
+}
+
+#wrong_proceed_btn:active {
+  border-color: 1px solid #fff;
+    background-color: darkred;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+
+#wrong_crct{
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  font-family: 'Acme', sans-serif;
+}
+/* .grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+    /* grid-column-gap: 70px;
+    grid-row-gap: 50px; */
+    /* width: 100%;
+    height: 100%;
+    justify-content: center;
+} */
+.wrong_grid-item1{
+    /* text-align: center; */
+  /* color: #ce1180; */
+  
+  /* margin-right: 15px; */
+  justify-items: left;
+ 
+  font-weight: bold; 
+ 
+ 
+
+
+}
+
+.wrong_grid-item2{
+    text-align: center;
+    /* float: right; */
+  /* margin-right: 15px; */
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.wrong_grid-item3{
+    /* text-align: center; */
+    /* color: #ce1180; */
+  
+
+  color: black;
+  text-align: right;
+  /* margin-right: 15px; */
+  font-size: 38px;
+  font-weight: bold;
+
+}

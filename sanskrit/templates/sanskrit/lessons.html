@@ -1,40 +1,36 @@
-{% extends 'sanskrit/base.html' %}
-{% load static %}
-
-{% block body %}
-<link rel="stylesheet" href="{% static 'css/cd.css' %}">
+{% extends 'sanskrit/base.html' %} {% load static %} {% block body %}
+<link rel="stylesheet" href="{% static 'css/cd.css' %}" />
 <section id="body">
-    <div class="container">
-        
-        {% for lesson in my_lessons %}         
-           
-    
-               
-            
+  <div class="container">
+    <div class="grid-container">
+      {% for lesson in my_lessons %}
+
+      <div class="grid-item">
         <div class="card">
-            <div class="face face1">
-                <div class="content">
-                    <img src="{% static 'css/design1.png' %}">
-                    
-                </div>
+          <div class="face face1">
+            <div class="content">
+              <img src="{% static 'css/design1.png' %}" />
             </div>
-            <div class="face face2">
-                <div class="content">
-                    <h4>Lesson :<span> {{lesson.lesson_name}}</span></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <a href="{{lesson.lesson_name}}">Start</a>
-                </div>
+          </div>
+          <div class="face face2">
+            <div class="content">
+              <h4>Lesson :<span> {{lesson.lesson_name}}</span></h4>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <a href="{{lesson.lesson_name}}">Start</a>
             </div>
+          </div>
         </div>
-        
-    
-    
-        {% endfor %}
-        
+      </div>
+
+      {% endfor %}
     </div>
+  </div>
 </section>
 
-        <!-- <div class="card">
+<!-- <div class="card">
             <div class="face face1">
                 <div class="content">
                     <img src="design1.png">
@@ -70,5 +66,3 @@
 </html>-->
 
 {% endblock %}
-
-

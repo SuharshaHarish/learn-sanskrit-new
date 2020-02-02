@@ -1,0 +1,149 @@
+.keyboard {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 350px;
+  width: 100%;
+  padding: 5px 0;
+  background: #007bff;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  justify-content: center;
+  /* justify-items: center; */
+  transition: bottom 0.4s;
+  /* margin-bottom: 40px; */
+}
+
+.keyboard--hidden {
+  bottom: -100%;
+}
+
+.keyboard__keys {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+  grid-template-rows: auto auto auto auto auto auto auto;
+  align-content: center;
+  /* justify-content: center; */
+  grid-column-gap: 15px;
+  grid-row-gap: 8px;
+  margin-left: 5px;
+  margin-right: 14px;
+  justify-content: center;
+}
+
+.keyboard__key {
+  height: 45px;
+  width: 100%;
+  max-width: 100%;
+  margin: 3px;
+  border-radius: 4px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 1.05rem;
+  outline: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  padding: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+}
+
+.keyboard__key:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.keyboard__key--wide {
+  width: 100%;
+}
+
+.keyboard__key--extra-wide {
+  width: 100%;
+  max-width: 500px;
+}
+
+.keyboard__key--activatable::after {
+  content: "";
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+}
+
+.keyboard__key--active::after {
+  background: #08ff00;
+}
+
+.keyboard__key--dark {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.keyboard__key:nth-child(n + 0):nth-child(-n + 10) {
+  /* numbers */
+  grid-row-start: 1;
+  justify-self: center;
+  margin-left: 30em;
+}
+
+.keyboard__key:nth-child(n + 11):nth-child(-n + 26) {
+  /* swaras */
+  grid-row-start: 2;
+  margin-left: 3.5em;
+}
+
+.keyboard__key:nth-child(n + 27):nth-child(-n + 40) {
+  /* ottu */
+  grid-row-start: 3;
+  margin-left: 2em;
+}
+
+.keyboard__key:nth-child(41) {
+  /* Enter */
+  margin-left: 2em;
+  grid-row-start: 3;
+  grid-column-start: 15;
+  grid-column-end: 18;
+}
+
+.keyboard__key:nth-child(n + 42):nth-child(-n + 57) {
+  /* Vyanjanas1 */
+  grid-row-start: 4;
+  margin-left: 6em;
+}
+
+.keyboard__key:nth-child(n + 58):nth-child(-n + 75) {
+  /* Vyanjanas2 */
+  grid-row-start: 5;
+}
+
+.keyboard__key:nth-child(n + 76):nth-child(-n + 81) {
+  /* Extras1*/
+  grid-row-start: 6;
+  margin-left: 6em;
+}
+
+.keyboard__key:nth-child(82) {
+  /* Space*/
+  margin-left: 6em;
+  grid-row-start: 6;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+.keyboard__key:nth-child(n + 83):nth-child(-n + 86) {
+  /* Extras2*/
+  margin-left: 6em;
+  grid-row-start: 6;
+}
+
+.keyboard__key:nth-last-child(1) {
+  /* Done*/
+  margin-left: 6em;
+  grid-row-start: 6;
+}

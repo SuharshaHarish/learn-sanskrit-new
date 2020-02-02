@@ -1,316 +1,154 @@
-{% extends 'sanskrit/base.html' %}
-{% load static %}
+{% extends 'sanskrit/base.html' %} {% block body %} {% load static %}
 
-{% block body %}
-<body>
- <div id="main" >
-    <h2>Lesson : {{my_lesson.lesson_name}}</h2>
-  <div id="display"></div>
-    
-    
-    <div id = "typing" style="display:none">
+<div class="main">
+  <h2>Lesson : {{my_lesson.lesson_name}}</h2>
+  <div class="display"></div>
+
+  <div id="typing" style="display:none" autofocus>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/keyboard.css' %}" />
+    <div id="question"></div>
+    <input type="text" id="typing_input" class="use-keyboard-input" /><br />
+    <textarea class="use-keyboard-input"></textarea><br />
+    <div id="res"></div>
+  </div>
+
+  <div id="select" style="display:none">
+    <link rel="stylesheet" href="{% static 'css/select.css' %}" />
+
+    <section id="services">
       <div id="question"></div>
-      
-          <input type='text' id='input' /><br/>
-              
-      <div id="submit"></div>
-      <div id="res"></div>
-    </div>
-    <div id = "select" style="display:none">
-      <link rel="stylesheet" href="{% static 'css/select.css' %}">
 
-         <section id="services">  
-            <div id="question"></div>       
-              
-            <div id="input">
-              <div class="row services">
-               <div class="grid-container">
-                                 
-                       <div class="grid-item">
-                         <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
-                         <button id ="0" onclick="select_click(this.id)">
-                           <div class="col-md-3 text-center">
-                             <div class="icon">                              
-                             
-                             <img src="" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
-                               
-                            </div>
-                           <h3><div class = "choices" id ="choices0"></div></h3>
-                      
-                           </div>
-                         </button>    
-                      </div>
-
-                      <div class="grid-item">
-                        <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
-                        <button id ="1" onclick="select_click(this.id)">
-                          <div class="col-md-3 text-center">
-                            <div class="icon">                              
-                            
-                            <img src="http://127.0.0.1:8000/media/pics/j.png" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
-                              
-                           </div>
-                          <h3><div class = "choices" id ="choices1"></div></h3>
-                     
-                          </div>
-                        </button>    
-                     </div>
-
-                     <div class="grid-item">
-                      <!-- <div id="select_display"></div> {{q.ans_image.url}} {{q}}-->
-                      <button id ="2" onclick="select_click(this.id)">
-                        <div class="col-md-3 text-center">
-                          <div class="icon">                              
-                          
-                          <img src="http://127.0.0.1:8000/media/pics/j.png" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
-                            
-                         </div>
-                        <h3><div class = "choices" id ="choices2"></div></h3>
-                   
-                        </div>
-                      </button>    
-                   </div>
-
-                   <div class="grid-item">
-                    <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
-                    <button id ="3" onclick="select_click(this.id)">
-                      <div class="col-md-3 text-center">
-                        <div class="icon">                              
-                        
-                        <img src="http://127.0.0.1:8000/media/pics/j.png" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
-                          
-                       </div>
-                      <h3><div class = "choices" id ="choices3"></div></h3>
-                 
-                      </div>
-                    </button>    
-                 </div>
-                
+      <div id="input">
+        <div class="row services">
+          <div class="grid-container">
+            <div class="grid-item">
+              <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
+              <button id="0" onclick="select_click(this.id)">
+                <div class="col-md-3 text-center">
+                  <div class="icon">
+                    <img
+                      src=""
+                      class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;"
+                    />
+                  </div>
+                  <h3><div class="choices" id="choices0"></div></h3>
                 </div>
-             </div>
+              </button>
             </div>
-         </section>  
-         <div id="submit">
-         </div>  
-         <div id = "res">
-           </div>
 
-          </div>    
-           
-           
+            <div class="grid-item">
+              <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
+              <button id="1" onclick="select_click(this.id)">
+                <div class="col-md-3 text-center">
+                  <div class="icon">
+                    <img
+                      src="http://127.0.0.1:8000/media/pics/j.png"
+                      class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;"
+                    />
+                  </div>
+                  <h3><div class="choices" id="choices1"></div></h3>
+                </div>
+              </button>
+            </div>
 
-    <div id="jump" style="display:none">
-      <div id="question"></div>  
-      <div id="final_ans"></div> 
-      <div id="ans_button">      
+            <div class="grid-item">
+              <!-- <div id="select_display"></div> {{q.ans_image.url}} {{q}}-->
+              <button id="2" onclick="select_click(this.id)">
+                <div class="col-md-3 text-center">
+                  <div class="icon">
+                    <img
+                      src="http://127.0.0.1:8000/media/pics/j.png"
+                      class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;"
+                    />
+                  </div>
+                  <h3><div class="choices" id="choices2"></div></h3>
+                </div>
+              </button>
+            </div>
+
+            <div class="grid-item">
+              <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
+              <button id="3" onclick="select_click(this.id)">
+                <div class="col-md-3 text-center">
+                  <div class="icon">
+                    <img
+                      src="http://127.0.0.1:8000/media/pics/j.png"
+                      class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;"
+                    />
+                  </div>
+                  <h3><div class="choices" id="choices3"></div></h3>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div id="submit">
-      </div>  
-      <div id = "res">
-    
+    </section>
+
+    <div id="res"></div>
+  </div>
+
+  <div id="jump" style="display:none">
+    <div id="question"></div>
+    <div id="final_ans"></div>
+    <div id="ans_button"></div>
+    <div id="res"></div>
+  </div>
+
+  <div id="submit"></div>
+
+  <div id="Modal" class="modal" style="display:none">
+    <link
+      href="https://fonts.googleapis.com/css?family=Acme&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/checking.css' %}" />
+    <!-- <div id="right_css"></div> -->
+
+    <!-- Modal content -->
+    <div id="Modal-content" class="modal-content">
+      <!-- <div class="grid-container"> -->
+      <div class="grid-item1">
+        <div id="check_symbol"></div>
+      </div>
+      <div class="grid-item2">
+        <p id="crct"></p>
+        <button id="proceed_btn" onclick="myFunction();">Proceed</button>
+      </div>
+      <div class="grid-item3">
+        <span class="close">&times;</span>
+      </div>
+      <!-- </div> -->
     </div>
-        <!-- <script src="keyboard.js"></script> -->
-        
-        
-       <script>
-        var selected_ans = '';
-        var data = JSON.parse("{{serialized_questions|escapejs}}");
-        var ans_choice_data=JSON.parse("{{serialized_q_choices|escapejs}}");
-        var i=0,j=0;   
 
-        window.onload = function() {
-            myFunction();
-        
-        };          
-        
-          
-        function myFunction() {
-            if (i<data.length){
+    <!-- <script src="keyboard.js"></script> -->
+  </div>
 
-            var ques = data[i].fields.question;
-            
-            var ans=data[i].fields.answer;
-            var q_type = data[i].fields.q_type;
-            // var q_select = data[i].fields.q_select;
-            // var q_jump = data[i].fields.q_jump;
+  <script src="{% static 'js/keyboard.js' %}"></script>
 
-            switch(q_type){
-            case 's':
-            
-              select_display();
-              document.getElementById("display").innerHTML = document.getElementById("select").innerHTML;   
-              document.getElementById("question").innerHTML = ques;
-              //document.getElementById("choices").innerHTML = "ka"; 
-              // document.getElementById("input").innerHTML = "<input type='text' id='ans1' /><br/>"; 
-              //document.getElementById("select_submit").disabled = true;   
-              document.getElementById("submit").innerHTML = '<button id="btn_submit" onclick= "validate()" type="button" disabled >Submit</button>'; 
-              break;
-            
-            case 'j':
-              document.getElementById("display").innerHTML = document.getElementById("jump").innerHTML;   
-              document.getElementById("question").innerHTML = ques;
-              var words = ans.split(" ");
-              var r=0,r_used=[];
-              for(j=0;j<words.length;j++){  
-                r =Math.floor(Math.random() * words.length);               
-                while(r_used.includes(r)){
-                  r =Math.floor(Math.random() * words.length); 
-                }
-                r_used.push(r);
-               create_button(words[r]);
-                // document.getElementById("ans_button").appendChild(btn);   
-                             }
-              //document.getElementById("final_ans").innerHTML = words[2];'<button id=j'+j+' onclick= "jump_ans('+this.id+');">'+words[j]+'</button>'
-              console.log(words);
-              document.getElementById("submit").innerHTML = '<button onclick= "validate();">Submit</button>';      
-            break;
-            
-            case 't':
-              document.getElementById("display").innerHTML = document.getElementById("typing").innerHTML; 
-              document.getElementById("question").innerHTML = ques; 
-              //document.getElementsByClassName("input")[0].innerHTML = "<input type='text' id='input' /><br/>";    
-              document.getElementById("submit").innerHTML = '<button onclick= "validate();">Submit</button>';         
-             break;
-
-            default : console.log(q_type);
-            }           
-            }
-            else{
-            document.getElementById("submit").innerHTML = "Bye";  
-            }
-        }
-
-          function validate(){ 
-        
-              var ans2=data[i].fields.answer;
-              var q_type = data[i].fields.q_type;
-
-              switch (q_type){
-                case 's' :var ans1 =  selected_ans;break;
-
-                case 'j' :var ans1 =  strip(document.getElementById("final_ans").textContent);break;
-
-                case 't' :var ans1 =  document.getElementById("input").value;break;
-              }
-              
-              
-              javascript: console.log(ans1);
-              javascript: console.log(ans2);
-
-              if(ans1 == ans2){ 
-
-              i++;      
-              document.getElementById("res").innerHTML = "Yes";
-              document.getElementById("submit").innerHTML = '<button onclick= "myFunction();">Proceed</button>';              
-              }
-
-              else{
-              document.getElementById("res").innerHTML = "No";
-              document.getElementById("submit").innerHTML = '<button onclick= "myFunction();">Proceed</button>'; 
-        
-              }
-          }
-
-          function select_click(btn_id){
-            document.getElementById("btn_submit").disabled = false;
-            //javascript: console.log(ans);
-            selected_ans = document.getElementsByClassName("choices")[btn_id].textContent;
-
-
-            
-          }
-
-          function select_display(){
-            var ans2=data[i].fields.answer;
-            var x,y=0,a=0,b=0,c=0,d=0,w=0,z=0;
-            for(x=0;x<ans_choice_data.length;x++){
-
-            var ans_choice=ans_choice_data[x].fields.ans_choice;
-            if(ans_choice = ans2){
-              break;
-            }
-            }
-            if(x==0){
-              y=x+1;
-            }
-            var a =Math.floor(Math.random() * 4);
-            while(a==b){
-              b = Math.floor(Math.random() * 4);              
-            }
-            while((c==a)||(c==b)){
-              c = Math.floor(Math.random() * 4);
-              
-            }
-            while((d==a)||(d==b)||(d==c)){
-              d = Math.floor(Math.random() * 4);
-              
-            }
-
-           
-            while(w==x){
-              w = Math.floor(Math.random() * ans_choice_data.length);              
-            }
-            while((y==x)||(y==w)){
-              y = Math.floor(Math.random() * ans_choice_data.length);
-              
-            }
-            while((z==w)||(z==x)||(z==y)){
-              z = Math.floor(Math.random() * ans_choice_data.length);
-              
-            }
-            // javascript: console.log(a);
-            // javascript: console.log(b);
-            // javascript: console.log(c);
-            // javascript: console.log(d);
-
-            // javascript: console.log(w);
-            // javascript: console.log(x);
-            // javascript: console.log(y);
-            // javascript: console.log(z);
-            document.getElementsByClassName("choices")[a].innerHTML = ans_choice_data[x].fields.ans_choice ;
-            document.getElementsByClassName("img-responsive")[a].src = "http://127.0.0.1:8000/media/"+ans_choice_data[x].fields.ans_image;
-            document.getElementsByClassName("choices")[b].innerHTML = ans_choice_data[y].fields.ans_choice ;
-            document.getElementsByClassName("img-responsive")[b].src = "http://127.0.0.1:8000/media/"+ans_choice_data[y].fields.ans_image;
-            document.getElementsByClassName("choices")[c].innerHTML = ans_choice_data[w].fields.ans_choice ;
-            document.getElementsByClassName("img-responsive")[c].src = "http://127.0.0.1:8000/media/"+ans_choice_data[w].fields.ans_image;
-            document.getElementsByClassName("choices")[d].innerHTML = ans_choice_data[z].fields.ans_choice ;
-            document.getElementsByClassName("img-responsive")[d].src = "http://127.0.0.1:8000/media/"+ans_choice_data[z].fields.ans_image;
-            
-            
-          }
-        
-        function jump_ans(j_id){
-          console.log(j_id);
-          document.getElementById("final_ans").innerHTML = document.getElementById("final_ans").innerHTML + document.getElementById(""+j_id+"").textContent+" " ;
-          var used_btn = document.getElementById(""+j_id+"");
-          used_btn.parentNode.removeChild(used_btn);
-        }
-
-        function create_button(word){
-          
-          var btn = document.createElement("BUTTON");  
-                btn.innerHTML = word;  
-                btn.id="j"+j;
-                btn.onclick=function(){jump_ans(btn.id)};
-                document.getElementById("ans_button").appendChild(btn);
-                return;
-        }
-
-        function strip(str) {
-          return str.replace(/^\s+|\s+$/g, '');
-}
-        </script>
-   
-    
-    
-
- </div>
-</body>
-{% endblock %}
-
-[{"model": "sanskrit.sanskritquestions",
- "pk": 3, 
-"fields": {"key_question": "Vyanjanas", "question": "What is a vyanjana?", "answer": "Ka"}}, 
-{"model": "sanskrit.sanskritquestions", 
-"pk": 4, 
-"fields": {"key_question": "Vyanjanas", "question": "Example", "answer": "Ga"}}]
+  <script>
+    var selected_ans = "";
+    var data = JSON.parse("{{serialized_questions|escapejs}}");
+    var ans_choice_data = JSON.parse("{{serialized_q_choices|escapejs}}");
+    var i = 0,
+      j = 0;
+  </script>
+  <script src="{% static 'js/lesson_validate.js' %}"></script>
+  <!-- <script src="keyboard.js"></script> -->
+  {% endblock %} [{"model": "sanskrit.sanskritquestions", "pk": 3, "fields":
+  {"key_question": "Vyanjanas", "question": "What is a vyanjana?", "answer":
+  "Ka"}}, {"model": "sanskrit.sanskritquestions", "pk": 4, "fields":
+  {"key_question": "Vyanjanas", "question": "Example", "answer": "Ga"}}]
+</div>
