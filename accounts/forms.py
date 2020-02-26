@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm,AuthenticationForm
 from django.contrib.auth.models import User
 #from accounts.models import Profile
 
@@ -38,6 +38,11 @@ class RegistrationForm(UserCreationForm):
             user.save()
 
             return user
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget= forms.TextInput(attrs={'class':'my_username'}))
+    password = forms.CharField(widget= forms.PasswordInput(attrs={'class':'my_password'}))
 
 #class ProfileForm(forms.ModelForm):
 

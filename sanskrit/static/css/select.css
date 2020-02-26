@@ -47,11 +47,43 @@
   padding: 8px;
   height: 60px;
   width: 60px;
-  border: 1px solid #555;
-  border-radius: 50%;
+}
+#services button {
+  box-shadow: 0 5px 15px -5px #00000070;
+  background: transparent;
+  color: grey;
+  border: 3px solid grey;
+  border-radius: 20px;
+  outline: none;
+  text-align: center;
+}
+#services button:focus {
+  margin: 10px;
+  border-radius: 30px;
+  box-shadow: 0 15px 15px -5px #00000070;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  background: #494949;
+  transition: 0.3s;
+
+  /* margin-left: 500px;
+  margin-top: 30px;
+  margin-bottom: 10px; */
+  outline: none;
+  /* text-align: center; */
+  font-size: 24px;
+  /* margin-left: 685px; */
 }
 
-#services button:focus {
-  background: #54defd;
-  border-radius: 15px;
+#services button:hover {
+  transform: translate(10px);
+  transition: 0.7s;
+}
+
+#services button:active {
+  border-color: 2px solid red;
+  background-color: lightgray;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }

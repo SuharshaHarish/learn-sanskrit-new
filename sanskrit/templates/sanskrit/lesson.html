@@ -11,8 +11,8 @@
     />
     <link rel="stylesheet" href="{% static 'css/keyboard.css' %}" />
     <div id="question"></div>
-    <input type="text" id="typing_input" class="use-keyboard-input" /><br />
-    <textarea class="use-keyboard-input"></textarea><br />
+    <!-- <input type="text" id="typing_input" class="use-keyboard-input" /><br /> -->
+    <textarea class="use-keyboard-input" id="typing_input"></textarea><br />
     <div id="res"></div>
   </div>
 
@@ -27,7 +27,7 @@
           <div class="grid-container">
             <div class="grid-item">
               <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
-              <button id="0" onclick="select_click(this.id)">
+              <button id="0" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
                     <img
@@ -43,7 +43,7 @@
 
             <div class="grid-item">
               <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
-              <button id="1" onclick="select_click(this.id)">
+              <button id="1" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
                     <img
@@ -59,7 +59,7 @@
 
             <div class="grid-item">
               <!-- <div id="select_display"></div> {{q.ans_image.url}} {{q}}-->
-              <button id="2" onclick="select_click(this.id)">
+              <button id="2" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
                     <img
@@ -75,7 +75,7 @@
 
             <div class="grid-item">
               <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
-              <button id="3" onclick="select_click(this.id)">
+              <button id="3" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
                     <img
