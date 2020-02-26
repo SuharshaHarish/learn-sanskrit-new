@@ -1,92 +1,91 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>yourname.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa:700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head> -->
 {% extends 'sanskrit/base.html' %}
 {% load static %}
 
 
 {%block body%}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
-<header>
-    <div class="container">
-        
-        <section id="branding">
-            <h1><span class="highlight">Sanskrit</span> Learning Site</h1>
-        </section>
-        <nav>
-            <ul>
-                <li class="current"><a href="{%url 'sanskrit:home'%}">Home</a></li>
-                <!-- <li><a href="{%url 'sanskrit:home'%}">About</a></li> -->
-                {% if not user.is_authenticated%}
-                <li><a href="{%url 'accounts:login'%}">Login</a></li>
-                <li><a href="{%url 'accounts:register'%}">Register</a></li>
-                {%endif%}
-                {% if user.is_authenticated%}
-                <li><a href="{%url 'accounts:logout'%}">Logout</a></li>
-                {%endif%}
-        </nav>
-    </div>
-</header>
-<section id="showcase">
-     
-        <h1>Learn Sanskrit And Enjoy!!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu neque tincidunt, pretium erat a, convallis velit. Phasellus ac velit eget eros rutrum viverra eu quis arcu.</p>
-    </div>
-</section>
 
-<!--Button-->
-<section id="nex">
-    <a href="{%url 'sanskrit:lessons'%}"><button class="button" onclick=""><span>Start Learning</span></button></a>
-</section>
-<section id="boxes">
-    <div class="container">
-        <div class="row boxes">
-            <div class="box text-center">
-                <img src="{% static 'css/g.jpg' %}">
-                <h3>Learn</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu neque tincidunt,</p>
-            </div>
-            <div class="box text-center">
-                <img src="{% static 'css/graphic.jpg' %}">
-                <h3>Implement</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu neque tincidunt,</p>
-            </div>
-            <div class="box text-center">
-                <img src="{% static 'css/j.png' %}">
-                <h3>Excel</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eu neque tincidunt,</p>
-            </div>
-        </div>
+    <div id="loading">
+        <div id="spinner"></div>
     </div>
-</section>
-<!--progressbar-->
-<section id="percent">
-    <div class="holder">
-        <h1>Your Progress Report</h1>
+    <div id="header" class="animated slideInDown" style="animation-delay:1.8s;">
+    <div id="title">Learn Sanskrit</div><br>
+    <div id="links">
+        <a href="#skills">skills</a>
+        <a href="#work" style="margin:0px 60px;">works</a>
+        <a href="#contact">contact</a>
     </div>
-    
-    <div class="col-md-6 skills-bar">
-        <p>Reading-Skills</p>
-        <div class="progress">
-          <div class="progress-bar" style="width: 80%;">65%</div>
-        </div>
-        <p>Writing-Skills</p>
-        <div class="progress">
-          <div class="progress-bar" style="width: 85%;">45%</div>
-        </div>
-        <p>Knowledge</p>
-        <div class="progress">
-          <div class="progress-bar" style="width: 75%;">55%</div>
-        </div>
-        <p>Implementation</p>
-        <div class="progress">
-          <div class="progress-bar" style="width: 50%;">70%</div>
-        </div>
-      </div>
     </div>
-</section>
 
-<section id="footer">
-    <div class="container text-center">
-        <p>Thank You</p>
+    <center>
+    <div id="middle">
+        <div id="tagline" class="animated zoomIn" style="animation-delay:1.8s;">
+            if you're reading this, that mean's you can read<br>
+            <a href="{%url 'sanskrit:lessons'%}"><button class="btn_one">Start Learning</button></a>
+        </div>
     </div>
-</section>
+    </center>
+
+    <div id="portfolio">
+             <div id="skills">
+                 <h1>skills.</h1>   
+                 <div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum tincidunt nulla, id semper mi cursus ac. Fusce turpis urna, condimentum sit amet dolor at, vulputate ultrices massa. Vestibulum non euismod nulla, eu pretium risus. Curabitur porta molestie vulputate. Sed tortor enim, rhoncus vel mauris vitae, elementum condimentum augue. Donec fermentum lobortis lectus, in feugiat turpis faucibus et. Pellentesque luctus metus vitae augue lobortis sagittis vitae sit amet enim. Morbi egestas velit ac arcu fermentum lacinia. Nullam eget hendrerit neque. Cras et laoreet ante. Vivamus condimentum euismod commodo. Nulla pulvinar, turpis vitae condimentum tempor, ex ex eleifend quam, et maximus sapien mi sed est. Donec elit mi, dictum nec magna quis, mollis sollicitudin ligula. Maecenas ullamcorper ante vel ullamcorper mollis. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                        </p>
+                 </div> 
+             </div>
+         
+              <div id="work">
+                 <h1>works.</h1>
+
+                 <div class="project">
+                 <h2>project title 1</h2>
+                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum tincidunt nulla, id semper mi cursus ac. Fusce turpis urna, condimentum sit amet dolor at, vulputate ultrices massa. Vestibulum non euismod nulla, eu pretium risus. Curabitur porta molestie vulputate.</div>
+                 <button class="btn_one">visit project</button>
+                </div>
+
+                <div class="project">
+                 <h2>project title 2</h2>
+                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum tincidunt nulla, id semper mi cursus ac. Fusce turpis urna, condimentum sit amet dolor at, vulputate ultrices massa. Vestibulum non euismod nulla, eu pretium risus. Curabitur porta molestie vulputate.Lorem ipsum dolor sit amet, consectetur adipiscing elit. In bibendum tincidunt nulla, id semper mi cursus ac. Fusce turpis urna, condimentum sit amet dolor at, vulputate ultrices massa. Vestibulum non euismod nulla, eu pretium risus. Curabitur porta molestie vulputate.
+                 </div>
+                 <button class="btn_one">visit project</button>
+                 <button class="btn_two">code</button>
+                </div>
+
+             </div>
+         
+              <div id="contact">
+                 <h1>contact.</h1> 
+                 <form>
+                     <input type="text" placeholder="name" required>
+                     <input type="email" placeholder="email" required><br>
+                     <textarea placeholder="your message" required rows="5"></textarea><br>
+                     <button class="btn_one">send</button>
+                 </form> 
+                 <div id="details">
+                    <a class="btn_social"><i class="fas fa-phone"></i></a>
+                    <a class="btn_social"><i class="fas fa-at"></i></a>
+                    <a class="btn_social"><i class="fab fa-twitter"></i></a>
+                    <a class="btn_social"><i class="fab fa-dribbble"></i></a>
+                 </div>   
+             </div>
+    </div>
+    <div id="footer">
+        made on earth by a human <br><br> <a href="https://imfunniee.github.io">imfunniee</a>
+    </div>
+<script src="{% static 'js/home.js'%}" type="text/javascript"></script>
 {% endblock %}
-  
