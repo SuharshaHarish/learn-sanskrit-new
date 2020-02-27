@@ -1,8 +1,11 @@
-from django.shortcuts import render
-from .models import SanskritLessons,SanskritQuestions,SanskritAnswers
+from django.shortcuts import render,redirect
+from django.urls import reverse
+from .models import SanskritLessons,SanskritQuestions,SanskritAnswers,UserProfile
+from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.core import serializers
 import json
+from django.http import JsonResponse
 
 def home(request):
     args = {
@@ -14,17 +17,28 @@ def home(request):
 def lessons(request):
     
     lesson_list = SanskritLessons.objects.all()
+    user = request.user
+    user_profiles = UserProfile.objects.filter(user=user)
+    serialized_user_profiles = serializers.serialize('json', user_profiles)
+    serialized_lesson_list = serializers.serialize('json', lesson_list)
+
+    
     
     args={
         'my_lessons' : lesson_list,
+        'serialized_user_profiles' : serialized_user_profiles,
+        'serialized_lesson_list' : serialized_lesson_list
+
         
     }
+    print(args)
 
     return render(request,'sanskrit/lessons.html',args)
 
 def lesson(request,str_id):
     
     lesson = SanskritLessons.objects.get(lesson_name= str_id)
+    
     questions = SanskritQuestions.objects.filter(key_question = lesson)
     q_choices= SanskritAnswers.objects.filter(key_answer= questions[0])
     for i in range(len(questions)):
@@ -35,7 +49,12 @@ def lesson(request,str_id):
     serialized_questions = serializers.serialize('json', questions)
     serialized_q_choices = serializers.serialize('json', q_choices)
     #q_choices = SanskritAnswers.objects.filter(key_answer= questions)
-    print(serialized_questions)
+    
+    # for i in range(len(user_profile)):
+    #     completed = user_profile[i].completed
+    #     if completed == True:
+    #         q_choices = q_choices|answer
+    
     args={
         'my_lesson' : lesson,
         'my_questions' : questions,
@@ -45,3 +64,25 @@ def lesson(request,str_id):
     }
 
     return render(request,'sanskrit/lesson.html',args)
+
+def lesson_complete(request):
+
+    complete = request.GET.get('completed', None)
+    lesson_ajax = request.GET.get('lesson_name',None)
+    print(lesson_ajax)
+
+    if(complete=="True"):
+        username = request.user
+        lesson= SanskritLessons.objects.get(lesson_name=lesson_ajax)
+        if(UserProfile.objects.filter(user=username,lesson_key=lesson).exists()):
+            print("not created")
+            user_lesson = UserProfile.objects.get(user=username,lesson_key=lesson)
+            
+        else:
+            user_lesson = UserProfile.objects.create(user=username,lesson_key=lesson)
+        user_lesson.completed=True
+        user_lesson.save()
+        data={ "completed":"True"}
+        print(str(user_lesson.completed))
+
+    return JsonResponse(data)

@@ -82,7 +82,26 @@ function myFunction() {
         console.log(q_type);
     }
   } else {
-    document.getElementById("submit").innerHTML = "Bye";
+    // End of lesson
+    document.getElementById("submit").innerHTML =
+      '<button id ="continue_btn" type="button" >Continue learning</button>';
+    $("#continue_btn").click(function() {
+      console.log(lesson_name);
+      $.ajax({
+        url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
+        data: {
+          completed: "True",
+          lesson_name: lesson_name
+        },
+        dataType: "json",
+        success: function(data) {
+          if (data.completed == "True") {
+            window.location.href =
+              "http://127.0.0.1:8000/learn-sanskrit/lessons";
+          }
+        }
+      });
+    });
   }
 }
 
@@ -115,7 +134,7 @@ function validate() {
 
   if (ans1 == ans2) {
     i++;
-    document.getElementById("res").innerHTML = "Yes";
+    // document.getElementById("res").innerHTML = "Yes";
     // document.getElementById("check_ans").innerHTML = document.getElementById("right_Modal").innerHTML;
     // document.getElementById("right_css").innerHTML='<link rel="stylesheet" href="{% static "css/right.css" %}">';
     // document.getElementById("proceed_btn").innerHTML = '<button onclick= "myFunction();">Proceed</button>';
@@ -147,7 +166,7 @@ function validate() {
 
     document.getElementById("crct").innerHTML = "HURRAY..!!! Its Correct!";
   } else {
-    document.getElementById("res").innerHTML = "No";
+    // document.getElementById("res").innerHTML = "No";
     // document.getElementById("check_ans").innerHTML = document.getElementById("wrong_Modal").innerHTML;
     //  document.getElementById("wrong_css").innerHTML='<link rel="stylesheet" href="{% static "css/wrong.css" %}">';
     // document.getElementById("submit").innerHTML = '<button onclick= "myFunction();">Proceed</button>';

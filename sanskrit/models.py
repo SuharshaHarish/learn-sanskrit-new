@@ -1,11 +1,25 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class SanskritLessons(models.Model):
-    lesson_name = models.CharField(max_length=20,primary_key=True)
+    lesson_name = models.CharField(max_length=20,primary_key=True)       
+    q_number = models.IntegerField(default=0)
     # question = models.CharField(max_length=20)
 
     def __str__(self):
         return self.lesson_name
+    
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    lesson_key = models.OneToOneField(SanskritLessons,default=0,on_delete=models.CASCADE)     
+    completed = models.BooleanField(default=False)
+    
+
+    def __str__(self):
+        return str(self.user.username)
+
+
 
 class SanskritQuestions(models.Model):
     Q_TYPE_CHOICES=(
@@ -13,6 +27,7 @@ class SanskritQuestions(models.Model):
         ('s','select'),
         ('j','jump'),
     )
+    
     key_question = models.ForeignKey(SanskritLessons,on_delete=models.CASCADE)
     question = models.CharField(max_length=50)
     answer = models.CharField(max_length=50,default="",null=False)

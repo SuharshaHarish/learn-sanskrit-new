@@ -19,7 +19,9 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <a href="{{lesson.lesson_name}}">Start</a>
+              <div id="{{lesson.lesson_name}}">
+                <!-- <a href="{{lesson.lesson_name}}">Start</a> -->
+              </div>
             </div>
           </div>
         </div>
@@ -29,6 +31,27 @@
     </div>
   </div>
 </section>
+<script>
+  var user_profile_data = JSON.parse("{{serialized_user_profiles|escapejs}}");
+  var lessons_data = JSON.parse("{{serialized_lesson_list|escapejs}}");
+  console.log(lessons_data);
+  var first_lesson = lessons_data[0].pk;
+  console.log(first_lesson);
+  document.getElementById(
+    `${first_lesson}`
+  ).innerHTML = `<a href=${first_lesson}>Start</a>`;
+
+  for (let i = 1; i < lessons_data.length; i++) {
+    var lesson = lessons_data[i].pk;
+    if (user_profile_data[i - 1].fields.completed == true) {
+      console.log(user_profile_data[i - 1].fields.lesson_key);
+      document.getElementById(
+        `${lesson}`
+      ).innerHTML = `<a href=${lesson}>Start</a>`;
+    }
+  }
+  console.log(lesson);
+</script>
 
 <!-- <div class="card">
             <div class="face face1">
