@@ -1,7 +1,9 @@
-body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
 
-
-.main{
+.main {
   /* display: block;
   text-align: center;
   align-items: center;
@@ -10,10 +12,8 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   /* align-items: center;
   display:flex;
   justify-content: center; */
-  /* display:block; */
-  background: red;
-  text-align:center;
-
+  /* display: block; */
+  text-align: center;
 }
 
 /* The Modal (background) */
@@ -30,28 +30,27 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   margin-bottom: 0;
   /* height: 100%; Full height */
   overflow: hidden; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4);/*Black w/ opacity   */
- 
-  }
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /*Black w/ opacity   */
+}
 
 /* Modal Content */
 .modal-content {
-  background-color: #3498db ;
+  background-color: #3498db;
   position: fixed;
   margin: auto;
   padding-bottom: 20px;
   width: 100%;
   height: 200px;
-  /* text-align: center;
+  /* text-align: center;background-color: #3498db;
   padding-right: 30px; */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-    
-    /* grid-column-gap: 70px;
-    grid-row-gap: 50px; */ 
+
+  /* grid-column-gap: 70px;
+    grid-row-gap: 50px; */
   justify-content: center;
 }
 
@@ -79,55 +78,55 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
 }
    */
 
-.fa-check{
-  font-size: 70px; 
+.fa-check {
+  font-size: 70px;
   color: darkblue;
   background: #fff;
   border-radius: 100%;
-  border: 13px solid #fff;  
+  border: 13px solid #fff;
 }
 
-#check_symbol{  
-  text-align: center;  
+#check_symbol {
+  text-align: center;
 }
 
-.fa-times{  
-  font-size: 70px;   
+.fa-times {
+  font-size: 70px;
   color: darkred;
   width: 25.5mm;
   height: 25.5mm;
   background: #fff;
   border-radius: 100%;
-  border: 11px solid #fff;   
+  border: 11px solid #fff;
 }
 
-#submit_btn{
-    display: inline-block;
-    width: 130px;
-    height: 60px;
-    margin: 10px;
-    border-radius: 30px;
-    box-shadow: 0 5px 15px -5px #00000070;
-    color: #3498db;
-    overflow: hidden;
-    position: relative;
-    background: transparent;
-    transition: 0.25s;
-    border: 3px solid #3498db;
-    /* margin-left: 500px;
+#submit_btn {
+  display: inline-block;
+  width: 130px;
+  height: 60px;
+  margin: 10px;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px -5px #00000070;
+  color: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+  transition: 0.25s;
+  border: 2px solid black;
+  /* margin-left: 500px;
     margin-top: 30px;
     margin-bottom: 10px; */
-    outline:none;
-    text-align: center;
-    font-size: 24px;
+  outline: none;
+  text-align: center;
+  font-size: 24px;
 }
 
-#submit_btn::before{
+#submit_btn::before {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
-  background: #3498db;
+  background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   opacity: 0.5;
   top: -100%;
   left: 0;
@@ -135,12 +134,12 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   transition: 0.3s;
 }
 
-#submit_btn::after{
+#submit_btn::after {
   content: "";
   width: 100%;
   height: 100%;
   position: absolute;
-  background: #3498db;
+  background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   top: -100%;
   left: 0;
   z-index: -1;
@@ -148,26 +147,26 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   transition-delay: 0.01s;
 }
 
-#submit_btn:hover{
+#submit_btn:hover {
   color: #fff;
 }
 
-#submit_btn:hover::before{
+#submit_btn:hover::before {
   top: 0;
 }
 
-#submit_btn:hover::after{
+#submit_btn:hover::after {
   top: 0;
 }
 
 #submit_btn:active {
   border-color: 1px solid #fff;
-  background-color: #3498db;
+  background-color: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
 
-#proceed_btn{
+#proceed_btn {
   /* display: block; */
   width: 130px;
   height: 60px;
@@ -183,14 +182,13 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   /* margin-left: 500px;
   margin-top: 30px;
   margin-bottom: 10px; */
-  outline:none;
+  outline: none;
   /* text-align: center; */
-  font-size: 24px;  
+  font-size: 24px;
   /* margin-left: 685px; */
-
 }
 
-#proceed_btn:hover{
+#proceed_btn:hover {
   border-color: 1px solid #fff;
   background-color: darkblue;
 }
@@ -202,12 +200,11 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   transform: translateY(4px);
 }
 
-
-#crct{
+#crct {
   font-size: 18px;
   letter-spacing: 3px;
   font-weight: bold;
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
 }
 
 /* .grid-container{
@@ -216,41 +213,39 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
     
     /* grid-column-gap: 70px;
     grid-row-gap: 50px; */
-    /* width: 100%;
+/* width: 100%;
     height: 100%;
     justify-content: center;
 } */
 
-.grid-item1{
-    /* text-align: center; */
+.grid-item1 {
+  /* text-align: center; */
   /* color: #ce1180; */
-  
+
   /* margin-right: 15px; */
-  justify-items: left; 
-  font-weight: bold; 
+  justify-items: left;
+  font-weight: bold;
 }
 
-.grid-item2{
+.grid-item2 {
   /* display: flex; */
   align-items: center;
   justify-content: center;
   text-align: center;
-    /* float: right; */
+  /* float: right; */
   /* margin-right: 15px; */
   /* display: block; */
   font-size: 28px;
   font-weight: bold;
   /* justify-items: center; */
-
 }
 
-.grid-item3{
-    /* text-align: center; */
-    /* color: #ce1180; */
+.grid-item3 {
+  /* text-align: center; */
+  /* color: #ce1180; */
   color: black;
   text-align: right;
   /* margin-right: 15px; */
   font-size: 38px;
   font-weight: bold;
-
 }

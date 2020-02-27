@@ -1,0 +1,16 @@
+.centerline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#final_ans {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  width: 40%;
+}
+
+#ans_button button {
+  background: red;
+}

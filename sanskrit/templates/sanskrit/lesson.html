@@ -1,13 +1,17 @@
 {% extends 'sanskrit/base.html' %} {% block body %} {% load static %}
-<link href="https://fonts.googleapis.com/css?family=Concert+One|Josefin+Sans|Paytone+One&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css?family=Concert+One|Josefin+Sans|Paytone+One&display=swap"
+  rel="stylesheet"
+/>
+
 <div class="main">
   <h2>Lesson : {{my_lesson.lesson_name}}</h2>
   <div class="centerbar">
-    <div class="col-md-10 skills-bar">
+    <div class="col-md-8 skills-bar">
       <div class="progress">
         <div class="progress-bar" style="width: 80%;">80%</div>
       </div>
-    </div>  
+    </div>
   </div>
   <div class="display"></div>
 
@@ -19,7 +23,12 @@
     <link rel="stylesheet" href="{% static 'css/keyboard.css' %}" />
     <div id="question"></div>
     <!-- <input type="text" id="typing_input" class="use-keyboard-input" /><br /> -->
-    <textarea class="use-keyboard-input" id="typing_input"></textarea><br />
+    <textarea
+      class="use-keyboard-input"
+      id="typing_input"
+      placeholder="Type in English"
+    ></textarea
+    ><br />
     <div id="res"></div>
   </div>
 
@@ -104,8 +113,11 @@
   </div>
 
   <div id="jump" style="display:none">
+    <link rel="stylesheet" href="{% static 'css/jump.css'%}" />
     <div id="question"></div>
-    <div id="final_ans"></div>
+    <div class="centerline">
+      <div id="final_ans"></div>
+    </div>
     <div id="ans_button"></div>
     <div id="res"></div>
   </div>
@@ -142,7 +154,7 @@
 
     <!-- <script src="keyboard.js"></script> -->
   </div>
-
+  <link rel="stylesheet" href="{% static 'css/lesson.css'%}" />
   <script src="{% static 'js/keyboard.js' %}"></script>
 
   <script>
