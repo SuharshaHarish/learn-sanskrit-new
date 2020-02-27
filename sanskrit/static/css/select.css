@@ -58,14 +58,14 @@
   text-align: center;
 }
 #services button:focus {
-  margin: 10px;
+  /* margin: 10px; */
   border-radius: 30px;
   box-shadow: 0 15px 15px -5px #00000070;
   color: #fff;
   overflow: hidden;
   position: relative;
   background: #494949;
-  transition: 0.3s;
+  /* transition: 0.3s; */
 
   /* margin-left: 500px;
   margin-top: 30px;

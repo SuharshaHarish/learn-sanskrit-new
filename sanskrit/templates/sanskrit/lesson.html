@@ -9,7 +9,7 @@
   <div class="centerbar">
     <div class="col-md-8 skills-bar">
       <div class="progress">
-        <div class="progress-bar" style="width: 80%;">80%</div>
+        <div class="progress-bar"></div>
       </div>
     </div>
   </div>
@@ -163,7 +163,21 @@
     var ans_choice_data = JSON.parse("{{serialized_q_choices|escapejs}}");
     var lesson_name = data[0].fields.key_question;
     var i = 0,
-      j = 0;
+      flag = 0,
+      progress_percent = 0;
+    j = 0;
+    // Enter key
+    $(document).on("keypress", function(e) {
+      if (flag == 0) {
+        if (e.which == 13) {
+          document.getElementById("submit_btn").click();
+          flag = 1;
+        }
+      } else {
+        document.getElementById("proceed_btn").click();
+        flag = 0;
+      }
+    });
   </script>
   <script src="{% static 'js/lesson_validate.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>

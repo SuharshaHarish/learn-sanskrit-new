@@ -12,7 +12,7 @@ class SanskritLessons(models.Model):
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    lesson_key = models.OneToOneField(SanskritLessons,default=0,on_delete=models.CASCADE)     
+    lesson_key = models.ForeignKey(SanskritLessons,default=0,on_delete=models.CASCADE)     
     completed = models.BooleanField(default=False)
     
 

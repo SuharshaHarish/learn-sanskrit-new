@@ -86,7 +86,7 @@ function myFunction() {
     document.getElementById("submit").innerHTML =
       '<button id ="continue_btn" type="button" >Continue learning</button>';
     $("#continue_btn").click(function() {
-      console.log(lesson_name);
+      // console.log(lesson_name);
       $.ajax({
         url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
         data: {
@@ -200,6 +200,10 @@ function validate() {
       }
     };
   }
+  // Progress Bar width
+  var progress_bar = document.getElementsByClassName("progress-bar")[0];
+  progress_percent = (i / data.length) * 100;
+  progress_bar.style.width = progress_percent + "%";
 }
 
 function select_click(btn_id) {

@@ -31,7 +31,7 @@ def lessons(request):
 
         
     }
-    print(args)
+    print(serialized_user_profiles)
 
     return render(request,'sanskrit/lessons.html',args)
 
