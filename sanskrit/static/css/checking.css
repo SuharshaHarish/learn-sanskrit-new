@@ -10,7 +10,8 @@ body {font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen
   /* align-items: center;
   display:flex;
   justify-content: center; */
-  display:block;
+  /* display:block; */
+  background: red;
   text-align:center;
 
 }
