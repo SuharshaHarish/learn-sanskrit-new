@@ -77,13 +77,15 @@
 }
 
 #services button:hover {
-  transform: translate(10px);
-  transition: 0.7s;
+  /* transform: translate(10px);
+  transition: 0.7s; */
+  box-shadow: 0 2px 20px #333;
+  transition: 0.4s;
 }
 
 #services button:active {
   border-color: 2px solid red;
   background-color: lightgray;
   box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  /* transform: translateY(4px); */
 }

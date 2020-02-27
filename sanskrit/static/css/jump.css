@@ -5,12 +5,31 @@
 }
 
 #final_ans {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid black;
+  margin-top: 60px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #333;
   width: 40%;
 }
 
 #ans_button button {
-  background: red;
+  display: inline-block;
+  margin: 30px 30px 30px 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: skyblue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #333;
+}
+
+#ans_button:hover button{background-color: blue}
+
+#ans_button:active button{
+  background-color: skyblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
