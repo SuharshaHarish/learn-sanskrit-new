@@ -6,9 +6,11 @@
 
 #final_ans {
   margin-top: 60px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   border-bottom: 2px solid #333;
   width: 40%;
+  font-family: cursive;
+  font-size: 40px;
 }
 
 #ans_button button {
