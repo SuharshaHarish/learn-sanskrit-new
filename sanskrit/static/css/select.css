@@ -64,7 +64,7 @@
   color: #fff;
   overflow: hidden;
   position: relative;
-  background: #494949;
+  background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   /* transition: 0.3s; */
 
   /* margin-left: 500px;
@@ -84,7 +84,7 @@
 }
 
 #services button:active {
-  border-color: 2px solid red;
+  border: 2px solid red;
   background-color: lightgray;
   box-shadow: 0 5px #666;
   /* transform: translateY(4px); */

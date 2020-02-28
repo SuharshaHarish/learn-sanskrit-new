@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  background: rgb(219, 241, 17);
+  background: whitesmoke;
   justify-content: center;
   align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
@@ -31,12 +31,12 @@
 }
 
 .container.span {
-  background-color: rgb(219, 241, 17);
+  background-color: whitesmoke;
 }
 
 .container .card {
   position: relative;
-  background: rgb(219, 241, 17);
+  background: whitesmoke;
   border: none;
   padding: 60px;
 }
@@ -49,7 +49,7 @@
 
 .container .card .face.face1 {
   position: relative;
-  background: rgb(219, 241, 17);
+  background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,7 +58,8 @@
 }
 
 .container .card:hover .face.face1 {
-  background: #ff0057;
+  background: #494949;
+  /* background: #ff0057; */
   transform: translateY(0);
 }
 

@@ -20,16 +20,16 @@
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: skyblue;
+  background-color: black;
   border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #333;
+  border-radius: 5px;
+  box-shadow: 0 4px #333;
 }
 
-#ans_button:hover button{background-color: blue}
+#ans_button button:hover{background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%)}
 
-#ans_button:active button{
-  background-color: skyblue;
+#ans_button button:active{
+  background-color: black;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
