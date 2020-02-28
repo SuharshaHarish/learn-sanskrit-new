@@ -49,6 +49,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'learn_sanskrit.middleware.LoginRequiredMiddleware',
+    'learn_sanskrit.middleware.LessonsMiddleware'
 ]
 
 ROOT_URLCONF = 'learn_sanskrit.urls'
@@ -143,14 +145,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL='/learn-sanskrit/home/'
 #To change the default login url
 LOGIN_URL = '/learn-sanskrit/accounts/login/'
-# LOGIN_EXEMPT_URLS = (
-#     '/logout/',
-#     'register/',
-#     'profile/reset-password/',
-#     'profile/reset-password/done/',
-#     'profile/reset-password/confirm/<uidb64>/<token>/',
-#     'profile/reset-password/complete/',
-#     'view_results/',
-#     'display_results/',
-#     'invalid-register-number/'
-# )
+
+LOGIN_EXEMPT_URLS = (
+    'learn-sanskrit/accounts/register/',
+    'learn-sanskrit/home/',
+)
