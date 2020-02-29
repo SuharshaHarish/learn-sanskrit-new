@@ -134,6 +134,10 @@ function validate() {
 
   if (ans1 == ans2) {
     i++;
+    // correct answer audio
+    let src = "http://127.0.0.1:8000/media/audio/accomplished.mp3";
+    let audio = new Audio(src);
+    audio.play();
     // document.getElementById("res").innerHTML = "Yes";
     // document.getElementById("check_ans").innerHTML = document.getElementById("right_Modal").innerHTML;
     // document.getElementById("right_css").innerHTML='<link rel="stylesheet" href="{% static "css/right.css" %}">';
@@ -166,6 +170,10 @@ function validate() {
 
     document.getElementById("crct").innerHTML = "HURRAY..!!! Its Correct!";
   } else {
+    // wrong answer audio
+    let src = "http://127.0.0.1:8000/media/audio/get-outta-here.mp3";
+    let audio = new Audio(src);
+    audio.play();
     // document.getElementById("res").innerHTML = "No";
     // document.getElementById("check_ans").innerHTML = document.getElementById("wrong_Modal").innerHTML;
     //  document.getElementById("wrong_css").innerHTML='<link rel="stylesheet" href="{% static "css/wrong.css" %}">';

@@ -47,6 +47,10 @@ class SanskritAnswers(models.Model):
     def __str__(self):
         return self.ans_choice
 
+class Audio(models.Model):
+
+    file = models.FileField(upload_to='audio/')
+
 # class SanskritJumpAnswers(models.Model):
 #     key_answer = models.ForeignKey(SanskritQuestions,on_delete=models.CASCADE)    
 #     ans_ = models.CharField(max_length=50,null=False)

@@ -20,27 +20,22 @@ def lessons(request):
     user = request.user
     user_profiles = UserProfile.objects.filter(user=user)
     serialized_user_profiles = serializers.serialize('json', user_profiles)
-    serialized_lesson_list = serializers.serialize('json', lesson_list)
-
-    
+    serialized_lesson_list = serializers.serialize('json', lesson_list)   
     
     args={
         'my_lessons' : lesson_list,
         'serialized_user_profiles' : serialized_user_profiles,
-        'serialized_lesson_list' : serialized_lesson_list
-
-        
+        'serialized_lesson_list' : serialized_lesson_list        
     }
-    # print(serialized_user_profiles)
 
     return render(request,'sanskrit/lessons.html',args)
 
 def lesson(request,str_id):
     
-    lesson = SanskritLessons.objects.get(lesson_name= str_id)
-    
+    lesson = SanskritLessons.objects.get(lesson_name= str_id)    
     questions = SanskritQuestions.objects.filter(key_question = lesson)
     q_choices= SanskritAnswers.objects.filter(key_answer= questions[0])
+    
     for i in range(len(questions)):
         answer = SanskritAnswers.objects.filter(key_answer= questions[i])
         if answer:
@@ -69,13 +64,11 @@ def lesson_complete(request):
 
     complete = request.GET.get('completed', None)
     lesson_ajax = request.GET.get('lesson_name',None)
-    print(lesson_ajax)
 
     if(complete=="True"):
         username = request.user
         lesson= SanskritLessons.objects.get(lesson_name=lesson_ajax)
         if(UserProfile.objects.filter(user=username,lesson_key=lesson).exists()):
-            print("not created")
             user_lesson = UserProfile.objects.get(user=username,lesson_key=lesson)
             
         else:
@@ -83,6 +76,7 @@ def lesson_complete(request):
         user_lesson.completed=True
         user_lesson.save()
         data={ "completed":"True"}
-        print(str(user_lesson.completed))
 
-    return JsonResponse(data)
+        return JsonResponse(data)
+
+    return redirect(reverse('sanskrit:lessons'))

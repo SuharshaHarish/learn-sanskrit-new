@@ -33,6 +33,7 @@ class LoginRequiredMiddleware:
             return None
 
         elif request.user.is_authenticated or url_is_exempt:
+            
             return None
 
         else:
@@ -56,6 +57,7 @@ class LessonsMiddleware:
 
     def process_view(self, request, view_func, view_args, view_kwargs):
         assert hasattr(request, 'user')
+        path = request.path_info.lstrip('/')
        
         if (view_func.__name__) == "lesson":
 
