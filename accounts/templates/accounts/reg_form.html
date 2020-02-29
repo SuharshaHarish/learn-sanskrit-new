@@ -1,5 +1,8 @@
-{% extends 'sanskrit/base.html' %} {% load static %} {% block body %}
+{% extends 'sanskrit/base.html' %} {% load static %}
 
+{% block body %}
+
+{% include 'sanskrit/navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/log.css' %}" />
 <div class="container">
   <h1>Register</h1>

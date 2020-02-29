@@ -1,5 +1,10 @@
+body,
+html {
+  background: whitesmoke;
+}
+
 #body {
-  margin: 0;
+  margin-top: 55px;
   padding: 0;
   min-height: 100vh;
   background: whitesmoke;
@@ -10,10 +15,10 @@
 }
 
 .container {
-  margin: 0 auto;
+  margin-top: 55px;
   width: 1fr;
   height: 1fr;
-  position: relative;
+  position: sticky;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -35,7 +40,7 @@
 }
 
 .container .card {
-  position: relative;
+  position: sticky;
   background: whitesmoke;
   border: none;
   padding: 60px;
@@ -48,7 +53,7 @@
 }
 
 .container .card .face.face1 {
-  position: relative;
+  position: sticky;
   background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   display: flex;
   justify-content: center;
@@ -85,7 +90,7 @@
 }
 
 .container .card .face.face2 {
-  position: relative;
+  position: sticky;
   background: #fff;
   display: flex;
   justify-content: center;

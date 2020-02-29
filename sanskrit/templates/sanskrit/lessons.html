@@ -1,5 +1,6 @@
 {% extends 'sanskrit/base.html' %} {% load static %} {% block body %}
-<link rel="stylesheet" href="{% static 'css/cd.css' %}" />
+<link rel="stylesheet" href="{% static 'css/lessons.css' %}" />
+
 <section id="body">
   <div class="container">
     <div class="grid-container">
@@ -31,7 +32,20 @@
     </div>
   </div>
 </section>
+{% include 'sanskrit/navbar.html' %}
 <script>
+  // Navbar
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function () {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-55px";
+    }
+    prevScrollpos = currentScrollPos;
+  };
+  // Lesson lock
   var user_profile_data = JSON.parse("{{serialized_user_profiles|escapejs}}");
   var lessons_data = JSON.parse("{{serialized_lesson_list|escapejs}}");
   var first_lesson = lessons_data[0].pk;

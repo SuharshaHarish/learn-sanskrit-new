@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 class SanskritLessons(models.Model):
     lesson_name = models.CharField(max_length=20,primary_key=True)       
     q_number = models.IntegerField(default=0)
+    # description = models.TextField(default="")
     # question = models.CharField(max_length=20)
 
     def __str__(self):
