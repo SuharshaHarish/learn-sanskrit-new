@@ -56,29 +56,31 @@
     <h1>Importance</h1>
 
     <div class="project">
-      Sanskrit contains the cultural heritage of India recorded in the literary
-      outpourings, beginning with the Rig Veda and through to the Classics right
-      upto the 19th century. By developing proficiency in this language, one can
-      trace the evolution of spirituality as envisioned in the Sanatana Dharma.
-      Some of the finest literature has been produced by great poets like
-      Kalidasa, Bharavi, Magha, and Shri Harsha and literateurs like Dandi,
-      Bana, Subandhu. If we undertake a deep study of their works we can see the
-      expressive power of Sanskrit Language. In Sanskrit one could find how
-      Descriptive Grammar could be comprehensively dealt with to include all
-      aspects of syntax, semantics, philology, and lexicography, including a bit
-      of epistemology from the wordsmiths point of view. Sanskrit has works on
-      practical subjects like Ayurveda(Medicine and Surgery), Yoga, Science of
-      fundamental importance like Mathematics, Astronomy. There are only few
-      works that emphasize the beauty of mathematical formulations such as we
-      can find in Sanskrit.<br />
-      Sanskrit has so much mystery and mysticism that one could continue to mine
-      it for whatever it is that they are searching for beyond the obvious and
-      sensory. Of course, anyone could read the translations that are available,
-      but then to be true to the spirit of the original we must admit that most
-      translations fall woefully short of what the original language expressed.
-      This is perhaps the greatest importance of this language. We need to learn
-      and master it to the extent so that we can keep unravelling these
-      mysteries of the world, for our lifetime.
+      <p>
+        Sanskrit contains the cultural heritage of India recorded in the literary
+        outpourings, beginning with the Rig Veda and through to the Classics right
+        upto the 19th century. By developing proficiency in this language, one can
+        trace the evolution of spirituality as envisioned in the Sanatana Dharma.
+        Some of the finest literature has been produced by great poets like
+        Kalidasa, Bharavi, Magha, and Shri Harsha and literateurs like Dandi,
+        Bana, Subandhu. If we undertake a deep study of their works we can see the
+        expressive power of Sanskrit Language. In Sanskrit one could find how
+        Descriptive Grammar could be comprehensively dealt with to include all
+        aspects of syntax, semantics, philology, and lexicography, including a bit
+        of epistemology from the wordsmiths point of view. Sanskrit has works on
+        practical subjects like Ayurveda(Medicine and Surgery), Yoga, Science of
+        fundamental importance like Mathematics, Astronomy. There are only few
+        works that emphasize the beauty of mathematical formulations such as we
+        can find in Sanskrit.<br />
+        Sanskrit has so much mystery and mysticism that one could continue to mine
+        it for whatever it is that they are searching for beyond the obvious and
+        sensory. Of course, anyone could read the translations that are available,
+        but then to be true to the spirit of the original we must admit that most
+        translations fall woefully short of what the original language expressed.
+        This is perhaps the greatest importance of this language. We need to learn
+        and master it to the extent so that we can keep unravelling these
+        mysteries of the world, for our lifetime.
+      </p>
     </div>
   </div>
 
@@ -90,14 +92,58 @@
       <textarea placeholder="your message" required rows="5"></textarea><br />
       <button class="btn_one">send</button>
     </form>
-    <div id="details">
+    <!-- <div id="details">
       <a class="btn_social"><i class="fas fa-phone"></i></a>
       <a class="btn_social"><i class="fas fa-at"></i></a>
       <a class="btn_social"><i class="fab fa-twitter"></i></a>
       <a class="btn_social"><i class="fab fa-dribbble"></i></a>
-    </div>
+    </div> -->
   </div>
 </div>
-<div id="footer"></div>
+<!-- Footer -->
+<div class="footer">
+  <div class="footer-content">
+    <div class="footer-section fabout">
+      <h1 class="logo-text">Learn<span>Sanskrit</span></h1>
+      <br>
+      <p>आशाया ये दासास्ते दासाः सर्वलोकस्य ।<br>
+        आशा येषां दासी तेषां दासायते लोकः ॥</p>
+      <br>
+      <div class="fcontact">
+        <span><i class="fas fa-phone"></i> &nbsp; 7022927136 | 9482893063</span>
+        <span><i class="fas fa-envelope"></i> &nbsp; learnsans@gmail.com</span>
+      </div>
+      <div id="details">
+        <a class="btn_social"><i class="fas fa-phone"></i></a>
+        <a class="btn_social"><i class="fas fa-at"></i></a>
+        <a class="btn_social"><i class="fab fa-twitter"></i></a>
+        <a class="btn_social"><i class="fab fa-dribbble"></i></a>
+      </div>
+    </div>
+    <div class="footer-section flinks">
+      <h2>Quick Links</h2>
+      <br>
+      <ul>
+        <a href="#history"><li>History</li></a>
+        <a href="#importance"><li>Importance</li></a>
+        <a href="#contact"><li>Contact</li></a>
+        <a href="{% url 'accounts:logout' %}"><li>Logout</li></a>
+        <a href="{% url 'accounts:register' %}"><li>Register</li></a>
+      </ul>
+    </div>
+    <div class="footer-section flinks">
+      <h2>Connect</h2>
+      <br>
+      <ul>
+        <a href="#"><li>Facebook</li></a>
+        <a href="#"><li>Instagram</li></a>
+        <a href="#"><li>Github</li></a> 
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; LearnSans
+  </div>
+</div>
 <script src="{% static 'js/home.js'%}" type="text/javascript"></script>
 {% endblock %}

@@ -2,6 +2,7 @@ body,
 html {
   padding: 0px;
   margin: 0px;
+  height: 100%;
   font-family: "Comfortaa", cursive;
   font-weight: bold;
   color: #fff;
@@ -90,7 +91,7 @@ html {
   padding-top: 20vh;
 }
 #tagline {
-  font-size: 30px;
+  font-size: 36px;
   width: 60%;
 }
 #portfolio {
@@ -111,15 +112,25 @@ html {
   font-family: "Comfortaa", cursive;
 }
 #history {
-  margin: 4vh 0px !important;
+  
+  margin: 12vh 0px !important;
   padding: 2vh 0px !important;
+}
+#history p{
+  padding-top: 50px;
+  line-height: 2.2em;
 }
 #importance {
-  margin: 4vh 0px !important;
+  margin: 28vh 0px !important;
   padding: 2vh 0px !important;
 }
+#importance p{
+  padding-top: 50px;
+  line-height: 2.2em;
+}
+
 #contact {
-  margin: 4vh 0px !important;
+  margin: 34vh 0px !important;
   padding: 2vh 0px !important;
 }
 #contact form {
@@ -212,8 +223,8 @@ html {
   transition: 0.4s ease-in-out;
 }
 .btn_social:hover {
-  color: #000;
-  background: #fff;
+  color: #fff;
+  background: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
   cursor: pointer;
 }
 @media (max-width: 900px) {
@@ -260,26 +271,66 @@ html {
     padding: 10px 11px;
   }
 }
+/* Footer */
+
 #footer {
-  width: 100%;
-  padding: 10vh 0px;
+  background: #303036;
+  color: #d3d3d3;
+  height: 400px;
+  position: relative;
+}
+
+.footer .footer-content{
+  
+  height: 350px;
+  display: flex;
+}
+
+
+.footer .footer-content .footer-section{
+  flex: 1;
+  padding: 25px;
+  
+}
+
+
+.footer .footer-content h1,h2{
+  color: gray;
+}
+
+.footer .footer-content .fabout .fcontact span{
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+}
+
+.footer .footer-content .flinks ul a{
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #d3d3d3;
+  transition: all .3s;
+  
+}
+
+.footer .footer-content .flinks ul a:hover{
+  color: white;
+  margin-left: 15px;
+  transition: all .3s;
+}
+
+
+.footer .footer-bottom {
   text-align: center;
-  font-weight: bold;
+  width: 100%;
+  position: absolute;
+  height: 50px;
+  padding-top: 20px;
 }
-#footer a {
-  font-size: 18px;
-  background-image: linear-gradient(to left, #ff416c 0%, #ff4b2b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 500% 500% !important;
-  -webkit-animation: Gradient 20s ease infinite;
-  -moz-animation: Gradient 20s ease infinite;
-  -o-animation: Gradient 20s ease infinite;
-  animation: Gradient 20s ease infinite;
-  font-family: "Comfortaa", cursive;
-  text-decoration: none;
-}
+
+
+
+
 button:focus {
   outline: none;
 }
