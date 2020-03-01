@@ -111,15 +111,25 @@ html {
   font-family: "Comfortaa", cursive;
 }
 #history {
-  margin: 4vh 0px !important;
+  
+  margin: 12vh 0px !important;
   padding: 2vh 0px !important;
+}
+#history p{
+  padding-top: 50px;
+  line-height: 2.2em;
 }
 #importance {
-  margin: 4vh 0px !important;
+  margin: 28vh 0px !important;
   padding: 2vh 0px !important;
 }
+#importance p{
+  padding-top: 50px;
+  line-height: 2.2em;
+}
+
 #contact {
-  margin: 4vh 0px !important;
+  margin: 34vh 0px !important;
   padding: 2vh 0px !important;
 }
 #contact form {
@@ -212,8 +222,8 @@ html {
   transition: 0.4s ease-in-out;
 }
 .btn_social:hover {
-  color: #000;
-  background: #fff;
+  color: #fff;
+  background: #007bff;
   cursor: pointer;
 }
 @media (max-width: 900px) {
