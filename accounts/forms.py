@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm,UserChangeForm,AuthenticationForm
 from django.contrib.auth.models import User
-#from accounts.models import Profile
 
 class RegistrationForm(UserCreationForm):
 
@@ -43,25 +42,3 @@ class RegistrationForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(widget= forms.TextInput(attrs={'class':'my_username'}))
     password = forms.CharField(widget= forms.PasswordInput(attrs={'class':'my_password'}))
-
-#class ProfileForm(forms.ModelForm):
-
-    # class Meta:
-    #     model = Profile
-    #     fields = (
-    #         'email',            
-
-    #     )
-
-    # def save(self,commit=True):
-    #     profile = super(ProfileForm,self).save(commit=False)
-    #     profile.description = self.cleaned_data['email']        
-    #     id = User.objects.latest('date_joined')
-    #     profile.user = id
-
-
-    #     if commit:
-    #         profile.save()
-
-    #         return profile
-    #pass

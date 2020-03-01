@@ -1,6 +1,4 @@
 {% extends 'sanskrit/base.html' %} {% load static %}
-
-
 {% block body %}
 {% include 'sanskrit/navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/log.css' %}" />
@@ -9,7 +7,7 @@
   <form method="post">
     <h1>Login</h1>
     {% csrf_token %} {{ form.as_p}}
-    <button type="submit" class="btn btn-danger">Login</button>
+    <button type="submit" id="login_submit">Login</button>
   </form>
 </div>
 {% endblock %}
