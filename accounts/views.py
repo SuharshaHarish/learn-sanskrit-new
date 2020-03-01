@@ -13,6 +13,6 @@ def register(request):
             return redirect(reverse('accounts:login'))
     else:
         userform = RegistrationForm()
-    args = {'form1':userform} 
+    args = {'form':userform} 
 
     return render(request,'accounts/reg_form.html',args)

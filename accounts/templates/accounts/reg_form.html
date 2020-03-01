@@ -4,11 +4,34 @@
 
 {% include 'sanskrit/navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/log.css' %}" />
-<div class="container">
-  <h1>Register</h1>
+<div class="register_container">
+
   <form method="post">
-    {% csrf_token %} {{ form1.as_p}}
+    <h1>Register</h1>
+    {% csrf_token %}
+    {% for non_field_error in form.non_field_errors %}
+    <p class="help is-danger">{{ non_field_error }}</p>
+    {% endfor %}
+    {% for field in form %}
+    <div class="field">
+      <label for="{{ field.id_for_label }}" class="label">{{ field.name }}</label>
+      {{ field }}
+      {% for error in field.errors %}
+      <p class="help is-danger">{{ error }}</p>
+      {% endfor %}
+    </div>
+    {% endfor %}
+    <!-- {{form.as_p}} -->
     <button type="submit" id="login_submit">Submit</button>
   </form>
 </div>
+<script>
+  document.getElementsByClassName("label")[0].innerHTML = "Username:"
+  document.getElementsByClassName("label")[1].innerHTML = "First name:"
+  document.getElementsByClassName("label")[2].innerHTML = "Last name:"
+  document.getElementsByClassName("label")[3].innerHTML = "Password:"
+  document.getElementsByClassName("label")[4].innerHTML = "Password Confirmation:"
+  document.getElementsByClassName("label")[5].innerHTML = "Email:"
+
+</script>
 {% endblock %}

@@ -1,12 +1,17 @@
 .my_username {
   background-color: white;
-
 }
 
 label {
   font-size: 34px;
 
 }
+label[for=id_password2]{
+  
+ 
+  color: red;
+}
+
 
 /* .my_container {
   width: 50%;
@@ -17,12 +22,25 @@ label {
   transform: translate(-50%, -50%);
 } */
 
+.register_container{
+  margin-top: 200px;
+  margin-bottom: 100px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  /* justify-content: center; */
+  /* align-content: center; */
+  /* align-items: center; */
+  background: url(login.jpg) no-repeat;
+  background-size: cover;
+  font-family: cursive;
+
+}
 .my_container {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
-  /* align-content: center; */
   align-items: center;
   background: url(login.jpg) no-repeat;
   background-size: cover;
@@ -54,4 +72,35 @@ body{
 /* both */
 form{
   margin-left: 4%;
+}
+
+/* input fields */
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+input[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
