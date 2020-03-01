@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 class SanskritLessons(models.Model):
     lesson_name = models.CharField(max_length=20,primary_key=True)       
     q_number = models.IntegerField(default=0)
-    # description = models.TextField(default="")
+    lesson_icon = models.ImageField(upload_to='pics/',default='design.png')
+    
     # question = models.CharField(max_length=20)
 
     def __str__(self):
@@ -30,6 +31,10 @@ class SanskritQuestions(models.Model):
     )
     
     key_question = models.ForeignKey(SanskritLessons,on_delete=models.CASCADE)
+    description = models.TextField(default="")
+    desc_image = models.ImageField(upload_to='pics/',default='design.png')
+
+
     question = models.CharField(max_length=50)
     answer = models.CharField(max_length=50,default="",null=False)
     q_type = models.CharField(choices=Q_TYPE_CHOICES,null=False,max_length=10)

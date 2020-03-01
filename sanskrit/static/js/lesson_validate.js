@@ -2,6 +2,35 @@ window.onload = function() {
   myFunction();
 };
 
+// function ResizeImage() {
+//   var img = document.getElementById("desc_img");
+//   console.log("Image");
+//   var canvas = document.getElementById("canvas");
+//   //var canvas = $("<canvas>", {"id":"testing"})[0];
+//   var ctx = canvas.getContext("2d");
+
+//   var MAX_WIDTH = 400;
+//   var MAX_HEIGHT = 400;
+//   var width = img.width;
+//   var height = img.height;
+
+//   if (width > height) {
+//     if (width > MAX_WIDTH) {
+//       height *= MAX_WIDTH / width;
+//       width = MAX_WIDTH;
+//     }
+//   } else {
+//     if (height > MAX_HEIGHT) {
+//       width *= MAX_HEIGHT / height;
+//       height = MAX_HEIGHT;
+//     }
+//   }
+//   canvas.width = width;
+//   canvas.height = height;
+//   var ctx = canvas.getContext("2d");
+//   ctx.drawImage(img, 0, 0, width, height);
+// }
+
 function myFunction() {
   var modal = document.getElementById("Modal");
   var modal_content = document.getElementById("Modal-content");
@@ -23,11 +52,21 @@ function myFunction() {
 
   if (i < data.length) {
     var ques = data[i].fields.question;
-
     var ans = data[i].fields.answer;
     var q_type = data[i].fields.q_type;
     // var q_select = data[i].fields.q_select;
     // var q_jump = data[i].fields.q_jump;
+
+    var description = data[i].fields.description;
+    var desc = description.localeCompare('""');
+    console.log(desc_id);
+    console.log(desc);
+    if (desc > 0) {
+      if (desc_id == i) {
+        display_decription(description, q_type);
+        return;
+      }
+    }
 
     switch (q_type) {
       case "s":
@@ -103,6 +142,53 @@ function myFunction() {
       });
     });
   }
+}
+
+function display_decription(description, q_type) {
+  desc_id++;
+  var desc_img = data[i].fields.desc_image;
+  var desc_img_src = "http://127.0.0.1:8000/media/" + desc_img;
+
+  document.getElementsByClassName(
+    "display"
+  )[0].innerHTML = document.getElementById("description").innerHTML;
+  document.getElementById("desc_text").innerHTML = description;
+  document.getElementById("submit").innerHTML =
+    '<button id ="continue_btn" type="button" onclick= "myFunction();" >Proceed</button>';
+
+  // Resize Image
+  var canvas = document.getElementById("canvas");
+  var img = new Image();
+
+  img.onload = function() {
+    //var canvas = $("<canvas>", {"id":"testing"})[0];
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var MAX_WIDTH = 400;
+    var MAX_HEIGHT = 400;
+    var width = img.width;
+    var height = img.height;
+
+    if (width > height) {
+      if (width > MAX_WIDTH) {
+        height *= MAX_WIDTH / width;
+        width = MAX_WIDTH;
+      }
+    } else {
+      if (height > MAX_HEIGHT) {
+        width *= MAX_HEIGHT / height;
+        height = MAX_HEIGHT;
+      }
+    }
+    canvas.width = width;
+    canvas.height = height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, width, height);
+  };
+  img.src = desc_img_src;
+  document.getElementById("desc_img") = img;
+  return;
 }
 
 function validate() {

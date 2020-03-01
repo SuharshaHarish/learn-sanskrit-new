@@ -14,7 +14,13 @@
     </div>
   </div>
   <div class="display"></div>
-
+  <div id="description" style="display:none">
+    <div id="desc_image">
+      <img src="" id="desc_img" />
+      <canvas id="canvas"></canvas>
+    </div>
+    <div id="desc_text" style="margin-bottom: 20px;"></div>
+  </div>
   <div id="typing" style="display:none" autofocus>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -164,8 +170,10 @@
     var lesson_name = data[0].fields.key_question;
     var i = 0,
       flag = 0,
-      progress_percent = 0;
-    j = 0;
+      progress_percent = 0,
+      desc_id = 0,
+      j = 0;
+
     // Enter key
     $(document).on("keypress", function(e) {
       if (flag == 0) {

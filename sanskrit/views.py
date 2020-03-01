@@ -42,6 +42,7 @@ def lesson(request,str_id):
             q_choices = q_choices|answer
     #questions_json = mark_safe(json.dumps(list(questions), cls=DjangoJSONEncoder))
     serialized_questions = serializers.serialize('json', questions)
+    print(serialized_questions)
     serialized_q_choices = serializers.serialize('json', q_choices)
     #q_choices = SanskritAnswers.objects.filter(key_answer= questions)
     

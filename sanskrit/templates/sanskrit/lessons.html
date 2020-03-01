@@ -34,17 +34,6 @@
 </section>
 {% include 'sanskrit/navbar.html' %}
 <script>
-  // Navbar
-  var prevScrollpos = window.pageYOffset;
-  window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-      document.getElementById("navbar").style.top = "0";
-    } else {
-      document.getElementById("navbar").style.top = "-55px";
-    }
-    prevScrollpos = currentScrollPos;
-  };
   // Lesson lock
   var user_profile_data = JSON.parse("{{serialized_user_profiles|escapejs}}");
   var lessons_data = JSON.parse("{{serialized_lesson_list|escapejs}}");
