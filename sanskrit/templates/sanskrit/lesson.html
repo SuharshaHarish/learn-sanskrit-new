@@ -1,8 +1,6 @@
 {% extends 'sanskrit/base.html' %} {% block body %} {% load static %}
-<link
-  href="https://fonts.googleapis.com/css?family=Concert+One|Josefin+Sans|Paytone+One&display=swap"
-  rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css?family=Concert+One|Josefin+Sans|Paytone+One&display=swap"
+  rel="stylesheet" />
 
 <div class="main">
   <h2>Lesson : {{my_lesson.lesson_name}}</h2>
@@ -22,19 +20,11 @@
     <div id="desc_text" style="margin-bottom: 20px;"></div>
   </div>
   <div id="typing" style="display:none" autofocus>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/keyboard.css' %}" />
     <div id="question"></div>
     <!-- <input type="text" id="typing_input" class="use-keyboard-input" /><br /> -->
-    <textarea
-      class="use-keyboard-input"
-      id="typing_input"
-      placeholder="Type in English"
-    ></textarea
-    ><br />
+    <textarea class="use-keyboard-input" id="typing_input" placeholder="Type in English"></textarea><br />
     <div id="res"></div>
   </div>
 
@@ -45,20 +35,18 @@
       <div id="question"></div>
 
       <div id="input">
-        <div class="row services">
+        <div class="row2 services">
           <div class="grid-container">
             <div class="grid-item">
               <!-- <div id="select_display"></div> {{q.ans_image.url}}-->
               <button id="0" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
-                    <img
-                      src=""
-                      class="img-responsive"
-                      style="width: 100%; float: left; margin-right: 10px;"
-                    />
+                    <img src="" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
                   </div>
-                  <h3><div class="choices" id="choices0"></div></h3>
+                  <h3>
+                    <div class="choices" id="choices0"></div>
+                  </h3>
                 </div>
               </button>
             </div>
@@ -68,13 +56,12 @@
               <button id="1" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
-                    <img
-                      src="http://127.0.0.1:8000/media/pics/j.png"
-                      class="img-responsive"
-                      style="width: 100%; float: left; margin-right: 10px;"
-                    />
+                    <img src="http://127.0.0.1:8000/media/pics/j.png" class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;" />
                   </div>
-                  <h3><div class="choices" id="choices1"></div></h3>
+                  <h3>
+                    <div class="choices" id="choices1"></div>
+                  </h3>
                 </div>
               </button>
             </div>
@@ -84,13 +71,12 @@
               <button id="2" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
-                    <img
-                      src="http://127.0.0.1:8000/media/pics/j.png"
-                      class="img-responsive"
-                      style="width: 100%; float: left; margin-right: 10px;"
-                    />
+                    <img src="http://127.0.0.1:8000/media/pics/j.png" class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;" />
                   </div>
-                  <h3><div class="choices" id="choices2"></div></h3>
+                  <h3>
+                    <div class="choices" id="choices2"></div>
+                  </h3>
                 </div>
               </button>
             </div>
@@ -100,13 +86,12 @@
               <button id="3" textalign="center" onclick="select_click(this.id)">
                 <div class="col-md-3 text-center">
                   <div class="icon">
-                    <img
-                      src="http://127.0.0.1:8000/media/pics/j.png"
-                      class="img-responsive"
-                      style="width: 100%; float: left; margin-right: 10px;"
-                    />
+                    <img src="http://127.0.0.1:8000/media/pics/j.png" class="img-responsive"
+                      style="width: 100%; float: left; margin-right: 10px;" />
                   </div>
-                  <h3><div class="choices" id="choices3"></div></h3>
+                  <h3>
+                    <div class="choices" id="choices3"></div>
+                  </h3>
                 </div>
               </button>
             </div>
@@ -131,14 +116,8 @@
   <div id="submit"></div>
 
   <div id="Modal" class="modal" style="display:none">
-    <link
-      href="https://fonts.googleapis.com/css?family=Acme&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/checking.css' %}" />
     <!-- <div id="right_css"></div> -->
 
@@ -175,7 +154,7 @@
       j = 0;
 
     // Enter key
-    $(document).on("keypress", function(e) {
+    $(document).on("keypress", function (e) {
       if (flag == 0) {
         if (e.which == 13) {
           document.getElementById("submit_btn").click();

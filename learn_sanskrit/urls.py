@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('learn-sanskrit/',include('sanskrit.urls',namespace='sanskrit')),
+    path('learn-sanskrit/forums/', include('forums.urls',namespace='forums')),
     path('learn-sanskrit/accounts/',include('accounts.urls',namespace='accounts')),
 ]
 

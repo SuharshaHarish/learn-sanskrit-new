@@ -1,0 +1,62 @@
+{% extends 'sanskrit/base.html' %}
+
+{% block body %}
+<div class="forum">
+    {% if forum.created_date %}
+    <div class="date">
+        {{ forum.created_date }}
+    </div>
+    {% endif %}
+    <div class="edit_forum">
+        {% if user == forum_author %}
+        <a href="{% url 'forums:forum_edit' pk=forum.pk %}">Edit</a>
+        {% endif %}
+    </div>
+    <div class="forum_detail">
+        <h2>{{ forum.title }}</h2>
+        <p>{{ forum.text|linebreaksbr }}</p>
+    </div>
+    <div id="comments">
+        {% for comment in comments %}
+        <h4>{{comment.author.username}}</h4>
+        <p>{{comment.comment}}</p>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+    <button onclick="comment()">comment</button>
+    <div id="add_comment" style="display:none">
+        <form method="POST" id="comment_form">
+            {% csrf_token %}
+            <textarea id="comment_textarea"></textarea>
+            <button type="submit" id="add_comment_btn">Add Comment</button>
+        </form>
+    </div>
+    {% endif %}
+    <div class="back">
+        <a href="{% url 'forums:forum_list'%}"><button id="back_button">Go back</button></a>
+    </div>
+
+</div>
+<script>
+    function comment() {
+        var token = '{{csrf_token}}';
+        document.getElementById("add_comment").style.display = "block";
+        $(document).on('submit', '#comment_form', function (e) {
+            console.log($('#comment_textarea').val())
+            $.ajax({
+                headers: { "X-CSRFToken": token },
+                type: 'POST',
+                url: window.location.href + "comment",
+                data: {
+                    comment: $('#comment_textarea').val(),
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.success == "success") {
+                    }
+                }
+            });
+        });
+    }
+</script>
+{% endblock %}

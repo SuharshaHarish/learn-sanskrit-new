@@ -1,35 +1,6 @@
-window.onload = function() {
+window.onload = function () {
   myFunction();
 };
-
-// function ResizeImage() {
-//   var img = document.getElementById("desc_img");
-//   console.log("Image");
-//   var canvas = document.getElementById("canvas");
-//   //var canvas = $("<canvas>", {"id":"testing"})[0];
-//   var ctx = canvas.getContext("2d");
-
-//   var MAX_WIDTH = 400;
-//   var MAX_HEIGHT = 400;
-//   var width = img.width;
-//   var height = img.height;
-
-//   if (width > height) {
-//     if (width > MAX_WIDTH) {
-//       height *= MAX_WIDTH / width;
-//       width = MAX_WIDTH;
-//     }
-//   } else {
-//     if (height > MAX_HEIGHT) {
-//       width *= MAX_HEIGHT / height;
-//       height = MAX_HEIGHT;
-//     }
-//   }
-//   canvas.width = width;
-//   canvas.height = height;
-//   var ctx = canvas.getContext("2d");
-//   ctx.drawImage(img, 0, 0, width, height);
-// }
 
 function myFunction() {
   var modal = document.getElementById("Modal");
@@ -54,13 +25,9 @@ function myFunction() {
     var ques = data[i].fields.question;
     var ans = data[i].fields.answer;
     var q_type = data[i].fields.q_type;
-    // var q_select = data[i].fields.q_select;
-    // var q_jump = data[i].fields.q_jump;
 
     var description = data[i].fields.description;
     var desc = description.localeCompare('""');
-    console.log(desc_id);
-    console.log(desc);
     if (desc > 0) {
       if (desc_id == i) {
         display_decription(description, q_type);
@@ -124,7 +91,7 @@ function myFunction() {
     // End of lesson
     document.getElementById("submit").innerHTML =
       '<button id ="continue_btn" type="button" >Continue learning</button>';
-    $("#continue_btn").click(function() {
+    $("#continue_btn").click(function () {
       // console.log(lesson_name);
       $.ajax({
         url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
@@ -133,7 +100,7 @@ function myFunction() {
           lesson_name: lesson_name
         },
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
           if (data.completed == "True") {
             window.location.href =
               "http://127.0.0.1:8000/learn-sanskrit/lessons";
@@ -160,7 +127,7 @@ function display_decription(description, q_type) {
   var canvas = document.getElementById("canvas");
   var img = new Image();
 
-  img.onload = function() {
+  img.onload = function () {
     //var canvas = $("<canvas>", {"id":"testing"})[0];
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
@@ -187,7 +154,7 @@ function display_decription(description, q_type) {
     ctx.drawImage(img, 0, 0, width, height);
   };
   img.src = desc_img_src;
-  document.getElementById("desc_img") = img;
+  // document.getElementById("desc_img") = img;
   return;
 }
 
@@ -241,14 +208,14 @@ function validate() {
     // proceed_btn.style.background = "darkred";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
       i--;
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -282,13 +249,13 @@ function validate() {
     document.getElementById("crct").innerHTML = "Its Incorrect!!!";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -386,7 +353,7 @@ function create_button(word) {
   var btn = document.createElement("BUTTON");
   btn.innerHTML = word;
   btn.id = "j" + j;
-  btn.onclick = function() {
+  btn.onclick = function () {
     jump_ans(btn.id);
   };
   document.getElementById("ans_button").appendChild(btn);

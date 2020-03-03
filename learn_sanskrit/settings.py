@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sanskrit',
     'accounts',
+    'forums'
 ]
 
 MIDDLEWARE = [
@@ -109,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -149,4 +150,5 @@ LOGIN_URL = '/learn-sanskrit/accounts/login/'
 LOGIN_EXEMPT_URLS = (
     'learn-sanskrit/accounts/register/',
     'learn-sanskrit/home/',
+    'learn-sanskrit/forums'
 )
