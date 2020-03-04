@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
   myFunction();
 };
 
@@ -26,6 +26,9 @@ function myFunction() {
     var ans = data[i].fields.answer;
     var q_type = data[i].fields.q_type;
 
+    var question_translate = document.getElementById("question_translate");
+    question_translate.style.display = "none";
+
     var description = data[i].fields.description;
     var desc = description.localeCompare('""');
     if (desc > 0) {
@@ -47,6 +50,10 @@ function myFunction() {
         //document.getElementById("select_submit").disabled = true;
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate()" type="button" disabled >Submit</button>';
+
+        question_translate.style.display = "block";
+        question_translate.innerHTML =
+          '<button id="question_translate_btn" onclick="question_translate();">Translate</button>';
         break;
 
       case "j":
@@ -70,6 +77,10 @@ function myFunction() {
         console.log(words);
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate();">Submit</button>';
+
+        question_translate.style.display = "block";
+        question_translate.innerHTML =
+          '<button id="question_translate_btn" onclick="question_translate();">Translate</button>';
         break;
 
       case "t":
@@ -82,6 +93,11 @@ function myFunction() {
           '<button id ="submit_btn" onclick= "validate();">Submit</button>';
 
         Keyboard.init();
+
+        question_translate.style.display = "block";
+        question_translate.innerHTML =
+          '<button id="question_translate_btn" onclick="question_translate();">Translate</button>';
+
         break;
 
       default:
@@ -91,7 +107,7 @@ function myFunction() {
     // End of lesson
     document.getElementById("submit").innerHTML =
       '<button id ="continue_btn" type="button" >Continue learning</button>';
-    $("#continue_btn").click(function () {
+    $("#continue_btn").click(function() {
       // console.log(lesson_name);
       $.ajax({
         url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
@@ -100,7 +116,7 @@ function myFunction() {
           lesson_name: lesson_name
         },
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
           if (data.completed == "True") {
             window.location.href =
               "http://127.0.0.1:8000/learn-sanskrit/lessons";
@@ -127,7 +143,7 @@ function display_decription(description, q_type) {
   var canvas = document.getElementById("canvas");
   var img = new Image();
 
-  img.onload = function () {
+  img.onload = function() {
     //var canvas = $("<canvas>", {"id":"testing"})[0];
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
@@ -208,14 +224,14 @@ function validate() {
     // proceed_btn.style.background = "darkred";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    span.onclick = function() {
       modal.style.display = "none";
       i--;
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -249,13 +265,13 @@ function validate() {
     document.getElementById("crct").innerHTML = "Its Incorrect!!!";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    span.onclick = function() {
       modal.style.display = "none";
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -353,7 +369,7 @@ function create_button(word) {
   var btn = document.createElement("BUTTON");
   btn.innerHTML = word;
   btn.id = "j" + j;
-  btn.onclick = function () {
+  btn.onclick = function() {
     jump_ans(btn.id);
   };
   document.getElementById("ans_button").appendChild(btn);
@@ -362,4 +378,26 @@ function create_button(word) {
 
 function strip(str) {
   return str.replace(/^\s+|\s+$/g, "");
+}
+
+function question_translate() {
+  // GTTS
+
+  $.ajax({
+    url: "http://127.0.0.1:8000/learn-sanskrit/ajax/translate-audio",
+    data: {
+      text: data[i].fields.question
+    },
+    dataType: "json",
+    success: function(data) {
+      if (data) {
+        // window.location.href =
+        //   "http://127.0.0.1:8000/learn-sanskrit/lessons";
+        let src = "http://127.0.0.1:8000/media/" + data.audio_src;
+        console.log(src);
+        let audio = new Audio(src);
+        audio.play();
+      }
+    }
+  });
 }

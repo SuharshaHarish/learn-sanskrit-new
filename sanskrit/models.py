@@ -55,6 +55,7 @@ class SanskritAnswers(models.Model):
 
 class Audio(models.Model):
 
+    name = models.CharField(max_length=50,default="")
     file = models.FileField(upload_to='audio/')
 
 # class SanskritJumpAnswers(models.Model):
@@ -62,5 +63,5 @@ class Audio(models.Model):
 #     ans_ = models.CharField(max_length=50,null=False)
    
 
-#     def __str__(self):
-#         return self.ans_choice
+    def __str__(self):
+        return self.name

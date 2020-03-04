@@ -1,11 +1,14 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse
-from .models import SanskritLessons,SanskritQuestions,SanskritAnswers,UserProfile
+from .models import SanskritLessons,SanskritQuestions,SanskritAnswers,UserProfile,Audio
 from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.core import serializers
 import json
 from django.http import JsonResponse
+from gtts import gTTS 
+from django.core.files.temp import NamedTemporaryFile
+from django.core import files
 
 def home(request):
     args = {
@@ -81,3 +84,37 @@ def lesson_complete(request):
         return JsonResponse(data)
 
     return redirect(reverse('sanskrit:lessons'))
+
+def translate_audio(request):    
+    
+    # mytext = 'जय श्रिराम'
+
+    if request.GET.get('text', None) :
+        text = request.GET.get('text',None)
+        mytext = text
+        language = 'hi'    
+        print(mytext)
+
+        myobj = gTTS(text=mytext, lang=language, slow=False)    
+        
+        audio_temp_file = NamedTemporaryFile()
+        myobj.write_to_fp(audio_temp_file)
+        temp_file = files.File(audio_temp_file, name="translated_audio.mp3")
+        
+        if Audio.objects.filter(name = "translated_audio").exists():
+            audio = Audio.objects.get(name = "translated_audio")
+            audio.file = temp_file
+            audio.save() 
+                    
+        else:
+            audio = Audio.objects.create(file = temp_file, name= "translated_audio")
+            audio.save()
+        data = {'audio_src':audio.file.name}
+        return JsonResponse(data)       
+        
+        
+    return redirect(reverse('sanskrit:home'))
+
+
+    
+
