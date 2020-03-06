@@ -2,24 +2,27 @@
 {% load static %}
 
 {% block body %}
-<link rel="stylesheet" href="{% static 'css/forums.css'%}"/>
+<link rel="stylesheet" href="{% static 'css/forums.css'%}" />
+{% include 'sanskrit/navbar.html' %}
 <div class="bucket">
     <div class="forum">
         {% if forum.created_date %}
-        <div class="date">
-            {{ forum.created_date }}
-        </div>
 
-        <div class="forum_detail">
-            <h2>{{ forum.title }}</h2>
-            <p>{{ forum.text|linebreaksbr }}</p>
-        </div>
+        <div class="forum_detail_btn">
+            <div class="forum_detail">
+                <h2>{{ forum.title }}</h2>
+                <p>{{ forum.text|linebreaksbr }}</p>
+                <div class="date">
+                    {{ forum.created_date }}
+                </div>
+            </div>
 
-        {% endif %}
-        <div class="edit_forum">
-            {% if user == forum_author %}
-            <a href="{% url 'forums:forum_edit' pk=forum.pk %}"><button id="editbtn">Edit</button></a>
             {% endif %}
+            <div class="edit_forum">
+                {% if user == forum_author %}
+                <a href="{% url 'forums:forum_edit' pk=forum.pk %}"><button id="editbtn">Edit</button></a>
+                {% endif %}
+            </div>
         </div>
         <hr>
         <div id="comments">
@@ -31,12 +34,14 @@
             {% endfor %}
         </div>
         {% if user.is_authenticated %}
-        <button id="editbtn" onclick="comment()">comment</button>
+        <button id="comment_btn" style="display: block;" onclick="comment()">comment</button>
         <div id="add_comment" style="display:none">
             <form method="POST" id="comment_form">
                 {% csrf_token %}
                 <textarea id="comment_textarea" placeholder="Add Your Comment"></textarea>
-                <button type="submit" id="add_comment_btn">Add Comment</button>
+                <div>
+                    <button type="submit" id="add_comment_btn">Add Comment</button>
+                </div>
             </form>
         </div>
         {% endif %}
@@ -50,6 +55,7 @@
     function comment() {
         var token = '{{csrf_token}}';
         document.getElementById("add_comment").style.display = "block";
+        document.getElementById("comment_btn").style.display = "none";
         $(document).on('submit', '#comment_form', function (e) {
             console.log($('#comment_textarea').val())
             $.ajax({

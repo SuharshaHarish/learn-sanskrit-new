@@ -1,62 +1,31 @@
-<<<<<<< HEAD
-{% extends 'sanskrit/base.html' %} {% block body %}
-<div class="add_forum">
-  {%if user.is_authenticated%}
-  <a href="{% url 'forums:forum_new' %}"
-    ><button id="new_forum">Add Forum</button></a
-  >
-  {%endif%}
-</div>
-{% for forum in forums %}
-<div class="forum">
-  <div class="author">
-    <p>{{forum.author.username}}</p>
-  </div>
-  <div class="forum_body">
-    <h2>
-      <a href="{% url 'forums:forum_detail' pk=forum.pk %}"
-        >{{ forum.title }}</a
-      >
-    </h2>
-    <p>{{ forum.text|linebreaksbr }}</p>
-  </div>
-  <div class="date">
-    <p>published:{{ forum.created_date}}</p>
-  </div>
-</div>
-<br />
-
-{% endfor %} {% endblock %}
-=======
 {% extends 'sanskrit/base.html' %}
 {% load static %}
 {% block body %}
-<link rel="stylesheet" href="{% static 'css/forums.css'%}"/>
-
+<link rel="stylesheet" href="{% static 'css/forums.css'%}" />
+{% include 'sanskrit/navbar.html' %}
 <div class="bucket">
-    <h2>Learn Sanskrit Forums</h2>
-    <div class="add_forum">
-        {%if user.is_authenticated%}
-        <a href="{% url 'forums:forum_new' %}"><button id="new_forum">Add Forum</button></a>
-        {%endif%}
+  <h2>Learn Sanskrit Forums</h2>
+  <div class="add_forum">
+    {%if user.is_authenticated%}
+    <a href="{% url 'forums:forum_new' %}"><button id="new_forum">Add Forum</button></a>
+    {%endif%}
+  </div>
+  <hr id="brdr">
+  <div class="forum_list">
+    {% for forum in forums %}
+    <div class="forum">
+
+      <div class="forum_body">
+        <a href="{% url 'forums:forum_detail' pk=forum.pk %}">
+          <h3>{{ forum.title }}</h3>
+        </a>
+        {{ forum.text}}
+      </div>
+      <div class="date">
+        Published : {{ forum.created_date}} by {{forum.author.username}}
+      </div>
     </div>
-    <hr id="brdr">
-    <div class="forum_list">
-        {% for forum in forums %}
-        <div class="forum">
-            <div class="author">
-                {{forum.author.username}}
-            </div>
-            <div class="forum_body">
-                <a href="{% url 'forums:forum_detail' pk=forum.pk %}"><h3>{{ forum.title }}</h3></a>
-                {{ forum.text|linebreaksbr }}
-            </div>
-            <div class="date">
-              published : {{ forum.created_date}}
-            </div>
-        </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
->>>>>>> ca04ab2de11328c4474b4589f7ecdb2e9821d6b9

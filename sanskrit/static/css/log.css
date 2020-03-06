@@ -12,8 +12,6 @@ label {
 
 }
 label[for=id_password2]{
-  
- 
   color: red;
 }
 
@@ -34,7 +32,7 @@ label[for=id_password2]{
   height: 100%;
   width: 100%;
   display: flex;
-  background: #fec107;
+  background: whitesmoke;
   justify-content: center;
   align-items: center;
 }
@@ -54,7 +52,7 @@ label[for=id_password2]{
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 25px;
-  color: #fec107;
+  color: #333;
   text-transform: uppercase;
   text-align: center;
 }
@@ -74,7 +72,7 @@ label[for=id_password2]{
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fec107;
+  background: whitesmoke;
   justify-content: center;
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
@@ -119,7 +117,7 @@ body{
   justify-content: center;
   /* align-content: center; */
   align-items: center;
-  background: #fec107;
+  background: whitesmoke;
 }
 
 /* both */

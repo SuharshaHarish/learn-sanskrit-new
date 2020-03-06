@@ -234,8 +234,10 @@ input[type=text], select {
 }
 
 
-
-#editbtn {
+#comment_btn{
+  margin-left: 30px;
+}
+#comment_btn,#editbtn {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
@@ -250,7 +252,7 @@ input[type=text], select {
   outline: none;
 }
 
-#editbtn:hover {
+#comment_btn:hover,#editbtn:hover {
   background: #434343;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -330,9 +332,11 @@ input[type=text], select {
   border-radius: 7px;
 }
 
-
+#add_comment{
+  margin-left: 30px;
+}
 #add_comment_btn{
-  margin-left: 50%;
+  margin-left: 14%;
   margin-top: 20px;
   padding: 10px;
   margin-bottom: 30px;
