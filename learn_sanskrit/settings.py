@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+from getenv import env
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +27,7 @@ SECRET_KEY = '+jc%t^@hnmcz)3ld&1a4)(i^fc_i7^ko1wb3h+^1rpl)g3_n#j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -150,5 +152,14 @@ LOGIN_URL = '/learn-sanskrit/accounts/login/'
 LOGIN_EXEMPT_URLS = (
     'learn-sanskrit/accounts/register/',
     'learn-sanskrit/home/',
-    'learn-sanskrit/forums'
+    'learn-sanskrit/forums/',
+    'learn-sanskrit/accounts/activate/<uidb64>/<token>/',
 )
+
+# gitignore.io to create gitignore
+EMAIL_BACKEND = env('EMAIL_BACKEND')
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')

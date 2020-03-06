@@ -4,10 +4,20 @@
 <link rel="stylesheet" href="{% static 'css/log.css' %}" />
 
 <div class="my_container">
-  <form method="post">
-    <h1>Login</h1>
-    {% csrf_token %} {{ form.as_p}}
-    <button type="submit" id="login_submit">Login</button>
-  </form>
+  <div class="center_container">
+    <form method="post">
+      <h1>Login</h1>
+      {% csrf_token %} {{ form.as_p}}
+      <button type="submit" id="login_submit">Login</button>
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert">
+      {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
 </div>
+
 {% endblock %}
