@@ -1,9 +1,14 @@
+<style>
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+</style>
+
+
 .my_username {
   background-color: white;
 }
 
 label {
-  font-size: 34px;
+  font-size: 28px;
 
 }
 label[for=id_password2]{
@@ -23,28 +28,57 @@ label[for=id_password2]{
 } */
 
 .register_container{
-  margin-top: 200px;
+  margin-top: 300px;
   margin-bottom: 100px;
+  padding-top: 30px;
   height: 100%;
   width: 100%;
   display: flex;
-  /* justify-content: center; */
-  /* align-content: center; */
-  /* align-items: center; */
-  background: url(login.jpg) no-repeat;
-  background-size: cover;
-  font-family: cursive;
-
+  background: #fec107;
+  justify-content: center;
+  align-items: center;
 }
+
+.reg-form{
+ 
+  max-width: 1000px;
+  width: 100%;
+  background: #fff;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.125);
+}
+
+.reg-form h1{
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  color: #fec107;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.reg-form .field{
+  align-items: center;
+}
+
+.reg-form .field .label{
+  color: #333;
+}
+
+
 .my_container {
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url(login.jpg) no-repeat;
-  background-size: cover;
-  font-family: cursive;
+  background: #fec107;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Josefin Sans', sans-serif;
+  
 }
 .my_password{
   background-color:white;
@@ -54,7 +88,28 @@ input{
   color: black;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 500;
+  font-size: large;
 }
+
+#login_submit{
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 10px;
+  font-size: 18px;
+  border: 0;
+  background: #333;
+  color: #fff;
+  border-radius: 3px;
+  outline: none;
+  transition: all in 0.4s;
+}
+
+#login_submit:hover{
+  background: #111;
+  transition: all in 0.4s;
+}
+
+
 
 /* REGISTER */
 body{
@@ -64,9 +119,7 @@ body{
   justify-content: center;
   /* align-content: center; */
   align-items: center;
-  background: url(login.jpg) no-repeat;
-  background-size: cover;
-  font-family: cursive;
+  background: #fec107;
 }
 
 /* both */
@@ -80,9 +133,11 @@ input[type=text], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 10px;
   box-sizing: border-box;
+  outline: none;
+  transition: all in 0.3s ease;
 }
 
 input[type=password], select {
@@ -90,9 +145,11 @@ input[type=password], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 10px;
   box-sizing: border-box;
+  outline: none;
+  transition: all in 0.3s ease;
 }
 
 input[type=email], select {
@@ -100,7 +157,22 @@ input[type=email], select {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 10px;
   box-sizing: border-box;
+  outline: none;
+  transition: all in 0.3s ease;
+}
+
+input[type=text]:focus{
+  border: 2px solid #333;
+  transition: all in 0.6s ease;
+}
+input[type=password]:focus{
+  border: 2px solid #333;
+  transition: all in 0.3s ease;
+}
+input[type=email]:focus{
+  border: 2px solid #333;
+  transition: all in 0.3s ease;
 }

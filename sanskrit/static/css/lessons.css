@@ -63,7 +63,7 @@ html {
 }
 
 .container .card:hover .face.face1 {
-  background: #494949;
+  background: linear-gradient(to left, #333 0%, #333 100%);
   /* background: #ff0057; */
   transform: translateY(0);
 }
