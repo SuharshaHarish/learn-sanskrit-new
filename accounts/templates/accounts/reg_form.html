@@ -7,22 +7,24 @@
 <div class="register_container">
 
   <form method="post">
-    <h1>Register</h1>
-    {% csrf_token %}
-    {% for non_field_error in form.non_field_errors %}
-    <p class="help is-danger">{{ non_field_error }}</p>
-    {% endfor %}
-    {% for field in form %}
-    <div class="field">
-      <label for="{{ field.id_for_label }}" class="label">{{ field.name }}</label>
-      {{ field }}
-      {% for error in field.errors %}
-      <p class="help is-danger">{{ error }}</p>
+    <div class="reg-form">
+      <h1>Register</h1>
+      {% csrf_token %}
+      {% for non_field_error in form.non_field_errors %}
+      <p class="help is-danger">{{ non_field_error }}</p>
       {% endfor %}
+      {% for field in form %}
+      <div class="field">
+        <label for="{{ field.id_for_label }}" class="label">{{ field.name }}</label>
+        {{ field }}
+        {% for error in field.errors %}
+        <p class="help is-danger">{{ error }}</p>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      <!-- {{form.as_p}} -->
+      <button type="submit" id="login_submit">Submit</button>
     </div>
-    {% endfor %}
-    <!-- {{form.as_p}} -->
-    <button type="submit" id="login_submit">Submit</button>
   </form>
 </div>
 <script>

@@ -1,41 +1,50 @@
 {% extends 'sanskrit/base.html' %}
+{% load static %}
 
 {% block body %}
-<div class="forum">
-    {% if forum.created_date %}
-    <div class="date">
-        {{ forum.created_date }}
-    </div>
-    {% endif %}
-    <div class="edit_forum">
-        {% if user == forum_author %}
-        <a href="{% url 'forums:forum_edit' pk=forum.pk %}">Edit</a>
-        {% endif %}
-    </div>
-    <div class="forum_detail">
-        <h2>{{ forum.title }}</h2>
-        <p>{{ forum.text|linebreaksbr }}</p>
-    </div>
-    <div id="comments">
-        {% for comment in comments %}
-        <h4>{{comment.author.username}}</h4>
-        <p>{{comment.comment}}</p>
-        {% endfor %}
-    </div>
-    {% if user.is_authenticated %}
-    <button onclick="comment()">comment</button>
-    <div id="add_comment" style="display:none">
-        <form method="POST" id="comment_form">
-            {% csrf_token %}
-            <textarea id="comment_textarea"></textarea>
-            <button type="submit" id="add_comment_btn">Add Comment</button>
-        </form>
-    </div>
-    {% endif %}
-    <div class="back">
-        <a href="{% url 'forums:forum_list'%}"><button id="back_button">Go back</button></a>
-    </div>
+<link rel="stylesheet" href="{% static 'css/forums.css'%}"/>
+<div class="bucket">
+    <div class="forum">
+        {% if forum.created_date %}
+        <div class="date">
+            {{ forum.created_date }}
+        </div>
 
+        <div class="forum_detail">
+            <h2>{{ forum.title }}</h2>
+            <p>{{ forum.text|linebreaksbr }}</p>
+        </div>
+
+        {% endif %}
+        <div class="edit_forum">
+            {% if user == forum_author %}
+            <a href="{% url 'forums:forum_edit' pk=forum.pk %}"><button id="editbtn">Edit</button></a>
+            {% endif %}
+        </div>
+        <hr>
+        <div id="comments">
+            {% for comment in comments %}
+            <div class="tip-left">
+                <h4>{{comment.author.username}}</h4>
+                <p>{{comment.comment}}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% if user.is_authenticated %}
+        <button id="editbtn" onclick="comment()">comment</button>
+        <div id="add_comment" style="display:none">
+            <form method="POST" id="comment_form">
+                {% csrf_token %}
+                <textarea id="comment_textarea" placeholder="Add Your Comment"></textarea>
+                <button type="submit" id="add_comment_btn">Add Comment</button>
+            </form>
+        </div>
+        {% endif %}
+        <div class="back">
+            <a href="{% url 'forums:forum_list'%}"><button id="back_button">Go back</button></a>
+        </div>
+
+    </div>
 </div>
 <script>
     function comment() {
