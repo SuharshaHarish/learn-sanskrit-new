@@ -10,6 +10,7 @@
         <a href="{% url 'forums:forum_new' %}"><button id="new_forum">Add Forum</button></a>
         {%endif%}
     </div>
+    <hr id="brdr">
     <div class="forum_list">
         {% for forum in forums %}
         <div class="forum">
@@ -21,7 +22,7 @@
                 {{ forum.text|linebreaksbr }}
             </div>
             <div class="date">
-              published:{{ forum.created_date}}
+              published : {{ forum.created_date}}
             </div>
         </div>
         {% endfor %}
