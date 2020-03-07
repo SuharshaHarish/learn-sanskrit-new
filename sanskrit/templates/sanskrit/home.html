@@ -12,6 +12,13 @@
     <a href="#history">History</a>
     <a href="#importance" style="margin:0px 60px;">Importance</a>
     <a href="#contact">Contact</a>
+    <a href="{% url 'forums:forum_list' %}">Forums</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'accounts:login' %}">Login</a>
+    <a href="{% url 'accounts:register' %}">Register</a>
+    {% endif %}
   </div>
 </div>
 
@@ -124,20 +131,36 @@
       <h2>Quick Links</h2>
       <br>
       <ul>
-        <a href="#history"><li>History</li></a>
-        <a href="#importance"><li>Importance</li></a>
-        <a href="#contact"><li>Contact</li></a>
-        <a href="{% url 'accounts:logout' %}"><li>Logout</li></a>
-        <a href="{% url 'accounts:register' %}"><li>Register</li></a>
+        <a href="#history">
+          <li>History</li>
+        </a>
+        <a href="#importance">
+          <li>Importance</li>
+        </a>
+        <a href="#contact">
+          <li>Contact</li>
+        </a>
+        <a href="{% url 'accounts:logout' %}">
+          <li>Logout</li>
+        </a>
+        <a href="{% url 'accounts:register' %}">
+          <li>Register</li>
+        </a>
       </ul>
     </div>
     <div class="footer-section flinks">
       <h2>Connect</h2>
       <br>
       <ul>
-        <a href="#"><li>Facebook</li></a>
-        <a href="#"><li>Instagram</li></a>
-        <a href="#"><li>Github</li></a> 
+        <a href="#">
+          <li>Facebook</li>
+        </a>
+        <a href="#">
+          <li>Instagram</li>
+        </a>
+        <a href="#">
+          <li>Github</li>
+        </a>
       </ul>
     </div>
   </div>

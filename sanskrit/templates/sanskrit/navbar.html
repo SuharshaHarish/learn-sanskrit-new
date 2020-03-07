@@ -1,6 +1,7 @@
 {% extends 'sanskrit/base.html' %} {% load static %} {%block body%}
 <style>
   @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap');
+
   #navbar {
     background-color: #333;
     position: fixed;
@@ -20,7 +21,7 @@
     font-weight: 500;
     text-decoration: none;
     font-size: 17px;
-    
+
   }
 
   #navbar a:hover {
@@ -31,6 +32,7 @@
 <div id="navbar">
   <a href="{% url 'sanskrit:home' %}">Home</a>
   <a href="{% url 'sanskrit:lessons' %}">Lessons</a>
+  <a href="{% url 'forums:forum_list' %}">Forums</a>
   {% if user.is_authenticated %}
   <a href="{% url 'accounts:logout' %}">Logout</a>
   {% else %}
@@ -41,7 +43,7 @@
 <script>
   // Navbar
   var prevScrollpos = window.pageYOffset;
-  window.onscroll = function() {
+  window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
     if (prevScrollpos > currentScrollPos) {
       document.getElementById("navbar").style.top = "0";

@@ -21,7 +21,10 @@ class LoginRequiredMiddleware:
     def process_view(self, request, view_func, view_args, view_kwargs):
         assert hasattr(request, 'user')
         path = request.path_info.lstrip('/')
-        url_is_exempt = any(url.match(path) for url in EXEMPT_URLS)    
+        url_is_exempt = any(url.match(path) for url in EXEMPT_URLS)   
+
+        if(view_func.__name__)=="ActivateAccountView":
+            return None
 
         if request.user.is_authenticated and url_is_exempt:
             if path == reverse('accounts:register').lstrip('/'):
@@ -33,7 +36,6 @@ class LoginRequiredMiddleware:
             return None
 
         elif request.user.is_authenticated or url_is_exempt:
-            
             return None
 
         else:
