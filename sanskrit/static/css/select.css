@@ -1,9 +1,8 @@
 #services {
   background-size: cover;
   background-position: center;
-  color: #555;
+  /* color: #555; */
   background-attachment: fixed;
-  padding-top: 50px;
 }
 
 #services .grid-container {
@@ -16,7 +15,7 @@
   justify-content: center;
 }
 
-#services h1 {
+#services h3 {
   text-align: center;
   color: #555;
   padding-bottom: 10px;
@@ -24,13 +23,17 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-#services h1::after {
-  content: "";
+#services h3::after {
+  /* content: ""; */
   background: #efefef;
   display: block;
-  height: 3px;
-  width: 500px;
-  margin: 20px auto 5px;
+  /* text-align: center; */
+  /* height: 3px; */
+  /* width: 500px; */
+  /* margin: 20px auto 5px; */
+}
+#services.choices{
+  text-align: center;
 }
 
 .services {
@@ -48,16 +51,18 @@
   height: 60px;
   width: 60px;
 }
-#services button {
+#input button {
   box-shadow: 0 5px 15px -5px #00000070;
   background: transparent;
   color: grey;
   border: 3px solid grey;
+  padding-left: 22px;
+  padding-right: 22px;
   border-radius: 20px;
   outline: none;
   text-align: center;
 }
-#services button:focus {
+#input button:focus {
   /* margin: 10px; */
   border-radius: 30px;
   box-shadow: 0 15px 15px -5px #00000070;
@@ -76,14 +81,14 @@
   /* margin-left: 685px; */
 }
 
-#services button:hover {
+#input button:hover {
   /* transform: translate(10px);
   transition: 0.7s; */
   box-shadow: 0 2px 20px #333;
   transition: 0.4s;
 }
 
-#services button:active {
+#input button:active {
   border: 2px solid red;
   background-color: lightgray;
   box-shadow: 0 5px #666;

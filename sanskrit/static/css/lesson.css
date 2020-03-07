@@ -9,13 +9,16 @@
   font-size: 45px;
   font-family: "Josefin Sans";
 }
+#question{
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+}
 
-#question {
+#question span{
   font-size: 36px;
   font-family: "Paytone One";
-  font-weight: 500;
-  justify-content: start;
-  margin-left: -40%;
+  font-weight: 500;  
 }
 
 /* ProgressBar */
@@ -37,7 +40,7 @@
 
 .progress {
   border-radius: 16px !important;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #desc_text{
@@ -57,12 +60,11 @@
   text-decoration: none;
   background: #ed3330;
   padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
   border-radius: 4px;
   width: max-content;
-  display: inline-block;
   border: none;
-  margin-top: 20px;
-  margin-bottom: 30px;
   transition: all 0.4s ease 0s;
   outline: none;
 }

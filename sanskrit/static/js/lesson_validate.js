@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
   myFunction();
 };
 
@@ -26,8 +26,8 @@ function myFunction() {
     var ans = data[i].fields.answer;
     var q_type = data[i].fields.q_type;
 
-    var question_translate = document.getElementById("question_translate");
-    question_translate.style.display = "none";
+    var question_translate = document.createElement('div');
+    question_translate.id = "question_translate"
 
     var description = data[i].fields.description;
     var desc = description.localeCompare('""');
@@ -44,23 +44,23 @@ function myFunction() {
         document.getElementsByClassName(
           "display"
         )[0].innerHTML = document.getElementById("select").innerHTML;
-        document.getElementById("question").innerHTML = ques;
+        document.getElementById("question").innerHTML = `<span>${ques}</span>`;
         //document.getElementById("choices").innerHTML = "ka";
         // document.getElementById("input").innerHTML = "<input type='text' id='ans1' /><br/>";
         //document.getElementById("select_submit").disabled = true;
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate()" type="button" disabled >Submit</button>';
 
-        question_translate.style.display = "block";
         question_translate.innerHTML =
-          '<button id="question_translate_btn" onclick="question_translate();">Translate</button>';
+          '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
+        document.getElementById("question").appendChild(question_translate);
         break;
 
       case "j":
         document.getElementsByClassName(
           "display"
         )[0].innerHTML = document.getElementById("jump").innerHTML;
-        document.getElementById("question").innerHTML = ques;
+        document.getElementById("question").innerHTML = `<span>${ques}</span>`;
         var words = ans.split(" ");
         var r = 0,
           r_used = [];
@@ -78,26 +78,25 @@ function myFunction() {
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate();">Submit</button>';
 
-        question_translate.style.display = "block";
         question_translate.innerHTML =
-          '<button id="question_translate_btn" onclick="question_translate();">Translate</button>';
+          '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
+        document.getElementById("question").appendChild(question_translate);
         break;
 
       case "t":
         document.getElementsByClassName(
           "display"
         )[0].innerHTML = document.getElementById("typing").innerHTML;
-        document.getElementById("question").innerHTML = ques;
+        document.getElementById("question").innerHTML = `<span>${ques}</span>`;
         //document.getElementsByClassName("input")[0].innerHTML = "<input type='text' id='input' /><br/>";
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate();">Submit</button>';
 
         Keyboard.init();
 
-        question_translate.style.display = "block";
         question_translate.innerHTML =
-          '<button id="question_translate_btn" onclick="question_translate();">Translate</button>';
-
+          '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
+        document.getElementById("question").appendChild(question_translate);
         break;
 
       default:
@@ -107,7 +106,7 @@ function myFunction() {
     // End of lesson
     document.getElementById("submit").innerHTML =
       '<button id ="continue_btn" type="button" >Continue learning</button>';
-    $("#continue_btn").click(function() {
+    $("#continue_btn").click(function () {
       // console.log(lesson_name);
       $.ajax({
         url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
@@ -116,7 +115,7 @@ function myFunction() {
           lesson_name: lesson_name
         },
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
           if (data.completed == "True") {
             window.location.href =
               "http://127.0.0.1:8000/learn-sanskrit/lessons";
@@ -143,7 +142,7 @@ function display_decription(description, q_type) {
   var canvas = document.getElementById("canvas");
   var img = new Image();
 
-  img.onload = function() {
+  img.onload = function () {
     //var canvas = $("<canvas>", {"id":"testing"})[0];
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
@@ -224,14 +223,14 @@ function validate() {
     // proceed_btn.style.background = "darkred";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
       i--;
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -265,13 +264,13 @@ function validate() {
     document.getElementById("crct").innerHTML = "Its Incorrect!!!";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -369,7 +368,7 @@ function create_button(word) {
   var btn = document.createElement("BUTTON");
   btn.innerHTML = word;
   btn.id = "j" + j;
-  btn.onclick = function() {
+  btn.onclick = function () {
     jump_ans(btn.id);
   };
   document.getElementById("ans_button").appendChild(btn);
@@ -389,7 +388,7 @@ function question_translate() {
       text: data[i].fields.question
     },
     dataType: "json",
-    success: function(data) {
+    success: function (data) {
       if (data) {
         // window.location.href =
         //   "http://127.0.0.1:8000/learn-sanskrit/lessons";
