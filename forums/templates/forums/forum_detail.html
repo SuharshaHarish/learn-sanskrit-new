@@ -3,7 +3,7 @@
 
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/forums.css'%}" />
-{% include 'sanskrit/navbar.html' %}
+
 <div class="bucket">
     <div class="forum">
         {% if forum.created_date %}
@@ -51,6 +51,7 @@
 
     </div>
 </div>
+{% include 'sanskrit/navbar.html' %}
 <script>
     function comment() {
         var token = '{{csrf_token}}';
