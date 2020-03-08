@@ -188,6 +188,7 @@ html {
 .btn_one:hover {
   background: white;
   cursor: pointer;
+  font-size: 20px;
   color: #000;
 }
 .project div {
