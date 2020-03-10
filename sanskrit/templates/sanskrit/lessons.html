@@ -10,15 +10,17 @@
         <div class="card">
           <div class="face face1">
             <div class="content">
-              <img src="{% static 'css/design1.png' %}" />
+              <img
+                src="http://127.0.0.1:8000/media/{{lesson.lesson_icon}}"
+                style="min-width: 100px; min-height: 100px;"
+              />
             </div>
           </div>
           <div class="face face2">
             <div class="content">
               <h4>Lesson :<span> {{lesson.lesson_name}}</span></h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                {{lesson.lessons_description}}
               </p>
               <div id="{{lesson.lesson_name}}">
                 <!-- <a href="{{lesson.lesson_name}}">Start</a> -->
@@ -33,6 +35,7 @@
   </div>
 </section>
 {% include 'sanskrit/navbar.html' %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
   // Lesson lock
   var user_profile_data = JSON.parse("{{serialized_user_profiles|escapejs}}");
@@ -43,15 +46,34 @@
   ).innerHTML = `<a href=${first_lesson}>Start</a>`;
 
   for (let i = 1; i < lessons_data.length; i++) {
+    var q_number = lessons_data[i].fields.q_number;
     var lesson = lessons_data[i].pk;
-    if (typeof user_profile_data[i - 1] == "undefined") {
+    if (typeof user_profile_data[q_number - 2] == "undefined") {
       break;
     }
-    if (user_profile_data[i - 1].fields.completed == true) {
-      // console.log(user_profile_data[i - 1].fields.lesson_key);
+    if (user_profile_data[q_number - 2].fields.completed == true) {
+      var str = lesson.split(" ").join();
       document.getElementById(
         `${lesson}`
-      ).innerHTML = `<a href=${lesson}>Start</a>`;
+      ).innerHTML = `<a href=${lesson.replace(/ /g, "")}>Start</a>`;
+      // var card = document.getElementsByClassName("card")[q_number - 2];
+      // $(card).hover(
+      //   function() {
+      //     this.style.transform = "translateY(0)";
+      //   },
+      //   function() {
+      //     this.style.transform = "none";
+      //   }
+      // );
+      // var card = document.getElementsByClassName("card")[q_number - 2];
+      // $(card).hover(
+      //   function() {
+      //     this.style.transform = "translateY(0)";
+      //   },
+      //   function() {
+      //     this.style.transform = "none";
+      //   }
+      // );
     }
   }
 </script>

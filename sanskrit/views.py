@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from .models import SanskritLessons,SanskritQuestions,SanskritAnswers,UserProfile,Audio
@@ -19,12 +20,12 @@ def home(request):
 
 def lessons(request):
     
-    lesson_list = SanskritLessons.objects.all()
+    lesson_list = SanskritLessons.objects.all().order_by('q_number')
     user = request.user
-    user_profiles = UserProfile.objects.filter(user=user)
+    user_profiles = UserProfile.objects.filter(user=user).order_by('lesson_key')
+    print(user_profiles)
     serialized_user_profiles = serializers.serialize('json', user_profiles)
     serialized_lesson_list = serializers.serialize('json', lesson_list)   
-    
     args={
         'my_lessons' : lesson_list,
         'serialized_user_profiles' : serialized_user_profiles,
@@ -35,7 +36,9 @@ def lessons(request):
 
 def lesson(request,str_id):
     
-    lesson = SanskritLessons.objects.get(lesson_name= str_id)    
+    lesson_str = re.findall('[A-Z][^A-Z]*', str_id) #for 2 word lessons
+    lesson_name = (" ").join(lesson_str)
+    lesson = SanskritLessons.objects.get(lesson_name= lesson_name)    
     questions = SanskritQuestions.objects.filter(key_question = lesson)
     q_choices= SanskritAnswers.objects.filter(key_answer= questions[0])
     

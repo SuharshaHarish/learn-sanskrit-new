@@ -5,6 +5,7 @@ class SanskritLessons(models.Model):
     lesson_name = models.CharField(max_length=20,primary_key=True)       
     q_number = models.IntegerField(default=0)
     lesson_icon = models.ImageField(upload_to='pics/',default='design.png')
+    lessons_description = models.CharField(max_length=200,default="",blank=True)
     
     # question = models.CharField(max_length=20)
 
@@ -31,7 +32,7 @@ class SanskritQuestions(models.Model):
     )
     
     key_question = models.ForeignKey(SanskritLessons,on_delete=models.CASCADE)
-    description = models.TextField(default="")
+    description = models.TextField(default="",blank=True)
     desc_image = models.ImageField(upload_to='pics/',default='design.png')
 
 

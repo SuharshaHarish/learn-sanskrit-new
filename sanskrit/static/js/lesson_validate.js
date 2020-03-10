@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
   myFunction();
 };
 
@@ -17,17 +17,15 @@ function myFunction() {
   proceed_btn.style.background = "darkblue";
   document.getElementById("check_symbol").innerHTML =
     '<i class="fa fa-check"></i>';
-  document.getElementById("crct").innerHTML = "Hurray!!! Its Correct!!!";
-  // var w_modal = document.getElementById("wrong_Modal");
-  // w_modal.style.display = "none";
+  document.getElementById("crct").innerHTML = "Well Done!!! Its Correct!!!";
 
   if (i < data.length) {
     var ques = data[i].fields.question;
     var ans = data[i].fields.answer;
     var q_type = data[i].fields.q_type;
 
-    var question_translate = document.createElement('div');
-    question_translate.id = "question_translate"
+    var question_translate = document.createElement("div");
+    question_translate.id = "question_translate";
 
     var description = data[i].fields.description;
     var desc = description.localeCompare('""');
@@ -45,9 +43,6 @@ function myFunction() {
           "display"
         )[0].innerHTML = document.getElementById("select").innerHTML;
         document.getElementById("question").innerHTML = `<span>${ques}</span>`;
-        //document.getElementById("choices").innerHTML = "ka";
-        // document.getElementById("input").innerHTML = "<input type='text' id='ans1' /><br/>";
-        //document.getElementById("select_submit").disabled = true;
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate()" type="button" disabled >Submit</button>';
 
@@ -71,10 +66,7 @@ function myFunction() {
           }
           r_used.push(r);
           create_button(words[r]);
-          // document.getElementById("ans_button").appendChild(btn);
         }
-        //document.getElementById("final_ans").innerHTML = words[2];'<button id=j'+j+' onclick= "jump_ans('+this.id+');">'+words[j]+'</button>'
-        console.log(words);
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate();">Submit</button>';
 
@@ -88,7 +80,6 @@ function myFunction() {
           "display"
         )[0].innerHTML = document.getElementById("typing").innerHTML;
         document.getElementById("question").innerHTML = `<span>${ques}</span>`;
-        //document.getElementsByClassName("input")[0].innerHTML = "<input type='text' id='input' /><br/>";
         document.getElementById("submit").innerHTML =
           '<button id ="submit_btn" onclick= "validate();">Submit</button>';
 
@@ -106,8 +97,7 @@ function myFunction() {
     // End of lesson
     document.getElementById("submit").innerHTML =
       '<button id ="continue_btn" type="button" >Continue learning</button>';
-    $("#continue_btn").click(function () {
-      // console.log(lesson_name);
+    $("#continue_btn").click(function() {
       $.ajax({
         url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
         data: {
@@ -115,7 +105,7 @@ function myFunction() {
           lesson_name: lesson_name
         },
         dataType: "json",
-        success: function (data) {
+        success: function(data) {
           if (data.completed == "True") {
             window.location.href =
               "http://127.0.0.1:8000/learn-sanskrit/lessons";
@@ -142,8 +132,7 @@ function display_decription(description, q_type) {
   var canvas = document.getElementById("canvas");
   var img = new Image();
 
-  img.onload = function () {
-    //var canvas = $("<canvas>", {"id":"testing"})[0];
+  img.onload = function() {
     var ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
 
@@ -197,40 +186,28 @@ function validate() {
       break;
   }
 
-  javascript: console.log(ans1);
-  javascript: console.log(ans2);
-
   if (ans1 == ans2) {
     i++;
     // correct answer audio
     let src = "http://127.0.0.1:8000/media/audio/accomplished.mp3";
     let audio = new Audio(src);
     audio.play();
-    // document.getElementById("res").innerHTML = "Yes";
-    // document.getElementById("check_ans").innerHTML = document.getElementById("right_Modal").innerHTML;
-    // document.getElementById("right_css").innerHTML='<link rel="stylesheet" href="{% static "css/right.css" %}">';
-    // document.getElementById("proceed_btn").innerHTML = '<button onclick= "myFunction();">Proceed</button>';
 
     var modal = document.getElementById("Modal");
-    //var proceed_btn = document.getElementById("proceed_btn");
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
     document.getElementById("check_symbol").innerHTML =
       '<i class="fa fa-check"></i>';
-    // When the user clicks the button, open the modal
-
     modal.style.display = "block";
-    // proceed_btn.style.background = "darkred";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    span.onclick = function() {
       modal.style.display = "none";
       i--;
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -242,10 +219,6 @@ function validate() {
     let src = "http://127.0.0.1:8000/media/audio/get-outta-here.mp3";
     let audio = new Audio(src);
     audio.play();
-    // document.getElementById("res").innerHTML = "No";
-    // document.getElementById("check_ans").innerHTML = document.getElementById("wrong_Modal").innerHTML;
-    //  document.getElementById("wrong_css").innerHTML='<link rel="stylesheet" href="{% static "css/wrong.css" %}">';
-    // document.getElementById("submit").innerHTML = '<button onclick= "myFunction();">Proceed</button>';
 
     var modal = document.getElementById("Modal");
     var modal_content = document.getElementById("Modal-content");
@@ -264,13 +237,13 @@ function validate() {
     document.getElementById("crct").innerHTML = "Its Incorrect!!!";
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
+    span.onclick = function() {
       modal.style.display = "none";
       myFunction();
     };
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
+    window.onclick = function(event) {
       if ((event.target = !modal)) {
         modal.style.display = "none";
       }
@@ -284,7 +257,6 @@ function validate() {
 
 function select_click(btn_id) {
   document.getElementById("submit_btn").disabled = false;
-  //javascript: console.log(ans);
   selected_ans = document.getElementsByClassName("choices")[btn_id].textContent;
 }
 
@@ -327,35 +299,25 @@ function select_display() {
   while (z == w || z == x || z == y) {
     z = Math.floor(Math.random() * ans_choice_data.length);
   }
-  // javascript: console.log(a);
-  // javascript: console.log(b);
-  // javascript: console.log(c);
-  // javascript: console.log(d);
-
-  // javascript: console.log(w);
-  // javascript: console.log(x);
-  // javascript: console.log(y);
-  // javascript: console.log(z);
   document.getElementsByClassName("choices")[a].innerHTML =
     ans_choice_data[x].fields.ans_choice;
-  document.getElementsByClassName("img-responsive")[a].src =
+  document.getElementsByClassName("icon1")[a].src =
     "http://127.0.0.1:8000/media/" + ans_choice_data[x].fields.ans_image;
   document.getElementsByClassName("choices")[b].innerHTML =
     ans_choice_data[y].fields.ans_choice;
-  document.getElementsByClassName("img-responsive")[b].src =
+  document.getElementsByClassName("icon1")[b].src =
     "http://127.0.0.1:8000/media/" + ans_choice_data[y].fields.ans_image;
   document.getElementsByClassName("choices")[c].innerHTML =
     ans_choice_data[w].fields.ans_choice;
-  document.getElementsByClassName("img-responsive")[c].src =
+  document.getElementsByClassName("icon1")[c].src =
     "http://127.0.0.1:8000/media/" + ans_choice_data[w].fields.ans_image;
   document.getElementsByClassName("choices")[d].innerHTML =
     ans_choice_data[z].fields.ans_choice;
-  document.getElementsByClassName("img-responsive")[d].src =
+  document.getElementsByClassName("icon1")[d].src =
     "http://127.0.0.1:8000/media/" + ans_choice_data[z].fields.ans_image;
 }
 
 function jump_ans(j_id) {
-  console.log(j_id);
   document.getElementById("final_ans").innerHTML =
     document.getElementById("final_ans").innerHTML +
     document.getElementById("" + j_id + "").textContent +
@@ -368,7 +330,7 @@ function create_button(word) {
   var btn = document.createElement("BUTTON");
   btn.innerHTML = word;
   btn.id = "j" + j;
-  btn.onclick = function () {
+  btn.onclick = function() {
     jump_ans(btn.id);
   };
   document.getElementById("ans_button").appendChild(btn);
@@ -379,21 +341,17 @@ function strip(str) {
   return str.replace(/^\s+|\s+$/g, "");
 }
 
+// GTTS
 function question_translate() {
-  // GTTS
-
   $.ajax({
     url: "http://127.0.0.1:8000/learn-sanskrit/ajax/translate-audio",
     data: {
       text: data[i].fields.question
     },
     dataType: "json",
-    success: function (data) {
+    success: function(data) {
       if (data) {
-        // window.location.href =
-        //   "http://127.0.0.1:8000/learn-sanskrit/lessons";
         let src = "http://127.0.0.1:8000/media/" + data.audio_src;
-        console.log(src);
         let audio = new Audio(src);
         audio.play();
       }
