@@ -41,10 +41,12 @@ def register(request):
             [user.email],            
             )
             email_message.send()
-
+            messages.add_message(request,messages.SUCCESS,"Please check your email to activate your account.")
             return redirect(reverse('accounts:login'))
     else:
         userform = RegistrationForm()
+        print(settings.EMAIL_HOST_PASSWORD)
+        print(settings.EMAIL_HOST_USER)
     args = {'form':userform} 
 
     return render(request,'accounts/reg_form.html',args)

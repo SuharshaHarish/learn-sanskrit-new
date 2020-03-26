@@ -112,11 +112,10 @@ html {
   font-family: "Comfortaa", cursive;
 }
 #history {
-  
   margin: 12vh 0px !important;
   padding: 2vh 0px !important;
 }
-#history p{
+#history p {
   padding-top: 50px;
   line-height: 2.2em;
 }
@@ -124,7 +123,7 @@ html {
   margin: 28vh 0px !important;
   padding: 2vh 0px !important;
 }
-#importance p{
+#importance p {
   padding-top: 50px;
   line-height: 2.2em;
 }
@@ -272,6 +271,7 @@ html {
     padding: 10px 11px;
   }
 }
+
 /* Footer */
 
 #footer {
@@ -281,45 +281,40 @@ html {
   position: relative;
 }
 
-.footer .footer-content{
-  
+.footer .footer-content {
   height: 350px;
   display: flex;
 }
 
-
-.footer .footer-content .footer-section{
+.footer .footer-content .footer-section {
   flex: 1;
   padding: 25px;
-  
 }
 
-
-.footer .footer-content h1,h2{
+.footer .footer-content h1,
+h2 {
   color: gray;
 }
 
-.footer .footer-content .fabout .fcontact span{
+.footer .footer-content .fabout .fcontact span {
   display: block;
   font-size: 1.1em;
   margin-bottom: 8px;
 }
 
-.footer .footer-content .flinks ul a{
+.footer .footer-content .flinks ul a {
   display: block;
   margin-bottom: 10px;
   font-size: 1.2em;
   color: #d3d3d3;
-  transition: all .3s;
-  
+  transition: all 0.3s;
 }
 
-.footer .footer-content .flinks ul a:hover{
+.footer .footer-content .flinks ul a:hover {
   color: white;
   margin-left: 15px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
-
 
 .footer .footer-bottom {
   text-align: center;
@@ -328,9 +323,6 @@ html {
   height: 50px;
   padding-top: 20px;
 }
-
-
-
 
 button:focus {
   outline: none;
@@ -348,6 +340,7 @@ button:focus {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 @-webkit-keyframes Gradient {
   0% {
     background-position: 0% 50%;

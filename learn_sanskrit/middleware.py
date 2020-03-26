@@ -61,15 +61,17 @@ class LessonsMiddleware:
         assert hasattr(request, 'user')
         path = request.path_info.lstrip('/')
        
-        # if (view_func.__name__) == "lesson":
+        if (view_func.__name__) == "lesson":
 
-            # req_lesson = view_kwargs['str_id']
-            # lesson = SanskritLessons.objects.get(lesson_name=req_lesson)
+            req_lesson = view_kwargs['str_id']
+            lesson_str = re.findall('[A-Z][^A-Z]*', req_lesson) #for 2 word lessons
+            lesson_name = (" ").join(lesson_str)
+            lesson = SanskritLessons.objects.get(lesson_name=lesson_name)
 
-            # if lesson.q_number!=1:
-            #     prev_lesson = SanskritLessons.objects.get(q_number=lesson.q_number-1)          
+            if lesson.q_number!=1:
+                prev_lesson = SanskritLessons.objects.get(q_number=lesson.q_number-1)          
            
-            #     if not UserProfile.objects.filter(user=request.user,lesson_key=prev_lesson.lesson_name).exists():
-            #         return redirect(reverse('sanskrit:lessons'))
+                if not UserProfile.objects.filter(user=request.user,lesson_key=prev_lesson.lesson_name).exists():
+                    return redirect(reverse('sanskrit:lessons'))
                
 
