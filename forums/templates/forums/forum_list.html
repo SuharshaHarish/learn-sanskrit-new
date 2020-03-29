@@ -14,7 +14,9 @@
   <div class="forum_list">
     {% for forum in forums %}
     <div class="forum">
-
+      <div id="profile_pic">
+        <img src="{{forum.forum_profile.profile_pic.url}}" style="width: 100px; height: 100px;" />
+      </div>
       <div class="forum_body">
         <a href="{% url 'forums:forum_detail' pk=forum.pk %}">
           <h3>{{ forum.title }}</h3>

@@ -10,10 +10,7 @@
         <div class="card">
           <div class="face face1">
             <div class="content">
-              <img
-                src="http://127.0.0.1:8000/media/{{lesson.lesson_icon}}"
-                style="min-width: 100px; min-height: 100px;"
-              />
+              <img src="{{lesson.lesson_icon.url}}" style="min-width: 100px; min-height: 100px;" />
             </div>
           </div>
           <div class="face face2">
@@ -48,11 +45,11 @@
     var face1 = document.getElementsByClassName("face1")[q_number];
     var face2 = document.getElementsByClassName("face2")[q_number];
     $(card).hover(
-      function() {
+      function () {
         $(face1).css("transform", "translateY(0)");
         $(face2).css("transform", "translateY(0)");
       },
-      function() {
+      function () {
         $(face1).css("transform", "translateY(100px)");
         $(face2).css("transform", "translateY(-100px)");
       }

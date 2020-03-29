@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 class SanskritLessons(models.Model):
     lesson_name = models.CharField(max_length=20,primary_key=True)       
@@ -13,10 +14,11 @@ class SanskritLessons(models.Model):
         return self.lesson_name
     
 
-class UserProfile(models.Model):
+class UserProgress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     lesson_key = models.ForeignKey(SanskritLessons,default=0,on_delete=models.CASCADE)     
     completed = models.BooleanField(default=False)
+    day = models.DateField(default=timezone.now)
     
 
     def __str__(self):

@@ -16,9 +16,7 @@
       {% endif %}
       <div class="edit_forum">
         {% if user == forum_author %}
-        <a href="{% url 'forums:forum_edit' pk=forum.pk %}"
-          ><button id="editbtn">Edit</button></a
-        >
+        <a href="{% url 'forums:forum_edit' pk=forum.pk %}"><button id="editbtn">Edit</button></a>
         {% endif %}
       </div>
     </div>
@@ -26,6 +24,9 @@
     <div id="comments">
       {% for comment in comments %}
       <div class="tip-left">
+        <div id="profile_pic">
+          <img src="{{comment.forum_profile.profile_pic.url}}" style="width: 100px; height: 100px;" />
+        </div>
         <h4>{{comment.author.username}}</h4>
         <p>{{comment.comment}}</p>
       </div>
@@ -33,15 +34,12 @@
     </div>
     {% if user.is_authenticated %}
     <button id="comment_btn" style="display: block;" onclick="comment()">
-      comment
+      Comment
     </button>
     <div id="add_comment" style="display:none">
       <form method="POST" id="comment_form">
         {% csrf_token %}
-        <textarea
-          id="comment_textarea"
-          placeholder="Add Your Comment"
-        ></textarea>
+        <textarea id="comment_textarea" placeholder="Add Your Comment"></textarea>
         <div>
           <button type="submit" id="add_comment_btn">Add Comment</button>
         </div>
@@ -49,9 +47,7 @@
     </div>
     {% endif %}
     <div class="back">
-      <a href="{% url 'forums:forum_list'%}"
-        ><button id="back_button">Go back</button></a
-      >
+      <a href="{% url 'forums:forum_list'%}"><button id="back_button">Go back</button></a>
     </div>
   </div>
 </div>
@@ -61,7 +57,7 @@
     var token = "{{csrf_token}}";
     document.getElementById("add_comment").style.display = "block";
     document.getElementById("comment_btn").style.display = "none";
-    $(document).on("submit", "#comment_form", function(e) {
+    $(document).on("submit", "#comment_form", function (e) {
       console.log($("#comment_textarea").val());
       $.ajax({
         headers: { "X-CSRFToken": token },
@@ -71,11 +67,15 @@
           comment: $("#comment_textarea").val()
         },
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
           if (data.success == "success") {
           }
         }
       });
+    });
+    // Reload page after posting comment
+    $(document).ajaxStop(function () {
+      window.location.reload();
     });
   }
 </script>

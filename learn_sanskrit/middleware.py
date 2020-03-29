@@ -1,10 +1,9 @@
 import re
-
 from django.conf import settings
 from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.urls import reverse
-from sanskrit.models import UserProfile,SanskritLessons
+from sanskrit.models import UserProgress,SanskritLessons
 
 EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
@@ -71,7 +70,7 @@ class LessonsMiddleware:
             if lesson.q_number!=1:
                 prev_lesson = SanskritLessons.objects.get(q_number=lesson.q_number-1)          
            
-                if not UserProfile.objects.filter(user=request.user,lesson_key=prev_lesson.lesson_name).exists():
+                if not UserProgress.objects.filter(user=request.user,lesson_key=prev_lesson.lesson_name).exists():
                     return redirect(reverse('sanskrit:lessons'))
                
 
