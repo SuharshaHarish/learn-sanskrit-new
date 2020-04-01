@@ -2,21 +2,30 @@
 {% load static %}
 {% block body %}
 {% include 'sanskrit/navbar.html' %}
-<link rel="stylesheet" href="{% static 'css/log.css' %}" />
+<link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 <link rel="stylesheet" href="{% static 'css/chartstyle.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
 <div class="profile_container">
-  <div id="profile_pic">
-    <img src="{{profile.profile_pic.url}}" style="width: 100px; height: 100px;" />
-    <form method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type=" submit">Upload</button>
-    </form>
+  <div class="profcard">
+    <div id="profile_pic">
+      <img src="{{profile.profile_pic.url}}" />
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button id="upload_btn" type="submit">Upload</button>
+      </form>
+    </div>
+    <div id="profile_name">Username : {{user.username}}</div>
+    <div class="" id="name">Name : {{user.first_name}} {{user.last_name}}</div>
+    <div class="" id="email_id">Email : {{user.email}}</div>
+    <ul>
+      <li><a href=""><i class="fab fa-twitter fa-lg"></i></a></li>
+      <li><a href=""><i class="fab fa-instagram fa-lg"></i></a></li>
+      <li><a href=""><i class="fab fa-github fa-lg"></i></a></li>
+      <li><a href=""><i class="fab fa-facebook fa-lg"></i></a></li>
+    </ul>
   </div>
-  <div id="profile_name">Username : {{user.username}}</div>
-  <div class="" id="name">Name : {{user.first_name}} {{user.last_name}}</div>
-  <div class="" id="email_id">Email : {{user.email}}</div>
   <!-- messages -->
   {% if messages %}
   {% for message in messages %}
@@ -88,6 +97,7 @@
     </div>
   </div>
 </div>
+
 <script>
   document.getElementsByTagName("label")[0].style.display = "none"
   const sun = {{ sun }}

@@ -20,15 +20,18 @@
         {% endif %}
       </div>
     </div>
+    <h1 id="cmnts">Comments</h1>
     <hr />
     <div id="comments">
       {% for comment in comments %}
       <div class="tip-left">
         <div id="profile_pic">
-          <img src="{{comment.forum_profile.profile_pic.url}}" style="width: 100px; height: 100px;" />
+          <img src="{{comment.forum_profile.profile_pic.url}}"  />
         </div>
-        <h4>{{comment.author.username}}</h4>
-        <p>{{comment.comment}}</p>
+        <div id="tipinfo">
+          <h4>{{comment.author.username}}</h4>
+          <p>{{comment.comment}}</p>
+        </div>
       </div>
       {% endfor %}
     </div>

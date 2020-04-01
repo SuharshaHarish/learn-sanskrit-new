@@ -14,18 +14,19 @@
   <div class="forum_list">
     {% for forum in forums %}
     <div class="forum">
-      <div id="profile_pic">
-        <img src="{{forum.forum_profile.profile_pic.url}}" style="width: 100px; height: 100px;" />
+      <div class="profile_pic">
+        <img src="{{forum.forum_profile.profile_pic.url}}" style="width: 70px; height: 70px;" />
       </div>
-      <div class="forum_body">
-        <a href="{% url 'forums:forum_detail' pk=forum.pk %}">
-          <h3>{{ forum.title }}</h3>
-        </a>
-        {{ forum.text}}
-      </div>
-      <div class="date">
-        Published : {{ forum.created_date}} by {{forum.author.username}}
-      </div>
+        <div class="forum_body">
+          <a href="{% url 'forums:forum_detail' pk=forum.pk %}">
+            <h3>{{ forum.title }}</h3>
+          </a>
+          {{ forum.text}}
+        </div>
+        <div class="date">
+          Published : {{ forum.created_date}} by {{forum.author.username}}
+        </div>
+      <!-- <hr id="brdr"> -->
     </div>
     {% endfor %}
   </div>
