@@ -25,12 +25,10 @@
     <div id="comments">
       {% for comment in comments %}
       <div class="tip-left">
-        <div id="profile_pic">
-          <img src="{{comment.forum_profile.profile_pic.url}}"  />
-        </div>
-        <div id="tipinfo">
           <h4>{{comment.author.username}}</h4>
           <p>{{comment.comment}}</p>
+        <div id="profile_pic">
+          <img src="{{comment.forum_profile.profile_pic.url}} " style="width: 60px; height: 60px;"  />
         </div>
       </div>
       {% endfor %}
