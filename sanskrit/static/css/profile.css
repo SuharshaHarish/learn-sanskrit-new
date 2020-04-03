@@ -82,3 +82,20 @@ body{
 #q-graph .caption{
     padding-bottom: 20px;
 }
+
+/* new changes */
+#id_profile_pic {
+    color: transparent;
+    width: 30px;
+    height: 30px;
+    background-repeat:no-repeat;    
+    background-size: contain;
+    background-image:url('https://cdn1.iconfinder.com/data/icons/facebook-ui/48/additional_icons-03-512.png') ;
+  }
+
+  #id_profile_pic::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+
+  
+  

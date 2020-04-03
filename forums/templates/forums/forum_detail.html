@@ -6,6 +6,9 @@
 
     <div class="forum_detail_btn">
       <div class="forum_detail">
+        <div id="author_pic">
+          <img src="{{forum.forum_profile.profile_pic.url}} " style="width: 60px; height: 60px;" />
+        </div>
         <h2>{{ forum.title }}</h2>
         <p>{{ forum.text|linebreaksbr }}</p>
         <div class="date">
@@ -25,10 +28,10 @@
     <div id="comments">
       {% for comment in comments %}
       <div class="tip-left">
-          <h4>{{comment.author.username}}</h4>
-          <p>{{comment.comment}}</p>
+        <h4>{{comment.author.username}}</h4>
+        <p>{{comment.comment}}</p>
         <div id="profile_pic">
-          <img src="{{comment.forum_profile.profile_pic.url}} " style="width: 60px; height: 60px;"  />
+          <img src="{{comment.forum_profile.profile_pic.url}} " style="width: 60px; height: 60px;" />
         </div>
       </div>
       {% endfor %}

@@ -4,7 +4,8 @@
 {% include 'sanskrit/navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 <link rel="stylesheet" href="{% static 'css/chartstyle.css' %}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+  integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
 <div class="profile_container">
   <div class="profcard">
@@ -12,7 +13,7 @@
       <img src="{{profile.profile_pic.url}}" />
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
         <button id="upload_btn" type="submit">Upload</button>
       </form>
     </div>
@@ -97,7 +98,7 @@
     </div>
   </div>
 </div>
-
+<script src="jquery-3.4.1.min.js"></script>
 <script>
   document.getElementsByTagName("label")[0].style.display = "none"
   const sun = {{ sun }}
