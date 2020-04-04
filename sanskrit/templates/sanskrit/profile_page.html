@@ -4,11 +4,12 @@
 {% include 'sanskrit/navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 <link rel="stylesheet" href="{% static 'css/chartstyle.css' %}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-  integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+
 
 <div class="profile_container">
+  
   <div class="profcard">
+    <h1 id="toptitle">Profile</h1>
     <div id="profile_pic">
       <img src="{{profile.profile_pic.url}}" />
       <form method="post" enctype="multipart/form-data">
@@ -27,6 +28,8 @@
       <li><a href=""><i class="fab fa-facebook fa-lg"></i></a></li>
     </ul>
   </div>
+  <h1 id="cmnts">Your Progress</h1>
+  <hr />
   <!-- messages -->
   {% if messages %}
   {% for message in messages %}
