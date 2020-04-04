@@ -6,14 +6,15 @@
 
     <div class="forum_detail_btn">
       <div class="forum_detail">
-        <div id="author_pic">
-          <img src="{{forum.forum_profile.profile_pic.url}} " style="width: 60px; height: 60px;" />
-        </div>
         <h2>{{ forum.title }}</h2>
         <p>{{ forum.text|linebreaksbr }}</p>
         <div class="date">
           {{ forum.created_date }}
         </div>
+        <div id="author_pic">
+          <img src="{{forum.forum_profile.profile_pic.url}} " style="width: 80px; height: 80px;" />
+        </div>
+        
       </div>
 
       {% endif %}
