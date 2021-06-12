@@ -98,8 +98,9 @@ function myFunction() {
     document.getElementById("submit").innerHTML =
       '<button id ="continue_btn" type="button" >Continue learning</button>';
     $("#continue_btn").click(function() {
+      
       $.ajax({
-        url: "http://127.0.0.1:8000/learn-sanskrit/ajax/lessons",
+        url: lesson_complete_url,
         data: {
           completed: "True",
           lesson_name: lesson_name
@@ -108,7 +109,7 @@ function myFunction() {
         success: function(data) {
           if (data.completed == "True") {
             window.location.href =
-              "http://127.0.0.1:8000/learn-sanskrit/lessons";
+              lessons_url
           }
         }
       });
@@ -119,7 +120,7 @@ function myFunction() {
 function display_decription(description, q_type) {
   desc_id++;
   var desc_img = data[i].fields.desc_image;
-  var desc_img_src = "http://127.0.0.1:8000/media/" + desc_img;
+  var desc_img_src = media_url + desc_img;
 
   document.getElementsByClassName(
     "display"
@@ -189,7 +190,7 @@ function validate() {
   if (ans1 == ans2) {
     i++;
     // correct answer audio
-    let src = "http://127.0.0.1:8000/media/audio/accomplished.mp3";
+    let src = correct_audio_src;
     let audio = new Audio(src);
     audio.play();
 
@@ -216,7 +217,7 @@ function validate() {
     document.getElementById("crct").innerHTML = "HURRAY..!!! Its Correct!";
   } else {
     // wrong answer audio
-    let src = "http://127.0.0.1:8000/media/audio/get-outta-here.mp3";
+    let src = wrong_audio_src;
     let audio = new Audio(src);
     audio.play();
 
@@ -302,19 +303,19 @@ function select_display() {
   document.getElementsByClassName("choices")[a].innerHTML =
     ans_choice_data[x].fields.ans_choice;
   document.getElementsByClassName("icon1")[a].src =
-    "http://127.0.0.1:8000/media/" + ans_choice_data[x].fields.ans_image;
+    media_url + ans_choice_data[x].fields.ans_image;
   document.getElementsByClassName("choices")[b].innerHTML =
     ans_choice_data[y].fields.ans_choice;
   document.getElementsByClassName("icon1")[b].src =
-    "http://127.0.0.1:8000/media/" + ans_choice_data[y].fields.ans_image;
+    media_url + ans_choice_data[y].fields.ans_image;
   document.getElementsByClassName("choices")[c].innerHTML =
     ans_choice_data[w].fields.ans_choice;
   document.getElementsByClassName("icon1")[c].src =
-    "http://127.0.0.1:8000/media/" + ans_choice_data[w].fields.ans_image;
+    media_url + ans_choice_data[w].fields.ans_image;
   document.getElementsByClassName("choices")[d].innerHTML =
     ans_choice_data[z].fields.ans_choice;
   document.getElementsByClassName("icon1")[d].src =
-    "http://127.0.0.1:8000/media/" + ans_choice_data[z].fields.ans_image;
+    media_url + ans_choice_data[z].fields.ans_image;
 }
 
 function jump_ans(j_id) {
@@ -343,18 +344,20 @@ function strip(str) {
 
 // GTTS
 function question_translate() {
+  
   $.ajax({
-    url: "http://127.0.0.1:8000/learn-sanskrit/ajax/translate-audio",
+    url: translate_audio_url,
     data: {
       text: data[i].fields.question
     },
     dataType: "json",
     success: function(data) {
       if (data) {
-        let src = "http://127.0.0.1:8000/media/" + data.audio_src;
+        let src = media_url + data.audio_src;        
         let audio = new Audio(src);
         audio.play();
       }
     }
   });
+  
 }

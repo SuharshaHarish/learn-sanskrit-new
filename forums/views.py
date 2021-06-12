@@ -12,9 +12,7 @@ def forum_list(request):
     forums = Forum.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     profiles=[]
     for forum in forums:
-        # print(forum.author)
-        profiles.append(Profile.objects.get(user=forum.author))
-        print(profiles)
+        profiles.append(Profile.objects.get(user=forum.author))        
     args={
         'forums':forums,
         'user':request.user,

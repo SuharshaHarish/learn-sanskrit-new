@@ -7,7 +7,7 @@ from django.core import serializers
 from django.http import JsonResponse,HttpResponse
 from gtts import gTTS 
 from django.core.files.temp import NamedTemporaryFile
-from django.core import files
+from django.core.files import File
 from django.contrib import messages
 import datetime
 from datetime import date, timedelta
@@ -16,7 +16,9 @@ from .models import SanskritLessons,SanskritQuestions,SanskritAnswers,UserProgre
 from accounts.models import Profile
 from django.contrib.auth.models import User
 from sanskrit.forms import ProfileForm
-def home(request):    
+from learn_sanskrit import settings
+def home(request):  
+     
     return render(request,'sanskrit/home.html')
 
 def lessons(request):
@@ -26,7 +28,10 @@ def lessons(request):
     user_profiles = UserProgress.objects.filter(user=user).order_by('lesson_key')
     # print(user_profiles)
     serialized_user_profiles = serializers.serialize('json', user_profiles)
-    serialized_lesson_list = serializers.serialize('json', lesson_list)   
+    serialized_lesson_list = serializers.serialize('json', lesson_list)  
+
+    # translate_questions_all()
+
     args={
         'my_lessons' : lesson_list,
         'serialized_user_profiles' : serialized_user_profiles,
@@ -42,6 +47,10 @@ def lesson(request,str_id):
     lesson = SanskritLessons.objects.get(lesson_name= lesson_name)    
     questions = SanskritQuestions.objects.filter(key_question = lesson)
     q_choices= SanskritAnswers.objects.filter(key_answer= questions[0])
+    #audio sources
+    correct_audio = Audio.objects.get(name = "Correct")
+    wrong_audio = Audio.objects.get(name = "Wrong")
+
     
     for i in range(len(questions)):
         answer = SanskritAnswers.objects.filter(key_answer= questions[i])
@@ -64,6 +73,10 @@ def lesson(request,str_id):
         'serialized_questions':serialized_questions,
         'q_choices' : q_choices,
         'serialized_q_choices':serialized_q_choices,
+        'correct_audio_src': correct_audio.file.name,
+        'wrong_audio_src': wrong_audio.file.name,
+        'media_url': settings.MEDIA_URL
+
     }
 
     return render(request,'sanskrit/lesson.html',args)
@@ -89,35 +102,77 @@ def lesson_complete(request):
 
     return redirect(reverse('sanskrit:lessons'))
 
+
 def translate_audio(request):    
     
     # mytext = 'जय श्रिराम'
 
     if request.GET.get('text', None) :
         text = request.GET.get('text',None)
-        mytext = text
-        language = 'hi'    
-        print(mytext)
 
-        myobj = gTTS(text=mytext, lang=language, slow=False)    
-        
-        audio_temp_file = NamedTemporaryFile()
-        myobj.write_to_fp(audio_temp_file)
-        temp_file = files.File(audio_temp_file, name="translated_audio.mp3")
-        
-        if Audio.objects.filter(name = "translated_audio").exists():
-            audio = Audio.objects.get(name = "translated_audio")
-            audio.file = temp_file
-            audio.save() 
-                    
+        if Audio.objects.filter(name = text).exists():
+
+            audio = Audio.objects.get(name = text)
+            data = {'audio_src':audio.file.name}
+            return JsonResponse(data)
+
         else:
-            audio = Audio.objects.create(file = temp_file, name= "translated_audio")
-            audio.save()
-        data = {'audio_src':audio.file.name}
-        return JsonResponse(data)       
+            
+            translate_questions(text)  
+
+        
+        # myobj = gTTS(text=mytext, lang=language, slow=False)  
+        # audio_temp_file = NamedTemporaryFile()
+        # myobj.write_to_fp(audio_temp_file)      
+        # temp_file = File(audio_temp_file, name="translated_audio.mp3")
+
         
         
+        # if Audio.objects.filter(name = "translated_audio").exists():
+            
+        #     audio = Audio.objects.get(name = "translated_audio")
+        #     audio.file = temp_file
+        #     audio.save() 
+        #     # print(File.file.field.storage.exists("translated_audio"))
+        #     print(text)
+                    
+        # else:
+        #     audio = Audio.objects.create(file = temp_file, name= "translated_audio")
+        #     audio.save()     
+      
     return redirect(reverse('sanskrit:home'))
+
+#for generating audio files for all questions for the first time
+def translate_questions_all():
+
+    language = 'hi'
+    questions = SanskritQuestions.objects.all()
+    for question in questions:
+        ques = question.question
+        if Audio.objects.filter(name = ques).exists():
+            continue
+        else:        
+            myobj = gTTS(text=ques, lang=language, slow=False)  
+            audio_temp_file = NamedTemporaryFile()
+            myobj.write_to_fp(audio_temp_file)      
+            temp_file = File(audio_temp_file, name=ques+".mp3")                                            
+            audio = Audio.objects.create(file = temp_file, name = ques)
+            audio.save()
+
+#for generating audio file for the given text if already not present
+def translate_questions(text):
+
+    language = 'hi' 
+    ques = text
+    myobj = gTTS(text=ques, lang=language, slow=False)  
+    audio_temp_file = NamedTemporaryFile()
+    myobj.write_to_fp(audio_temp_file)      
+    temp_file = File(audio_temp_file, name=ques+".mp3")                                            
+    audio = Audio.objects.create(file = temp_file, name = ques)
+    audio.save()
+
+
+
 
 def profile_page(request):
     sun,mon,tue,wed,thu,fri,sat=0,0,0,0,0,0,0
@@ -166,4 +221,3 @@ def profile_page(request):
     }
     return render(request,'sanskrit/profile_page.html', args)
     
-

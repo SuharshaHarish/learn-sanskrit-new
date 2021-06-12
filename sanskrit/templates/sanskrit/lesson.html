@@ -164,7 +164,13 @@
   <script src="{% static 'js/keyboard.js' %}"></script>
 
   <script>
-    var selected_ans = "";
+    var selected_ans = "";    
+    var media_url = "{{media_url}}";
+    var correct_audio_src = media_url+"{{correct_audio_src}}";
+    var wrong_audio_src = media_url+"{{wrong_audio_src}}";
+    var lessons_url = "{% url 'sanskrit:lessons' %}";
+    var lesson_complete_url = "{% url 'sanskrit:lesson_complete' %}";
+    var translate_audio_url ="{% url 'sanskrit:translate_audio' %}" ;
     var data = JSON.parse("{{serialized_questions|escapejs}}");
     var ans_choice_data = JSON.parse("{{serialized_q_choices|escapejs}}");
     var lesson_name = data[0].fields.key_question;
@@ -174,6 +180,7 @@
       desc_id = 0,
       j = 0;
 
+    // console.log("{{media_url}}");
     // Enter key
     $(document).on("keypress", function(e) {
       if (flag == 0) {

@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sanskrit',
     'accounts',
-    'forums'
+    'forums',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -80,10 +81,15 @@ WSGI_APPLICATION = 'learn_sanskrit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#using postgresql hoted on elephantsql
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dlkdqktw',
+        'USER': 'dlkdqktw',
+        'PASSWORD': 'LF1vh_mKt7lTQFKbuh0UIj3Nsfox8elA',
+        'HOST': 'john.db.elephantsql.com',
+        'PORT': '5432'
     }
 }
 
@@ -136,13 +142,31 @@ USE_TZ = True
 # STATICFILES_DIRS = [                # For static files not particular to any app.
 #     os.path.join(PROJECT_DIR, 'static'),
 # ]
+
+#AWS SETUP
+
+AWS_ACCESS_KEY_ID = 'AKIAUFNVG6CLMDP45PWM'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'learn-sanskrit'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+AWS_DEFAULT_ACL = 'public-read'
+AWS_LOCATION = 'static'
  
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'sanskrit/static'),
+]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,PUBLIC_MEDIA_LOCATION)
+DEFAULT_FILE_STORAGE = 'learn_sanskrit.storages.MediaStore'
+# MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #To redirect the user on logging in
 LOGIN_REDIRECT_URL='/learn-sanskrit/home/'
