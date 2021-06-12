@@ -182,7 +182,6 @@ LOGIN_URL = '/learn-sanskrit/accounts/login/'
 LOGIN_EXEMPT_URLS = (
     'learn-sanskrit/accounts/register/',
     'learn-sanskrit/home/',
-    'learn-sanskrit/forums/',
     'learn-sanskrit/accounts/activate/<uidb64>/<token>/',
 )
 

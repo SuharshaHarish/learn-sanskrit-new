@@ -44,6 +44,9 @@ class LoginRequiredMiddleware:
             if path == reverse('accounts:logout').lstrip('/'):
                 return redirect(settings.LOGIN_URL)
 
+            if path == reverse('forums:forum_list').lstrip('/'):
+                return redirect(settings.LOGIN_URL)
+
             return redirect(reverse('sanskrit:home'.lstrip('/')))
 
 
