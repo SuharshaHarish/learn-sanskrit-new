@@ -4,6 +4,8 @@ from sanskrit import views
 app_name = 'sanskrit'
 
 urlpatterns = [
+    
+    path('',views.redirect_to_home, name='home'),
     path('home/',views.home,name='home'),
     path('lessons/',views.lessons,name = 'lessons'),
     path('lessons/<str:str_id>',views.lesson,name='lesson'),

@@ -220,4 +220,8 @@ def profile_page(request):
         'sat':sat
     }
     return render(request,'sanskrit/profile_page.html', args)
-    
+
+
+def redirect_to_home(request):
+
+    return redirect(reverse('sanskrit:home'))
