@@ -45,7 +45,7 @@ def lesson(request,str_id):
     lesson_str = re.findall('[A-Z][^A-Z]*', str_id) #for 2 word lessons
     lesson_name = (" ").join(lesson_str)
     lesson = SanskritLessons.objects.get(lesson_name= lesson_name)    
-    questions = SanskritQuestions.objects.filter(key_question = lesson)
+    questions = SanskritQuestions.objects.filter(key_question = lesson).order_by('q_number')
     q_choices= SanskritAnswers.objects.filter(key_answer= questions[0])
     #audio sources
     correct_audio = Audio.objects.get(name = "Correct")

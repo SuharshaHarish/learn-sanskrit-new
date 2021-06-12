@@ -41,6 +41,8 @@ class SanskritQuestions(models.Model):
     question = models.CharField(max_length=50)
     answer = models.CharField(max_length=50,default="",null=False)
     q_type = models.CharField(choices=Q_TYPE_CHOICES,null=False,max_length=10)
+    q_number = models.IntegerField(default=0)
+
     # q_select = models.BooleanField(default=False,null=False)
     # q_jump = models.BooleanField(default=False,null=False)
     

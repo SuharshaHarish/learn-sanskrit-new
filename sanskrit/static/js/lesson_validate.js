@@ -18,81 +18,22 @@ function myFunction() {
   document.getElementById("check_symbol").innerHTML =
     '<i class="fa fa-check"></i>';
   document.getElementById("crct").innerHTML = "Well Done!!! Its Correct!!!";
-
   if (i < data.length) {
-    var ques = data[i].fields.question;
-    var ans = data[i].fields.answer;
+    
     var q_type = data[i].fields.q_type;
 
     var question_translate = document.createElement("div");
     question_translate.id = "question_translate";
 
+
     var description = data[i].fields.description;
-    var desc = description.localeCompare('""');
-    if (desc > 0) {
-      if (desc_id == i) {
-        display_decription(description, q_type);
-        return;
-      }
+    if (description && description.length>0) {      
+      display_decription(description, q_type);        
+    }
+    else{
+      display_question();
     }
 
-    switch (q_type) {
-      case "s":
-        select_display();
-        document.getElementsByClassName(
-          "display"
-        )[0].innerHTML = document.getElementById("select").innerHTML;
-        document.getElementById("question").innerHTML = `<span>${ques}</span>`;
-        document.getElementById("submit").innerHTML =
-          '<button id ="submit_btn" onclick= "validate()" type="button" disabled >Submit</button>';
-
-        question_translate.innerHTML =
-          '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
-        document.getElementById("question").appendChild(question_translate);
-        break;
-
-      case "j":
-        document.getElementsByClassName(
-          "display"
-        )[0].innerHTML = document.getElementById("jump").innerHTML;
-        document.getElementById("question").innerHTML = `<span>${ques}</span>`;
-        var words = ans.split(" ");
-        var r = 0,
-          r_used = [];
-        for (j = 0; j < words.length; j++) {
-          r = Math.floor(Math.random() * words.length);
-          while (r_used.includes(r)) {
-            r = Math.floor(Math.random() * words.length);
-          }
-          r_used.push(r);
-          create_button(words[r]);
-        }
-        document.getElementById("submit").innerHTML =
-          '<button id ="submit_btn" onclick= "validate();">Submit</button>';
-
-        question_translate.innerHTML =
-          '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
-        document.getElementById("question").appendChild(question_translate);
-        break;
-
-      case "t":
-        document.getElementsByClassName(
-          "display"
-        )[0].innerHTML = document.getElementById("typing").innerHTML;
-        document.getElementById("question").innerHTML = `<span>${ques}</span>`;
-        document.getElementById("submit").innerHTML =
-          '<button id ="submit_btn" onclick= "validate();">Submit</button>';
-
-        Keyboard.init();
-
-        question_translate.innerHTML =
-          '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
-        document.getElementById("question").appendChild(question_translate);
-        break;
-
-      default:
-        console.log(q_type);
-    }
   } else {
     // End of lesson
     document.getElementById("submit").innerHTML =
@@ -117,8 +58,77 @@ function myFunction() {
   }
 }
 
+function display_question(){
+
+  var ques = data[i].fields.question;
+  var ans = data[i].fields.answer;
+  var q_type = data[i].fields.q_type;
+
+  var question_translate = document.createElement("div");
+  question_translate.id = "question_translate";
+
+  switch (q_type) {
+    case "s":
+      select_display();
+      document.getElementsByClassName(
+        "display"
+      )[0].innerHTML = document.getElementById("select").innerHTML;
+      document.getElementById("question").innerHTML = `<span>${ques}</span>`;
+      document.getElementById("submit").innerHTML =
+        '<button id ="submit_btn" onclick= "validate()" type="button" disabled >Submit</button>';
+
+      question_translate.innerHTML =
+        '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
+      document.getElementById("question").appendChild(question_translate);
+      break;
+
+    case "j":
+      document.getElementsByClassName(
+        "display"
+      )[0].innerHTML = document.getElementById("jump").innerHTML;
+      document.getElementById("question").innerHTML = `<span>${ques}</span>`;
+      var words = ans.split(" ");
+      var r = 0,
+        r_used = [];
+      for (j = 0; j < words.length; j++) {
+        r = Math.floor(Math.random() * words.length);
+        while (r_used.includes(r)) {
+          r = Math.floor(Math.random() * words.length);
+        }
+        r_used.push(r);
+        create_button(words[r]);
+      }
+      document.getElementById("submit").innerHTML =
+        '<button id ="submit_btn" onclick= "validate();">Submit</button>';
+
+      question_translate.innerHTML =
+        '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
+      document.getElementById("question").appendChild(question_translate);
+      break;
+
+    case "t":
+      document.getElementsByClassName(
+        "display"
+      )[0].innerHTML = document.getElementById("typing").innerHTML;
+      document.getElementById("question").innerHTML = `<span>${ques}</span>`;
+      document.getElementById("submit").innerHTML =
+        '<button id ="submit_btn" onclick= "validate();">Submit</button>';
+
+      Keyboard.init();
+
+      question_translate.innerHTML =
+        '<button id="question_translate_btn" onclick="question_translate();"><i class="fas fa-volume-up"></i></button>';
+      document.getElementById("question").appendChild(question_translate);
+      break;
+
+    default:
+      console.log(q_type);
+  }
+
+}
+
 function display_decription(description, q_type) {
-  desc_id++;
+  
   var desc_img = data[i].fields.desc_image;
   var desc_img_src = media_url + desc_img;
 
@@ -127,7 +137,7 @@ function display_decription(description, q_type) {
   )[0].innerHTML = document.getElementById("description").innerHTML;
   document.getElementById("desc_text").innerHTML = description;
   document.getElementById("submit").innerHTML =
-    '<button id ="continue_btn" type="button" onclick= "myFunction();" >Proceed</button>';
+    '<button id ="continue_btn" type="button" onclick= "display_question();" >Proceed</button>';
 
   // Resize Image
   var canvas = document.getElementById("canvas");
