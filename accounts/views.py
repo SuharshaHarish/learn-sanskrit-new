@@ -1,3 +1,4 @@
+from learn_sanskrit.settings import EMAIL_HOST_PASSWORD, EMAIL_HOST_USER
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from accounts.forms import RegistrationForm
@@ -6,6 +7,8 @@ from django.contrib.auth.models import User
 from django.views.generic import View
 from django.contrib import messages
 # for email registration
+import smptlib
+
 from django.utils.http import urlsafe_base64_decode,urlsafe_base64_encode
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
@@ -34,6 +37,10 @@ def register(request):
                 'token': generate_token.make_token(user)
             }
             )
+            s=smtplib.SMTP("smtp.gmail.com", 465)
+            s.ehlo()
+            s.starttls()
+            s.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
             email_message = EmailMessage(
             email_subject,
             message,
