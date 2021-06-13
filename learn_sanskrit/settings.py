@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+jc%t^@hnmcz)3ld&1a4)(i^fc_i7^ko1wb3h+^1rpl)g3_n#j'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,9 +86,9 @@ WSGI_APPLICATION = 'learn_sanskrit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dlkdqktw',
-        'USER': 'dlkdqktw',
-        'PASSWORD': 'LF1vh_mKt7lTQFKbuh0UIj3Nsfox8elA',
+        'NAME': env('DATABASE_NAME'),
+        'USER': env('DATABASE_USER'),
+        'PASSWORD': env('DATABASE_PASSWORD'),
         'HOST': 'john.db.elephantsql.com',
         'PORT': '5432'
     }
@@ -151,22 +151,22 @@ USE_TZ = True
 
 #AWS SETUP
 
-AWS_ACCESS_KEY_ID = 'AKIAUFNVG6CLMDP45PWM'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'learn-sanskrit'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_DEFAULT_ACL = 'public-read'
 AWS_LOCATION = 'static'
- 
 
 STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'learn_sanskrit.storages.StaticStore'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'sanskrit/static'),
 ]
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN,PUBLIC_MEDIA_LOCATION)

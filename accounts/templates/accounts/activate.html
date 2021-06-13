@@ -1,6 +1,6 @@
 {% autoescape off %}
 {{user.username}}!! Greetings from Learn_Sanskrit. Please click on the below link to verify your account.
 
-http://{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}
+https://{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}
 
 {% endautoescape %}
