@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -7,11 +8,11 @@ body {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-          flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-          justify-content: center;
+  justify-content: center;
   -webkit-box-align: center;
-          align-items: center;
+  align-items: center;
   font-family: "fira-sans-2", Verdana, sans-serif;
 }
 
@@ -19,7 +20,7 @@ body {
   display: block;
   /* fixes layout wonkiness in FF1.5 */
   position: relative;
-  width: 600px;
+  width: 700px;
   height: 300px;
   margin: 1.1em 0 0;
   padding: 0;
@@ -31,17 +32,19 @@ body {
   caption-side: top;
   width: 600px;
   text-transform: uppercase;
-  letter-spacing: .5px;
+  letter-spacing: 0.5px;
   top: -40px;
   position: relative;
   z-index: 10;
   font-weight: bold;
 }
 
-#q-graph tr, #q-graph th, #q-graph td {
+#q-graph tr,
+#q-graph th,
+#q-graph td {
   position: absolute;
-  bottom: 0;
-  width: 150px;
+  bottom: 2px;
+  /* width: 150px; */
   z-index: 2;
   margin: 0;
   padding: 0;
@@ -49,19 +52,19 @@ body {
 }
 
 #q-graph td {
-  -webkit-transition: all .3s ease;
-  transition: all .3s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 #q-graph td:hover {
   background-color: #4d4d4d;
-  opacity: .9;
+  opacity: 0.9;
   color: white;
 }
 
 #q-graph thead tr {
   left: 100%;
   top: 50%;
-  bottom: auto;
+  /* bottom: auto; */
   margin: -2.5em 0 0 5em;
 }
 
@@ -86,8 +89,8 @@ body {
 #q-graph tbody tr {
   height: 296px;
   padding-top: 2px;
-  border-right: 1px dotted #C4C4C4;
-  color: #AAA;
+  border-right: 1px dotted #c4c4c4;
+  color: #aaa;
 }
 
 #q-graph #q1 {
@@ -116,12 +119,17 @@ body {
 
 #q-graph #q7 {
   left: 600px;
-  border-right: none;
+  /* border-right: none; */
+}
+
+#q-graph #q8 {
+  left: 700px;
 }
 
 #q-graph tbody th {
   bottom: -1.75em;
   vertical-align: top;
+  left: 3.75em;
   font-weight: normal;
   color: #333;
 }
@@ -136,11 +144,11 @@ body {
 #q-graph .bar p {
   margin: 5px 0 0;
   padding: 0;
-  opacity: .4;
+  opacity: 0.4;
 }
 
 #q-graph .sent {
-  left: 13px;
+  left: 20px;
   background-color: #39cccc;
   border-color: transparent;
 }
@@ -155,7 +163,7 @@ body {
   position: relative;
   top: -300px;
   left: 2px;
-  width: 596px;
+  width: 700px;
   height: 300px;
   z-index: 1;
   margin-bottom: -300px;
@@ -165,8 +173,8 @@ body {
 
 #ticks .tick {
   position: relative;
-  border-bottom: 1px dotted #C4C4C4;
-  width: 600px;
+  border-bottom: 1px dotted #c4c4c4;
+  width: 700px;
 }
 
 #ticks .tick p {
