@@ -52,8 +52,6 @@ def register(request):
             return redirect(reverse('accounts:login'))
     else:
         userform = RegistrationForm()
-        print(settings.EMAIL_HOST_PASSWORD)
-        print(settings.EMAIL_HOST_USER)
     args = {'form':userform} 
 
     return render(request,'accounts/reg_form.html',args)

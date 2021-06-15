@@ -1,6 +1,13 @@
 {% autoescape off %}
-{{user.username}}!! Greetings from Learn_Sanskrit. Please click on the below link to verify your account.
+Hello {{user.username}} !
+
+Greetings from Adhyaapana. We thank you for registering on our website. Hope you have a lot of fun learning Sanskrit!
+
+Please click on the below link to verify your account.
 
 https://{{domain}}{% url 'accounts:activate' uidb64=uid token=token %}
+
+Regards,
+Adhyaapana Team
 
 {% endautoescape %}
