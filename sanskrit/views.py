@@ -26,8 +26,7 @@ def lessons(request):
     lesson_list = SanskritLessons.objects.all().order_by('q_number')
     user = request.user
     user_profiles = UserProgress.objects.filter(user=user).order_by('lesson_key')
-    # print(user_profiles)
-    serialized_user_profiles = serializers.serialize('json', user_profiles)
+    serialized_user_profiles = serializers.serialize('json', user_profiles)    
     serialized_lesson_list = serializers.serialize('json', lesson_list)  
 
     # translate_questions_all()
