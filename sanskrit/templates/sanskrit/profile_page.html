@@ -1,7 +1,6 @@
 {% extends 'sanskrit/base.html' %}
 {% load static %}
 {% block body %}
-{% include 'sanskrit/navbar.html' %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
 <link rel="stylesheet" href="{% static 'css/chartstyle.css' %}" />
 
@@ -102,6 +101,7 @@
   </div>
 </div>
 
+{% include 'sanskrit/navbar.html' %}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>

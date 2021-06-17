@@ -16,7 +16,8 @@ def forum_list(request):
     args={
         'forums':forums,
         'user':request.user,
-        'profiles': profiles      
+        'profiles': profiles,
+        'profile': Profile.objects.get(user=request.user),      
     }
     return render(request, 'forums/forum_list.html',args)
 
@@ -46,7 +47,7 @@ def forum_new(request):
             return redirect('forums:forum_detail', pk=forum.pk)
     else:
         form = ForumForm()
-    return render(request, 'forums/forum_edit.html', {'form': form})
+    return render(request, 'forums/forum_edit.html', {'form': form,'profile': Profile.objects.get(user=request.user)})
 
 def forum_edit(request, pk):
     forum = get_object_or_404(Forum, pk=pk)
@@ -63,7 +64,8 @@ def forum_edit(request, pk):
         form = ForumForm(instance=forum)
     
     args={
-        'form': form,        
+        'form': form,     
+        'profile': Profile.objects.get(user=request.user),   
     }
     return render(request, 'forums/forum_edit.html', args)
 

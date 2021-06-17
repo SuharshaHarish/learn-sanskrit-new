@@ -33,6 +33,7 @@ def lessons(request):
 
     args={
         'my_lessons' : lesson_list,
+        'profile': Profile.objects.get(user=request.user),
         'serialized_user_profiles' : serialized_user_profiles,
         'serialized_lesson_list' : serialized_lesson_list        
     }

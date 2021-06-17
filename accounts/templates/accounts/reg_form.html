@@ -2,7 +2,7 @@
 
 {% block body %}
 
-{% include 'sanskrit/navbar.html' %}
+
 <link rel="stylesheet" href="{% static 'css/log.css' %}" />
 <div class="register_container">
 
@@ -27,6 +27,7 @@
     </div>
   </form>
 </div>
+{% include 'sanskrit/navbar.html' %}
 <script>
   document.getElementsByClassName("label")[0].innerHTML = "Username:"
   document.getElementsByClassName("label")[1].innerHTML = "First name:"
