@@ -9,7 +9,7 @@
 <div class="profile_container">
   
   <div class="profcard">
-    <h1 id="toptitle">Profile</h1>
+    <h1 id="toptitle">{{user.first_name}} {{user.last_name}}</h1>
     <div id="profile_pic">
       <img src="{{profile.profile_pic.url}}" />
       <form method="post" enctype="multipart/form-data">
@@ -18,9 +18,8 @@
         <button id="upload_btn" type="submit">Upload</button>
       </form>
     </div>
-    <div id="profile_name">Username : {{user.username}}</div>
-    <div class="" id="name">Name : {{user.first_name}} {{user.last_name}}</div>
-    <div class="" id="email_id">Email : {{user.email}}</div>
+    <div id="profile_name">Username: {{user.username}}</div>
+    <div class="" id="email_id">Email: {{user.email}}</div>
     <ul>
       <li><a href=""><i class="fab fa-twitter fa-lg"></i></a></li>
       <li><a href=""><i class="fab fa-instagram fa-lg"></i></a></li>
@@ -28,8 +27,6 @@
       <li><a href=""><i class="fab fa-facebook fa-lg"></i></a></li>
     </ul>
   </div>
-  <h1 id="cmnts">Your Progress</h1>
-  <hr />
   <!-- messages -->
   {% if messages %}
   {% for message in messages %}
@@ -39,70 +36,72 @@
   {% endfor %}
   {% endif %}
   <!-- messages -->
-  <div class="" id="progess">
-    <br>
-    <table id="q-graph">
-      <caption>Daily Progress</caption>
-      <tbody>
-        <tr class="qtr" id="q1">
-          <th scope="row">Sun</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q2">
-          <th scope="row">Mon</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q3">
-          <th scope="row">Tue</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q4">
-          <th scope="row">Wed</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q5">
-          <th scope="row">Thu</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q6">
-          <th scope="row">Fri</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q7">
-          <th scope="row">Sat</th>
-          <td class="sent bar">
-          </td>
-        </tr>
-        <tr class="qtr" id="q8">
-        </tr>
-      </tbody>
-    </table>
+</div>
+<div class="" id="progess">
+  <h1 id="cmnts">Your Progress</h1>
+  <br>
+  <table id="q-graph">
+    <caption>Daily Progress</caption>
+    <tbody>
+      <tr class="qtr" id="q1">
+        <th scope="row">Sun</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q2">
+        <th scope="row">Mon</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q3">
+        <th scope="row">Tue</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q4">
+        <th scope="row">Wed</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q5">
+        <th scope="row">Thu</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q6">
+        <th scope="row">Fri</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q7">
+        <th scope="row">Sat</th>
+        <td class="sent bar">
+        </td>
+      </tr>
+      <tr class="qtr" id="q8">
+      </tr>
+    </tbody>
+  </table>
 
-    <div id="ticks">
-      <div class="tick" style="height: 59px;">
-        <p>5</p>
-      </div>
-      <div class="tick" style="height: 59px;">
-        <p>4</p>
-      </div>
-      <div class="tick" style="height: 59px;">
-        <p>3</p>
-      </div>
-      <div class="tick" style="height: 59px;">
-        <p>2</p>
-      </div>
-      <div class="tick" style="height: 59px;">
-        <p>1</p>
-      </div>
+  <div id="ticks">
+    <div class="tick" style="height: 59px;">
+      <p>5</p>
+    </div>
+    <div class="tick" style="height: 59px;">
+      <p>4</p>
+    </div>
+    <div class="tick" style="height: 59px;">
+      <p>3</p>
+    </div>
+    <div class="tick" style="height: 59px;">
+      <p>2</p>
+    </div>
+    <div class="tick" style="height: 59px;">
+      <p>1</p>
     </div>
   </div>
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
