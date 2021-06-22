@@ -1,94 +1,89 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Comfortaa|Varela+Round|Paytone+One&display=swap');
-body{
-    height: 1fr;
-    width: 100%;
-    display: block;
-    justify-content: center;
-    /* align-content: center; */
-    align-items: center;
-    /* background: #fec107; */    
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background: url(log.jpg) no-repeat;
-    background-size: cover;
-    
-  }
-  
-  
-  .bucket{
-   
-    max-width: 1000px;
-    width: 100%;
-    height: 1fr;
-    background: whitesmoke;
-    margin: 20px auto;
-    padding: 30px;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
-    /* margin-bottom: 30px; */
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Comfortaa|Varela+Round|Paytone+One&display=swap");
+body {
+  height: 1fr;
+  width: 100%;
+  display: block;
+  justify-content: center;
+  /* align-content: center; */
+  align-items: center;
+  /* background: #fec107; */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background: url(log.jpg) no-repeat;
+  background-size: cover;
+}
 
-  }
- 
-  .form_edit{
-      width: 40%;
-  }
+.bucket {
+  max-width: 1000px;
+  width: 100%;
+  height: 1fr;
+  background: whitesmoke;
+  margin: 20px auto;
+  padding: 30px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+  /* margin-bottom: 30px; */
+}
 
+.form_edit {
+  width: 40%;
+}
 
-.bucket h2{
+.bucket h2 {
   margin-top: 20px;
-    font-weight: 600;
-    font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
 }
-.bucket .forum_list .forum .author{
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-.edit_content_center{
-    padding-top: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.form_edit h2{
-    font-size: 30px;
-    font-family: 'Josefin Sans', sans-serif;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    color: #494949;
-    text-transform: uppercase;
-    text-align: center;
-}
-#id_title{
-    width: 100%;
-    height: 90px;
-    background: #d2d9e1;
-    border: #555 solid 2px;
-    border-radius: 7px;
-    outline: none;
-    resize: none;
-    font-size: large;
-    padding-bottom: 70px;
-    padding-left: 2px;
+.bucket .forum_list .forum .author {
+  font-family: "Josefin Sans", sans-serif;
 }
 
-label[for=id_title],[for=id_text]{
-    
-    font-size: 24px;
-    font-weight: 700;
-    justify-content: start;
+.edit_content_center {
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-input[type=text], select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-sizing: border-box;
-    outline: none;
-  }
+.form_edit h2 {
+  font-size: 30px;
+  font-family: "Josefin Sans", sans-serif;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  color: #494949;
+  text-transform: uppercase;
+  text-align: center;
+}
+#id_title {
+  width: 100%;
+  height: 90px;
+  background: #d2d9e1;
+  border: #555 solid 2px;
+  border-radius: 7px;
+  outline: none;
+  resize: none;
+  font-size: large;
+  padding-bottom: 70px;
+  padding-left: 2px;
+}
 
+label[for="id_title"],
+[for="id_text"] {
+  font-size: 24px;
+  font-weight: 700;
+  justify-content: start;
+}
+input[type="text"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  outline: none;
+}
 
-#id_text{
-    margin-top: 20px;
+#id_text {
+  margin-top: 20px;
   margin-bottom: 30px;
   width: 100%;
   height: 30%;
@@ -98,10 +93,9 @@ input[type=text], select {
   outline: none;
   resize: none;
   font-size: large;
-  
 }
 
-#forum_submit{
+#forum_submit {
   width: 100%;
   margin-top: 5px;
   padding: 8px 10px;
@@ -116,15 +110,14 @@ input[type=text], select {
   transition: all 0.3s;
 }
 
+#forum_submit:hover {
+  background: #333;
+  color: white;
+  transition: all 0.3s;
+}
 
-#forum_submit:hover{
-    background: #333;
-    color: white;
-    transition: all 0.3s;
-  }
-
-  /* FORUM LIST  */
-#new_forum{
+/* FORUM LIST  */
+#new_forum {
   margin-left: 80%;
   padding: 10px;
   margin-bottom: 30px;
@@ -142,8 +135,7 @@ input[type=text], select {
   outline: none;
 }
 
-
-#new_forum:hover{
+#new_forum:hover {
   background: #434343;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -152,12 +144,11 @@ input[type=text], select {
   transition: all 0.4s ease 0s;
 }
 
-#brdr{
-
-  border:1px solid #e6e6e6;
+#brdr {
+  border: 1px solid #e6e6e6;
 }
 
-.forum_list .forum{
+.forum_list .forum {
   /* background: black; */
   /* margin-bottom: 20px; */
   margin-top: 0px;
@@ -168,7 +159,7 @@ input[type=text], select {
   margin-left: -30px;
   /* border-top: 1px solid #e6e6e6; */
 }
-.forum_list .forum .profile_pic{
+.forum_list .forum .profile_pic {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -183,57 +174,49 @@ input[type=text], select {
   margin-top: 100%;
 }
 
-
-
-.forum_list .forum .author{
+.forum_list .forum .author {
   font-family: "Josefin Sans";
   margin-top: 20px;
   font-size: 25px;
   /* margin-bottom: 0px; */
   margin-left: 10px;
 }
-.forum_list .forum .forum_body h3{
+.forum_list .forum .forum_body h3 {
   font-family: "Josefin Sans";
   font-size: 26px;
   color: #007bff;
-
 }
 
-
-.forum_list .forum .forum_body{
+.forum_list .forum .forum_body {
   display: inline-block;
   vertical-align: middle;
   width: calc(100% - 150px);
   min-height: 90px;
   margin-left: 130px;
   padding: 5px 10px;
-  font-size: .9rem;
+  font-size: 0.9rem;
   color: #555;
-  background-color: #FFF;
+  background-color: #fff;
   border-bottom: 2px solid #f2f2f2;
-  
 }
 
-.forum_list .date{
+.forum_list .date {
   padding-bottom: 10px;
   font-size: 16px;
   border-bottom: 1px solid #e6e6e6;
   margin-left: 130px;
 }
 
-
-
-
 /* Forum Details */
 
-.forum .date{
+.forum .date {
   font-family: cursive;
 }
 
-.forum_detail{
+.forum_detail {
   position: sticky;
   max-width: 600px;
-  height: 180px;
+  /* height: 180px; */
   margin: 50px auto;
   padding: 30px;
   box-sizing: border-box;
@@ -242,14 +225,14 @@ input[type=text], select {
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-.forum_detail::after{
+.forum_detail::after {
   position: sticky;
   width: 50px;
   height: 50px;
   background: whitesmoke;
 }
 
-#author_pic img{
+#author_pic img {
   width: 60px;
   height: 60px;
   margin-top: -90px;
@@ -258,41 +241,40 @@ input[type=text], select {
   border-radius: 50%;
 }
 
-#cmnts{
+#cmnts {
   font-size: 22px;
   font-weight: 600;
   font-family: "Josefin Sans";
 }
 
-.forum_detail h2{
-  font-family: 'Varela Round', sans-serif;
+.forum_detail h2 {
+  font-family: "Varela Round", sans-serif;
   color: #007bff;
   font-weight: 300;
   font-size: 16px;
 }
 
-.forum_detail p{
-  font-family: 'Comfortaa', cursive;
+.forum_detail p {
+  font-family: "Comfortaa", cursive;
   font-weight: 300;
 }
 
-
-.forum_detail:hover{
-  box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+.forum_detail:hover {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: 0.5s;
 }
 
-.edit_forum{
+.edit_forum {
   display: block;
   margin-left: 625px;
 }
 
-
-#comment_btn{
+#comment_btn {
   margin-left: 30px;
 }
-#comment_btn,#editbtn {
+#comment_btn,
+#editbtn {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
@@ -307,7 +289,8 @@ input[type=text], select {
   outline: none;
 }
 
-#comment_btn:hover,#editbtn:hover {
+#comment_btn:hover,
+#editbtn:hover {
   background: #434343;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -316,13 +299,11 @@ input[type=text], select {
   transition: all 0.4s ease 0s;
 }
 
-
-#comments{
+#comments {
   background: whitesmoke;
-  
 }
 
-#comments .tip-left{
+#comments .tip-left {
   /* position: relative;
   max-width: 700px;
   height: auto;
@@ -332,7 +313,7 @@ input[type=text], select {
   box-sizing: border-box;
   border-radius: 10px;
    */
-   position: sticky;
+  position: sticky;
   max-width: 600px;
   height: 85px;
   /* max-height: 150px; */
@@ -344,8 +325,8 @@ input[type=text], select {
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
 
-#comments .tip-left h4{
-  font-family: 'Varela Round', sans-serif;
+#comments .tip-left h4 {
+  font-family: "Varela Round", sans-serif;
   color: #007bff;
   font-weight: 300;
   font-size: 16px;
@@ -354,39 +335,34 @@ input[type=text], select {
   /* display: inline; */
 }
 
-#comments .tip-left p{
-  font-family: 'Comfortaa', cursive;
+#comments .tip-left p {
+  font-family: "Comfortaa", cursive;
   font-weight: 700;
   padding-left: 50px;
 }
 
-
-#comments .tip-left::after{
+#comments .tip-left::after {
   position: absolute;
   width: 30px;
   height: 30px;
 }
 
-#comments .tip-left:hover{
-  box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+#comments .tip-left:hover {
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: 0.5s;
 }
 
-#profile_pic img{
+#profile_pic img {
   width: 60px;
   height: 60px;
   margin-top: -80px;
   margin-left: -80px;
   /* margin-top: 1.3%; */
   border-radius: 50%;
-  
 }
 
-
-
-
-#comment_textarea{
+#comment_textarea {
   width: 45%;
   height: 20%;
   background: #d2d9e1;
@@ -407,10 +383,10 @@ input[type=text], select {
   border-radius: 7px;
 }
 
-#add_comment{
+#add_comment {
   margin-left: 30px;
 }
-#add_comment_btn{
+#add_comment_btn {
   margin-left: 14%;
   margin-top: 20px;
   padding: 10px;
@@ -419,7 +395,7 @@ input[type=text], select {
   color: #fff !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #ed3330; 
+  background: #ed3330;
   border-radius: 4px;
   width: max-content;
   display: inline-block;
@@ -428,7 +404,7 @@ input[type=text], select {
   outline: none;
 }
 
-#add_comment_btn:hover{
+#add_comment_btn:hover {
   background: #434343;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -437,7 +413,7 @@ input[type=text], select {
   transition: all 0.4s ease 0s;
 }
 
-#back_button{
+#back_button {
   margin-left: 40%;
   margin-top: 0px;
   color: #fff !important;
@@ -453,7 +429,7 @@ input[type=text], select {
   transition: all 0.4s ease 0s;
   outline: none;
 }
-#back_button:hover{
+#back_button:hover {
   background: #434343;
   letter-spacing: 1px;
   -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
